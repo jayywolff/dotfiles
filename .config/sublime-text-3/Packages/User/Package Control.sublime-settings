@@ -1,0 +1,27 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"Alignment",
+		"Blade Snippets",
+		"BracketHighlighter",
+		"Dayle Rees Color Schemes",
+		"Laravel 5 Snippets",
+		"Laravel Blade Highlighter",
+		"Laravel Color Scheme",
+		"LPrint",
+		"Material Theme",
+		"Package Control",
+		"PHP Companion",
+		"Solarized Color Scheme",
+		"Theme - Flatland",
+		"Theme - Soda",
+		"Theme - Spacegray",
+		"Tomorrow Color Schemes",
+		"WordCount"
+	]
+}

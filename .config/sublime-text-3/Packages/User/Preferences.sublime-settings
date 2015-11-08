@@ -1,0 +1,24 @@
+{
+	"always_show_minimap_viewport": true,
+	"class": "tabset_control",
+	"color_scheme": "Packages/Dayle Rees Color Schemes/sublime/peel.tmTheme",
+	"detect_indentation": false,
+	"font_face": "Meslo LG S for Powerline",
+	"font_size": 8,
+	"ignored_packages":
+	[
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"overlay_scroll_bars": "enabled",
+	"tabSize": 4,
+	"tab_height": 20,
+	"tab_min_width": 45,
+	"tab_overlap": 5,
+	"tab_width": 180,
+	"theme": "peel.sublime-theme",
+	"translate_tabs_to_spaces": true
+}
