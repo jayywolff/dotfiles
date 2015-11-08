@@ -6,7 +6,7 @@ I need to clean out alot of junk. This is a work in progress. Currently in beta.
 Still need to add configs for irssi, mpd & ncmpcpp, & urxvt 
 
 ##Current setup screenshot
-[Screenshot](http://i.imgur.com/bHHHpaG.png)
+![Screenshot] (http://i.imgur.com/bHHHpaG.png)
 
 ##To recreate a minimal install with my current setup
   * Install Arch Linux or Net Install of Debian
