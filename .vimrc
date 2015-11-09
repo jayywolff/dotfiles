@@ -145,7 +145,7 @@ endfunction
 nmap ,lf :call FacadeLookup()<cr>
 
 " CtrlP Stuff
-map <C-1> :CtrlPBuffer<cr>
+nmap ,p :CtrlPBuffer<cr>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
