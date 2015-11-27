@@ -16,6 +16,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'xsbeats/vim-blade'
 Plugin 'mattn/emmet-vim'
+Plugin 'valloric/MatchTagAlways'
 Plugin 'Raimondi/delimitMate'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
@@ -180,7 +181,16 @@ let g:syntastic_check_on_wq = 0
 let g:ycm_register_as_syntastic_checker = 0
 let g:ycm_show_diagnostics_ui = 0
 
-" Ultisnips settings
+" Ultisnips Settings
 let g:UltiSnipsExpandTrigger="<c-y>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Html MatchTagsAlways Settings
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'blade' : 1,
+    \}
