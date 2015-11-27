@@ -150,6 +150,8 @@ nmap ,p :CtrlPBuffer<cr>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
 
 " I don't want to pull up these folders/files when calling CtrlP
 set wildignore+=*/vendor/**
@@ -159,6 +161,7 @@ set wildignore+=*.doc
 set wildignore+=*.ods
 set wildignore+=*.pdf
 set wildignore+=*.sql
+set wildignore+=*.swp
 
 " Open splits
 nmap vs :vsplit<cr>
