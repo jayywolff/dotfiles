@@ -86,3 +86,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias dbeaver="GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc /opt/dbeaver/dbeaver"
+alias homestead-up="(cd ~/VirtualBox\ VMs/Homestead && exec vagrant up)"
+alias homestead-ssh="(cd ~/VirtualBox\ VMs/Homestead && exec vagrant ssh)"
