@@ -16,6 +16,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'xsbeats/vim-blade'
 Plugin 'mattn/emmet-vim'
+Plugin 'mhinz/vim-startify'
 Plugin 'valloric/MatchTagAlways'
 Plugin 'Raimondi/delimitMate'
 Plugin 'kien/ctrlp.vim'
@@ -105,6 +106,7 @@ nmap <C-b> :NERDTreeToggle<cr>
 nmap <C-m> :NERDTreeToggle<cr>
 let g:NERDTreeWinPos="right"
 let g:NERDTreeMouseMode=2
+let NERDTreeMinimalUI=1
 "Close vim if NERDTree is the only open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -194,3 +196,23 @@ let g:mta_filetypes = {
     \ 'jinja' : 1,
     \ 'blade' : 1,
     \}
+
+" Startify Settings
+let g:startify_custom_header = 
+\ map(split(system('fortune -s | cowsay'), '\n'), '"   ". v:val') + ['','']
+
+let g:startify_list_order = [
+      \ ['   Recent Files '],       'files' ,
+      \ ['   Recent files in cwd '],   'dir',
+      \ ['   Sessions '],  'sessions',
+      \ ['   Bookmarks '], 'bookmarks',]
+
+    autocmd VimEnter *
+                \   if !argc()
+                \ |   Startify
+                \ |   NERDTree
+                \ |   wincmd w
+                \ | endif
+
+autocmd User Startified setlocal buftype=
+
