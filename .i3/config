@@ -104,9 +104,11 @@ bindsym $mod+Shift+q kill
 # Fix graphics glitch
 new_window none
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run  -l 20 -w 250 -nb "#292929" -nf "$white" -sb "$green" -sf "$darkred" -fn "Terminus-8:style=Regular"
-bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
+# start rofi (program launcher)
+bindsym $mod+d exec --no-startup-id rofi -show run
+#start rofi in window switcher mode
+bindsym $mod+Shift+d exec --no-startup-id rofi -show window
+
 
 #use "xmodmap -pke" to get a listing of the special keys
 #custom special key fixes

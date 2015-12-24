@@ -29,3 +29,30 @@
 *color7: #707880
 *color15: #C5C8C6
 
+    rofi.background: #1D1F21
+    rofi.foreground: #EEEEEE
+    rofi.highlightbg: #B5BD68
+    rofi.highlightfg: #EEEEEE
+    rofi.bordercolor: #B5BD68
+    rofi.bg-active: #8C9440
+    rofi.hlbg-active: #B5BD68
+    rofi.hlfg-active: #EEEEEE
+    rofi.hlbg-urgent: #B5BD68
+    rofi.hlfg-urgent: #EEEEEE
+    rofi.fg-active: #EEEEEE
+    rofi.bg-urgent: #A54242
+    rofi.fg-urgent: #EEEEEE
+    rofi.padding: 2
+    rofi.lines: 10
+    rofi.borderwidth: 4
+    rofi.opacity: 100
+    rofi.font: Terminus 14
+    rofi.location: 0
+    rofi.yoffset: 0
+    rofi.xoffset: 0
+    rofi.width: 50
+    rofi.fixed_num_lines: 1
+    rofi.hmode: false
+    rofi.terminal: gnome-terminal
+    rofi.ssh-set-title: false
+    rofi.hide-scrollbar: true
