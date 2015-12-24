@@ -10,10 +10,12 @@ Still need to add configs for irssi, mpd & ncmpcpp, & urxvt. Installation Script
 ##To recreate a minimal install with my current setup
   * Install Arch Linux or Net Install of Debian
   
-  * Install xorg-server, i3wm-gaps, lightdm, gnome-terminal, dmenu2, i3status, i3-lock-wrapper, i3bar, gvim, python2, powerline, compton, ranger, irssi
+  * Install xorg-server, i3wm-gaps, lightdm, gnome-terminal, rofi, i3status, i3-lock-wrapper, i3bar, gvim, python2, powerline, compton, ranger, irssi, zsh, oh-my-zsh, git
 
   * Copy over dotfiles to ~/
 
   * Install fonts (Terminus, FontAwesome, Terminess Powerline, Inconsolata for Powerline)
+
+  * Change default shell to zsh
 
   * Fix everything that's broken
