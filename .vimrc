@@ -26,6 +26,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rking/ag.vim'
 "play with this php completion after getting used to snippets
 "Plugin 'shawncplus/phpcomplete.vim' 
+Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Plugin 'Rykka/riv.vim'
 " need to learn to use this after mastering git more
 " Plugin 'tpope/vim-fugitive'
@@ -175,6 +176,10 @@ nmap sp :split<cr>
 set nohidden "remove file from buffer when closing tab
 nnoremap <silent> <C-S-Right> :tabnext<cr>
 nnoremap <silent> <C-S-Left> :tabprevious<cr>
+
+"PHP docblocks
+inoremap <C-d> <ESC>:call PhpDocSingle()<CR>i 
+nnoremap <C-d> :call PhpDocSingle()<CR> 
 
 " SyntasticCheck Settings
 let g:syntastic_check_on_wq = 0
