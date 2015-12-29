@@ -8,7 +8,7 @@ set $mod Mod4
 
 #AUTOSTART STUFF
 exec xset r rate 175 25
-exec --no-startup-id feh --bg-scale ~/Pictures/2560x1440.png
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec --no-startup-id nm-applet 
 exec --no-startup-id compton -b -c --inactive-opacity 0.80

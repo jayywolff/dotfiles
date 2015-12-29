@@ -5,8 +5,6 @@ export ZSH=/home/jay/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="miloshadzic"
-#ZSH_THEME="cloud"
 ZSH_THEME="agnoster"
 DEFAULT_USER=jay
 
@@ -82,9 +80,7 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias dbeaver="GTK2_RC_FILES=/usr/share/themes/Adwaita/gtk-2.0/gtkrc /opt/dbeaver/dbeaver"
+# Aliases
 alias homestead-up="(cd ~/VirtualBox\ VMs/Homestead && exec vagrant up)"
 alias homestead-ssh="(cd ~/VirtualBox\ VMs/Homestead && exec vagrant ssh)"
+alias homestead-halt="(cd ~/VirtualBox\ VMs/Homestead && exec vagrant halt)"

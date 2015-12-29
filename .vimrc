@@ -19,7 +19,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'valloric/MatchTagAlways'
 Plugin 'Raimondi/delimitMate'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors' 
@@ -158,8 +158,7 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
 
 " I don't want to pull up these folders/files when calling CtrlP
-set wildignore+=*/vendor/**
-set wildignore+=*/public/forum/**
+" set wildignore+=*/vendor/**
 set wildignore+=*.docx
 set wildignore+=*.doc
 set wildignore+=*.ods
