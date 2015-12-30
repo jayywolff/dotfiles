@@ -5,7 +5,8 @@ export ZSH=/home/jay/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
+ZSH_THEME="taybalt"
 DEFAULT_USER=jay
 
 # Uncomment the following line to use case-sensitive completion.
@@ -84,3 +85,7 @@ source $ZSH/oh-my-zsh.sh
 alias homestead-up="(cd ~/VirtualBox\ VMs/Homestead && exec vagrant up)"
 alias homestead-ssh="(cd ~/VirtualBox\ VMs/Homestead && exec vagrant ssh)"
 alias homestead-halt="(cd ~/VirtualBox\ VMs/Homestead && exec vagrant halt)"
+
+# Disable flow control commands (keeps C-s from freezing everything)
+stty start undef
+stty stop undef

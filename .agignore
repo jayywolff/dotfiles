@@ -1,0 +1,13 @@
+vendor/
+node_modules/
+tmp/
+images/
+.git/
+*.doc
+*.docx
+*.ods
+*.pdf
+*.sql*
+*.bak
+*.swp
+.*.swp

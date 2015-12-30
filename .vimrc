@@ -1,6 +1,5 @@
 "Todo
 "find better html solution
-"setup switch from block cursor to I-Beam in INSERT mode
 
 set nocompatible   	" Disable vi-compatibility
 filetype off		" required for Vundle
@@ -24,8 +23,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors' 
 Plugin 'rking/ag.vim'
-"play with this php completion after getting used to snippets
-"Plugin 'shawncplus/phpcomplete.vim' 
+Plugin 'othree/html5.vim'
+Plugin 'shawncplus/phpcomplete.vim' 
 Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Plugin 'Rykka/riv.vim'
 " need to learn to use this after mastering git more
@@ -42,13 +41,13 @@ filetype plugin indent on    " required
 set shell=/bin/zsh	" zsh is cooler than bash
 set t_Co=256
 colorscheme hybrid_jay
+syntax enable
 
 set guifont=Terminess\ Powerline
 set guioptions-=m " Removes top menu bar
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
-syntax enable
 
 set nowrap                      " don't wrap lines
 set tabstop=4                   " a tab is four spaces
@@ -64,12 +63,12 @@ set copyindent                  " copy the previous indentation on autoindenting
 set number                      " always show line numbers
 set ignorecase                  " ignore case when searching
 set smartcase                   " ignore case if search pattern is all lowercase,
-set timeout timeoutlen=200 ttimeoutlen=100
-set visualbell           " don't beep
-set noerrorbells         " don't beep
-set autowrite  "Save on buffer switch
-set mouse=a
+set visualbell                  " don't beep
+set noerrorbells                " don't beep
+set autowrite                   "Save on buffer switch
+set mouse=a                     "enable mouse usage
 set virtualedit=onemore
+set timeout timeoutlen=200 ttimeoutlen=100
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -78,6 +77,14 @@ let g:mapleader = ","
 
 "Easy escaping to normal mode
 imap jj <esc>
+
+" Note that remapping C-s requires flow control to be disabled
+" (e.g. in .bashrc or .zshrc)
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+map <C-t> <esc>:tabnew<CR>:NERDTreeToggle<CR>
+
+map <Leader>vr :edit ~/.vimrc<cr>
 
 "move an entire line or block of lines up or down
 nnoremap <silent> <C-S-Up> :m .-2<CR>==
@@ -91,10 +98,10 @@ vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
 "easier window navigation
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 "Resize vsplit
 nmap <C-v> :vertical resize +5<cr>
@@ -135,6 +142,17 @@ autocmd BufWritePre *.php :%s/\s\+$//e
 " Edit todo list for project
 nmap ,todo :e todo.txt<cr>
 
+" Use Silver Searcher instead of grep
+set grepprg=ag
+
+" common annoying typos
+command! Q q " Bind :Q to :q
+command! Qall qall
+command! QA qall
+command! E e
+command! W w
+command! Wq wq
+
 " Concept - load underlying class for Laravel
 function! FacadeLookup()
     let facade = input('Facade Name: ')
@@ -150,21 +168,16 @@ endfunction
 nmap ,lf :call FacadeLookup()<cr>
 
 " CtrlP Stuff
+" 
+" Make CtrlP use ag for listing the files. Way faster and no useless files.
+" Use custom agignore file, skip vcs ignore files, show hidden files
+let g:ctrlp_user_command = 'ag %s --path-to-agignore=~/.agignore -l -U --hidden --nocolor -g ""'
+let g:ctrlp_use_caching = 0
 nmap ,p :CtrlPBuffer<cr>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_show_hidden = 1
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
-
-" I don't want to pull up these folders/files when calling CtrlP
-" set wildignore+=*/vendor/**
-set wildignore+=*.docx
-set wildignore+=*.doc
-set wildignore+=*.ods
-set wildignore+=*.pdf
-set wildignore+=*.sql
-set wildignore+=*.swp
 
 " Open splits
 nmap vs :vsplit<cr>
@@ -176,12 +189,22 @@ set nohidden "remove file from buffer when closing tab
 nnoremap <silent> <C-S-Right> :tabnext<cr>
 nnoremap <silent> <C-S-Left> :tabprevious<cr>
 
-"PHP docblocks
+" PHP stuff
+let php_htmlInStrings = 1  "Syntax highlight HTML code inside PHP strings.
+let php_sql_query = 1      "Syntax highlight SQL code inside PHP strings.
+
+" PHP docblocks
 inoremap <C-d> <ESC>:call PhpDocSingle()<CR>i 
 nnoremap <C-d> :call PhpDocSingle()<CR> 
 
+" PHPComplete Settings
+let g:phpcomplete_mappings = {
+  \ 'jump_to_def': ',g',
+  \ }
+
 " SyntasticCheck Settings
 let g:syntastic_check_on_wq = 0
+let g:syntastic_php_checkers = ['php', 'phpmd']
 
 " YouCompleteMe Settings
 let g:ycm_register_as_syntastic_checker = 0
@@ -220,3 +243,7 @@ let g:startify_list_order = [
 
 autocmd User Startified setlocal buftype=
 
+" Jump to last cursor position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
