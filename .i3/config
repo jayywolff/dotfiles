@@ -1,18 +1,20 @@
-#to do list
+#To do list
+#fix switch to dev mode (might need a bash script for this)
+#fix up colorschemes
 #fix up bar
-
+#
 # See http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
 
 #AUTOSTART STUFF
 exec xset r rate 175 25
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
+exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec --no-startup-id compton -b -c --inactive-opacity 0.85
 
 # Font for window titles.
-font pango:Meslo LG S DZ for Powerline Regular 7
+font pango:Meslo LG S DZ for Powerline Regular 8
 
 #COLORS
 #Hybrid colors
@@ -246,6 +248,9 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+#switch into dev mode
+bindsym $mod+Shift+w exec pkill compton, gaps inner 10, gaps outer 5, smart_borders off
 
 workspace $ws1 output LVDS-0
 workspace $ws2 output VGA-0
