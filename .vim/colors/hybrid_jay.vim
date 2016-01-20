@@ -86,7 +86,7 @@ if has("gui_running")
   let s:red        = "#cc6666"
   let s:orange     = "#de935f"
   let s:yellow     = "#f0c674"
-  let s:green      = "#b5bd68"
+  let s:green      = "#689D6A"
   let s:aqua       = "#8abeb7"
   let s:blue       = "#81a2be"
   let s:purple     = "#b294bb"
@@ -121,7 +121,7 @@ else
     let s:red        = "9"    " LightRed
     let s:orange     = "3"    " DarkYellow
     let s:yellow     = "11"   " LightYellow
-    let s:green      = "10"   " LightGreen
+    let s:green      = "5"   " LightGreen
     let s:aqua       = "14"   " LightCyan
     let s:blue       = "12"   " LightBlue
     let s:purple     = "13"   " LightMagenta

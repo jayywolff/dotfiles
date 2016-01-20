@@ -1,6 +1,5 @@
 #to do list
 #fix up bar
-#fix dualscreen.sh and make an alias for it
 
 # See http://i3wm.org/docs/userguide.html for a complete reference!
 
@@ -8,32 +7,31 @@ set $mod Mod4
 
 #AUTOSTART STUFF
 exec xset r rate 175 25
-exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
-exec --no-startup-id nm-applet 
-exec --no-startup-id compton -b -c --inactive-opacity 0.80
+exec --no-startup-id compton -b -c --inactive-opacity 0.85
 
 # Font for window titles.
-font pango:Terminus 8
+font pango:Meslo LG S DZ for Powerline Regular 7
 
 #COLORS
 #Hybrid colors
 set $back               #1d1F21
 set $black              #282A2E
-set $grey               #373B41
+set $grey               #181818
 set $lightgrey          #707880
 set $white              #C5C8C6
 set $yellow             #F0C674
 set $red                #CC6666
 set $darkred            #A54242
-set $green              #B5BD56
+set $green              #689D6A 
 
 #class                  border      backgr.     text        split
-client.focused          $green     $green       $black      $red
+client.focused          $green     $green       $black      $green
 client.focused_inactive $grey       $grey       $lightgrey  $grey
 client.unfocused        $grey       $grey       $lightgrey  $grey
-client.urgent           $red        $red        $black      $red
-Client.background       $back
+client.urgent           $red        $red        $black      $grey
+client.background       $back
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -42,12 +40,11 @@ bindsym $mod+t exec gnome-terminal
 bindsym $mod+Return exec gnome-terminal
 mouse_warping none
 
-
 #i3-gaps stuff :)
-for_window [class="^.*"] border none
+for_window [class="^.*"] border pixel 2
 gaps inner 20
 gaps outer 15
-#smart_borders on
+smart_borders on
 #edit gaps mode
 #########################################################################
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -91,7 +88,7 @@ mode "$mode_gaps_outer" {
 
 
 #custom app commands (?i) just means case insenitive..
-for_window [class="(?i)pavucontrol"] floating enable, border pixel 3
+for_window [class="(?i)pavucontrol"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -109,6 +106,7 @@ bindsym $mod+d exec --no-startup-id rofi -show run
 #start rofi in window switcher mode
 bindsym $mod+Shift+d exec --no-startup-id rofi -show window
 
+bindsym $mod+Shift+v exec gnome-terminal -e vim
 
 #use "xmodmap -pke" to get a listing of the special keys
 #custom special key fixes
@@ -123,12 +121,17 @@ bindsym XF86TouchpadToggle exec synclient TouchpadOff=$(synclient -l | grep -c '
 bindsym Print exec mate-screenshot
 bindsym $mod+Print exec mate-screenshot -w
 
+# vim keys
+set $key_left h
+set $key_down j
+set $key_up k
+set $key_right l
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+$key_left focus left
+bindsym $mod+$key_down focus down
+bindsym $mod+$key_up focus up
+bindsym $mod+$key_right focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -137,10 +140,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+$key_left move left
+bindsym $mod+Shift+$key_down move down
+bindsym $mod+Shift+$key_up move up
+bindsym $mod+Shift+$key_right move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -148,8 +151,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
+# split in burger (horizontal) orientation
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -173,17 +176,19 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $ws1 "1:I"
-set $ws2 "2:II"
-set $ws3 "3:III"
-set $ws4 "4:IV"
-set $ws5 "5:V"
-set $ws6 "6:VI"
-set $ws7 "7:VII"
-set $ws8 "8:VIII"
-set $ws9 "9:IX"
 
-# switch to workspace
+# workspaces
+set $ws1 1:
+set $ws2 2:
+set $ws3 3:
+set $ws4 4:
+set $ws5 5:
+set $ws6 6:
+set $ws7 7:
+set $ws8 8:
+set $ws9 9:
+
+# switch to workspaces
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -206,6 +211,15 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 
+# assignments (need 2 fix)
+assign [class="^Vim$" instance="^Vim$"] $ws1
+assign [class="^firefox$" instance="^firefox$"] $ws3
+assign [class="^Spotify$" instance="^spotify$"] $ws4
+assign [class="^thunderbird$" instance="^thunderbird$"] $ws5
+assign [class="^mpv$" instance="^gl$"] $ws6
+
+# adjust displays
+bindsym $mod+Shift+m exec sh ~/dotfiles/scripts/configure_xrandr.sh
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -215,10 +229,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym j resize shrink width 2 px or 2 ppt
-        bindsym k resize grow height 2 px or 2 ppt
-        bindsym l resize shrink height 2 px or 2 ppt
-        bindsym semicolon resize grow width 2 px or 2 ppt
+        bindsym $key_left resize shrink width 2 px or 2 ppt
+        bindsym $key_up resize grow height 2 px or 2 ppt
+        bindsym $key_down resize shrink height 2 px or 2 ppt
+        bindsym $key_right resize grow width 2 px or 2 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 2 px or 2 ppt
@@ -237,16 +251,20 @@ workspace $ws1 output LVDS-0
 workspace $ws2 output VGA-0
 
 bar {
-    tray_output LVDS-0
-	status_command i3status --config ~/.i3/i3status.conf
-    position top
-    strip_workspace_numbers yes
-    separator_symbol "  "
-    font pango:FontAwesome Regular 8
-    colors{
-        background #292929
-        statusline #BCBCBC
-        separator #BCBCBC
-        focused_workspace    #333333 #B5BD68 #ffffff
-    }
+  status_command i3blocks -c ~/.i3/i3blocks.conf 2>~/.i3blocks.err
+  strip_workspace_numbers yes
+  tray_output LVDS-0
+  mode dock
+  position top
+  font pango: Meslo LG S DZ for Powerline Regular 8
+  colors {
+    separator #928374
+    background #282828
+    statusline #ebdbb2
+    focused_workspace #689d6a #689d6a #282828
+    active_workspace #1d2021 #1d2021 #928374
+    inactive_workspace #32302f #32302f #928374
+    urgent_workspace #cc241d #cc241d #ebdbb2
+  }
 }
+

@@ -13,21 +13,21 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'xsbeats/vim-blade'
 Plugin 'mattn/emmet-vim'
 Plugin 'mhinz/vim-startify'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'valloric/MatchTagAlways'
+Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'Raimondi/delimitMate'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors' 
 Plugin 'rking/ag.vim'
-Plugin 'othree/html5.vim'
 Plugin 'shawncplus/phpcomplete.vim' 
 Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Plugin 'Rykka/riv.vim'
-" need to learn to use this after mastering git more
+Plugin 'NLKNguyen/copy-cut-paste.vim'
 " Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
@@ -40,14 +40,14 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 set shell=/bin/zsh	" zsh is cooler than bash
 set t_Co=256
-colorscheme hybrid_jay
+colorscheme PaperColor
+set background=dark
 syntax enable
 
-set guifont=Terminess\ Powerline
-set guioptions-=m " Removes top menu bar
-set guioptions-=T " Removes top toolbar
-set guioptions-=r " Removes right hand scroll bar
-set go-=L " Removes left hand scroll bar
+set guioptions-=m               " Removes top menu bar
+set guioptions-=T               " Removes top toolbar
+set guioptions-=r               " Removes right hand scroll bar
+set go-=L                       " Removes left hand scroll bar
 
 set nowrap                      " don't wrap lines
 set tabstop=4                   " a tab is four spaces
@@ -65,8 +65,9 @@ set ignorecase                  " ignore case when searching
 set smartcase                   " ignore case if search pattern is all lowercase,
 set visualbell                  " don't beep
 set noerrorbells                " don't beep
-set autowrite                   "Save on buffer switch
-set mouse=a                     "enable mouse usage
+set autowrite                   " save on buffer switch
+set relativenumber              " show line numbers relative to cursor position
+set mouse=a                     " enable mouse usage
 set virtualedit=onemore
 set timeout timeoutlen=200 ttimeoutlen=100
 
@@ -82,9 +83,10 @@ imap jj <esc>
 " (e.g. in .bashrc or .zshrc)
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
-map <C-t> <esc>:tabnew<CR>:NERDTreeToggle<CR>
+map <C-t> <esc>:tabnew<CR>:NERDTreeToggle<CR><C-h>
 
 map <Leader>vr :edit ~/.vimrc<cr>
+map <Leader>zr :edit ~/.zshrc<cr>
 
 "move an entire line or block of lines up or down
 nnoremap <silent> <C-S-Up> :m .-2<CR>==
@@ -104,14 +106,16 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 "Resize vsplit
-nmap <C-v> :vertical resize +5<cr>
-nmap 25 :vertical resize 40<cr>
-nmap 50 <c-w>=
-nmap 75 :vertical resize 120<cr>
+map <C-v> :vertical resize +5<cr>
+map <Leader>25 :vertical resize 40<cr>
+map <Leader>50 <c-w>=
+map <Leader>75 :vertical resize 120<cr>
 
 "NerdTree Stuff
 nmap <C-b> :NERDTreeToggle<cr>
 nmap <C-m> :NERDTreeToggle<cr>
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeWinPos="right"
 let g:NERDTreeMouseMode=2
 let NERDTreeMinimalUI=1
@@ -153,6 +157,10 @@ command! E e
 command! W w
 command! Wq wq
 
+map Q <Nop>
+
+" Need to rewrite this to work with ctrlP
+" Stole from Jeffrey Way
 " Concept - load underlying class for Laravel
 function! FacadeLookup()
     let facade = input('Facade Name: ')
@@ -168,7 +176,6 @@ endfunction
 nmap ,lf :call FacadeLookup()<cr>
 
 " CtrlP Stuff
-" 
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 " Use custom agignore file, skip vcs ignore files, show hidden files
 let g:ctrlp_user_command = 'ag %s --path-to-agignore=~/.agignore -l -U --hidden --nocolor -g ""'
@@ -186,8 +193,8 @@ nmap sp :split<cr>
 " Tab handling
 "set showtabline=2  " always display tab bar
 set nohidden "remove file from buffer when closing tab
-nnoremap <silent> <C-S-Right> :tabnext<cr>
-nnoremap <silent> <C-S-Left> :tabprevious<cr>
+map <Leader>l :tabnext<cr>
+map <silent> <Leader>h :tabprevious<cr>
 
 " PHP stuff
 let php_htmlInStrings = 1  "Syntax highlight HTML code inside PHP strings.
@@ -196,11 +203,6 @@ let php_sql_query = 1      "Syntax highlight SQL code inside PHP strings.
 " PHP docblocks
 inoremap <C-d> <ESC>:call PhpDocSingle()<CR>i 
 nnoremap <C-d> :call PhpDocSingle()<CR> 
-
-" PHPComplete Settings
-let g:phpcomplete_mappings = {
-  \ 'jump_to_def': ',g',
-  \ }
 
 " SyntasticCheck Settings
 let g:syntastic_check_on_wq = 0
@@ -225,9 +227,9 @@ let g:mta_filetypes = {
     \}
 
 " Startify Settings
+let g:startify_session_dir = '~/.vim/session'
 let g:startify_custom_header = 
 \ map(split(system('fortune -s | cowsay'), '\n'), '"   ". v:val') + ['','']
-
 let g:startify_list_order = [
       \ ['   Recent Files '],       'files' ,
       \ ['   Recent files in cwd '],   'dir',
@@ -247,3 +249,15 @@ autocmd User Startified setlocal buftype=
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" Put at the very end of your .vimrc file.
+
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
+
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END

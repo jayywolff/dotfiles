@@ -5,8 +5,8 @@ export ZSH=/home/jay/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="agnoster"
-ZSH_THEME="taybalt"
+ZSH_THEME="agnoster"
+#ZSH_THEME="taybalt"
 DEFAULT_USER=jay
 
 # Uncomment the following line to use case-sensitive completion.
@@ -65,7 +65,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
