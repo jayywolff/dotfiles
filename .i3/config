@@ -11,7 +11,7 @@ set $mod Mod4
 exec xset r rate 175 25
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
 exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
-exec --no-startup-id compton -b -c --inactive-opacity 0.85
+exec --no-startup-id compton -b -c #--inactive-opacity 0.85
 
 # Font for window titles.
 font pango:Meslo LG S DZ for Powerline Regular 8
@@ -211,7 +211,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 # assignments (need 2 fix)
 assign [class="^Vim$" instance="^Vim$"] $ws1
 assign [class="^firefox$" instance="^firefox$"] $ws3
-assign [class="^Spotify$" instance="^spotify$"] $ws4
+assign [class="Spotify" instance="^spotify$"] $ws4
 assign [class="^thunderbird$" instance="^thunderbird$"] $ws5
 assign [class="^mpv$" instance="^gl$"] $ws6
 
