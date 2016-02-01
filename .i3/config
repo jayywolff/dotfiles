@@ -10,14 +10,12 @@ set $mod Mod4
 #AUTOSTART STUFF
 exec xset r rate 175 25
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
-exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1
 exec --no-startup-id compton -b -c #--inactive-opacity 0.85
 
-# Font for window titles.
-font pango:Meslo LG S DZ for Powerline Regular 8
+#Font for window titles.
+font pango:Meslo LG S DZ for Powerline Regular 9
 
-#COLORS
-#Hybrid colors
+#Colors
 set $back               #1d1F21
 set $black              #282A2E
 set $grey               #181818
@@ -27,9 +25,10 @@ set $yellow             #F0C674
 set $red                #CC6666
 set $darkred            #A54242
 set $green              #689D6A 
+set $archblue           #33B5E5
 
 #class                  border      backgr.     text        split
-client.focused          $green     $green       $black      $green
+client.focused          $archblue   $archblue   $black      $archblue
 client.focused_inactive $grey       $grey       $lightgrey  $grey
 client.unfocused        $grey       $grey       $lightgrey  $grey
 client.urgent           $red        $red        $black      $grey
@@ -115,8 +114,10 @@ bindsym XF86AudioMute exec pulseaudio-ctl mute
 bindsym XF86ScreenSaver exec i3lock-wrapper -l
 bindsym XF86Sleep exec i3lock-wrapper -l && echo mem > /sys/power/state
 bindsym XF86TouchpadToggle exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
-bindsym Print exec mate-screenshot
-bindsym $mod+Print exec mate-screenshot -w
+bindsym Print exec scrot -e 'mv $f ~/Pictures/screenshots/'
+bindsym $mod+Print exec scrot -u -e 'mv $f ~/Pictures/screenshots/'
+bindsym $mod+F11 exec light -U 5
+bindsym $mod+F12 exec light -A 5
 
 # vim keys
 set $key_left h
@@ -175,15 +176,15 @@ bindsym $mod+a focus parent
 
 
 # workspaces
-set $ws1 1: 
-set $ws2 2: 
-set $ws3 3: 
-set $ws4 4: 
-set $ws5 5: 
-set $ws6 6: 
-set $ws7 7: 
-set $ws8 8: 
-set $ws9 9: 
+set $ws1 1:
+set $ws2 2:
+set $ws3 3:
+set $ws4 4:
+set $ws5 5:
+set $ws6 6:
+set $ws7 7:
+set $ws8 8:
+set $ws9 9:
 
 # switch to workspaces
 bindsym $mod+1 workspace $ws1
@@ -247,22 +248,22 @@ bindsym $mod+r mode "resize"
 #switch into dev mode
 #bindsym $mod+Shift+w exec pkill compton, gaps inner 10, gaps outer 5
 
-workspace $ws1 output LVDS-0
-workspace $ws2 output VGA-0
+workspace $ws1 output eDP-1
+workspace $ws2 output HDMI-1
 
 bar {
-  status_command i3blocks -c ~/.i3/i3blocks.conf 2>~/.i3blocks.err
+  status_command i3blocks -c ~/.i3/i3blocks.conf 2>~/.i3/.i3blocks.err
   strip_workspace_numbers yes
-  tray_output LVDS-0
+  tray_output eDP-1
   mode dock
   position top
-  height 20
-  font pango: Meslo LG S DZ for Powerline Bold 8
+  height 22
+  font pango: Meslo LG S DZ for Powerline Bold 10
   colors {
     separator #928374
     background #282828
     statusline #ebdbb2
-    focused_workspace #689d6a #689d6a #282828
+    focused_workspace #33B5E5 #33B5E5 #282828
     active_workspace #1d2021 #1d2021 #928374
     inactive_workspace #32302f #32302f #928374
     urgent_workspace #cc241d #cc241d #ebdbb2

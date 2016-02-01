@@ -1,0 +1,24 @@
+#!/bin/bash
+
+SSID=$(nmcli device | awk 'NR==2' | awk '{print $4;}')
+IP=$(ifconfig  | grep inet | awk 'NR==1' | awk '{print $2;}')
+
+if [ $SSID = "--" ] 
+then
+    echo "No Connection"
+elif [ $SSID = "Wired" ] 
+then
+    echo "  $IP"
+elif [ $SSID = "BCPublic" ]
+then
+	echo   @$SSID
+else
+	STRENGTH=$(nmcli device wifi | grep $SSID | awk '{print $7;}')
+	echo    $STRENGTH% @$SSID
+
+separator_block_width=3
+fi
+
+case $BLOCK_BUTTON in
+	1) gnome-terminal -e nmtui ;;
+esac

@@ -6,6 +6,7 @@ i3-blocks
 zsh
 ranger
 vim
+lightdm
 
 urxvt
 Some configurations/keybindings are specific to Arch Linux and the keyboard of my thinkpad  
@@ -16,14 +17,16 @@ Still need to add configs for irssi, mpd & ncmpcpp, & urxvt. Installation Script
 ![Screenshot] (http://i.imgur.com/bHHHpaG.png)
 
 ##To recreate a minimal install with my current setup
-  * Install Arch Linux or Net Install of Debian
+  * Install Arch Linux or Net install of debian/ubuntu
   
-  * Install xorg-server, i3wm-gaps, lightdm, gnome-terminal, rofi, i3status, i3-lock-wrapper, i3bar, gvim, python2, powerline, compton, ranger, irssi, zsh, oh-my-zsh, git
+  * Install xorg-server, i3-gaps-git, lightdm,lightdm-gtk-greeter, gnome-terminal, rofi-git, i3status, i3-lock-wrapper, i3bar, i3blocks, gvim, compton-git, ranger, irssi, zsh, zsh-completions, git, xdotool
 
   * Copy over dotfiles to ~/
 
-  * Install fonts (Terminus, FontAwesome, Terminess Powerline, Inconsolata for Powerline)
+  * Install fonts (FontAwesome, Powerline patched fonts, infinality-bundle(Arch))
 
-  * Change default shell to zsh
+  * Change default shell to zsh, install oh-my-zsh
 
-  * Fix everything that's broken
+  * chmod +x ~/dotfiles/dotfiles_setup.sh && bash ~/dotfiles/dotfiles_setup.sh
+
+  * Fix/customize everything that's broken

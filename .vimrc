@@ -8,7 +8,9 @@ set rtp+=~/.vim/bundle/Vundle.vim " set runtime path to include Vundle
 call vundle#begin() " init Vundle
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 
-Plugin 'flazz/vim-colorschemes'
+" Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-airline/vim-airline'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
@@ -28,7 +30,7 @@ Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Plugin 'Rykka/riv.vim'
 Plugin 'NLKNguyen/copy-cut-paste.vim'
-" Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
@@ -40,8 +42,8 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 set shell=/bin/zsh	" zsh is cooler than bash
 set t_Co=256
-colorscheme PaperColor
 set background=dark
+colorscheme PaperColor
 syntax enable
 
 set guioptions-=m               " Removes top menu bar
@@ -67,7 +69,7 @@ set visualbell                  " don't beep
 set noerrorbells                " don't beep
 set autowrite                   " save on buffer switch
 set relativenumber              " show line numbers relative to cursor position
-set mouse=a                     " enable mouse usage
+set mouse=a                     " enable mouse usage in vim
 set virtualedit=onemore
 set timeout timeoutlen=200 ttimeoutlen=100
 
@@ -119,8 +121,9 @@ let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeWinPos="right"
 let g:NERDTreeMouseMode=2
 let NERDTreeMinimalUI=1
+let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
 "Close vim if NERDTree is the only open buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Create split below
 nmap :sp :rightbelow sp<cr>
@@ -131,14 +134,15 @@ nmap :bn :BufSurfForward<cr>
 
 highlight Search cterm=underline
 
-" Powerline Stuff
-let g:Powerline_symbols = 'fancy'
+" Airline Stuff
+let g:airline_theme='powerlineish'
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-
-" Remove search results
-command! H let @/=""
+let g:airline_powerline_fonts = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#enabled = 1
 
 " Auto-remove trailing spaces
 autocmd BufWritePre *.php :%s/\s\+$//e
@@ -153,7 +157,6 @@ set grepprg=ag
 command! Q q " Bind :Q to :q
 command! Qall qall
 command! QA qall
-command! E e
 command! W w
 command! Wq wq
 
@@ -178,7 +181,7 @@ nmap ,lf :call FacadeLookup()<cr>
 " CtrlP Stuff
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 " Use custom agignore file, skip vcs ignore files, show hidden files
-let g:ctrlp_user_command = 'ag %s --path-to-agignore=~/.agignore -l -U --hidden --nocolor -g ""'
+let g:ctrlp_user_command = 'ag %s --path-to-agignore=/home/jay/.vim/.agignore -l -U --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
 nmap ,p :CtrlPBuffer<cr>
 let g:ctrlp_map = '<c-p>'
@@ -231,10 +234,10 @@ let g:startify_session_dir = '~/.vim/session'
 let g:startify_custom_header = 
 \ map(split(system('fortune -s | cowsay'), '\n'), '"   ". v:val') + ['','']
 let g:startify_list_order = [
-      \ ['   Recent Files '],       'files' ,
-      \ ['   Recent files in cwd '],   'dir',
+      \ ['   Bookmarks '], 'bookmarks',
       \ ['   Sessions '],  'sessions',
-      \ ['   Bookmarks '], 'bookmarks',]
+      \ ['   Recent Files '],       'files' ,
+      \ ['   Recent files in cwd '],   'dir']
 
     autocmd VimEnter *
                 \   if !argc()
