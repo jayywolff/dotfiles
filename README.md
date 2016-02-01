@@ -27,6 +27,6 @@ Still need to add configs for irssi, mpd & ncmpcpp, & urxvt. Installation Script
 
   * Change default shell to zsh, install oh-my-zsh
 
-  * chmod +x ~/dotfiles/dotfiles_setup.sh && bash ~/dotfiles/dotfiles_setup.sh
+  * chmod +x ~/dotfiles/scripts/updateDotfiles.sh && bash ~/dotfiles/scripts/updateDotfiles.sh
 
   * Fix/customize everything that's broken
