@@ -81,9 +81,7 @@ export EDITOR='vim'
 # For a full list of active aliases, run `alias`.
 #
 # Aliases
-alias homestead-up="(cd ~/VirtualBox\ VMs/Homestead && exec vagrant up)"
-alias homestead-ssh="(cd ~/VirtualBox\ VMs/Homestead && exec vagrant ssh)"
-alias homestead-halt="(cd ~/VirtualBox\ VMs/Homestead && exec vagrant halt)"
+alias homestead='function __homestead() { (cd ~/Dev/vboxes/homestead && vagrant $*); unset -f __homestead; }; __homestead'
 
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef

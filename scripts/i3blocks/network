@@ -1,21 +1,13 @@
 #!/bin/bash
 
-SSID=$(nmcli device | awk 'NR==2' | awk '{print $4;}')
 IP=$(ifconfig  | grep inet | awk 'NR==1' | awk '{print $2;}')
+WIRED=$(nmcli connection show --active | grep -e 'enp3s0')
 
-if [ $SSID = "--" ] 
+if [ ! $WIRED ] 
 then
-    echo "No Connection"
-elif [ $SSID = "Wired" ] 
-then
+    echo "  127.0.0.1"
+else [ $WIRED ] 
     echo "  $IP"
-elif [ $SSID = "BCPublic" ]
-then
-	echo   @$SSID
-else
-	STRENGTH=$(nmcli device wifi | grep $SSID | awk '{print $7;}')
-	echo    $STRENGTH% @$SSID
-
 separator_block_width=3
 fi
 

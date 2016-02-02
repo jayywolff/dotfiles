@@ -89,6 +89,7 @@ map <C-t> <esc>:tabnew<CR>:NERDTreeToggle<CR><C-h>
 
 map <Leader>vr :edit ~/.vimrc<cr>
 map <Leader>zr :edit ~/.zshrc<cr>
+map <Leader>i3 :edit ~/.i3/config<cr>
 
 "move an entire line or block of lines up or down
 nnoremap <silent> <C-S-Up> :m .-2<CR>==

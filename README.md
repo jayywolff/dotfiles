@@ -4,11 +4,11 @@ My dotfiles for:
 i3-gaps
 i3-blocks
 zsh
-ranger
 vim
+ranger
+urxvt
 lightdm
 
-urxvt
 Some configurations/keybindings are specific to Arch Linux and the keyboard of my thinkpad  
 I need to clean out a lot of junk. This is a work in progress. Currently in beta.
 Still need to add configs for irssi, mpd & ncmpcpp, & urxvt. Installation Script coming soon.  

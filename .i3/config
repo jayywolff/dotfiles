@@ -28,7 +28,7 @@ set $green              #689D6A
 set $archblue           #33B5E5
 
 #class                  border      backgr.     text        split
-client.focused          $archblue   $archblue   $black      $archblue
+client.focused          $white      $white      $black      $white
 client.focused_inactive $grey       $grey       $lightgrey  $grey
 client.unfocused        $grey       $grey       $lightgrey  $grey
 client.urgent           $red        $red        $black      $grey
@@ -263,7 +263,7 @@ bar {
     separator #928374
     background #282828
     statusline #ebdbb2
-    focused_workspace #33B5E5 #33B5E5 #282828
+    focused_workspace #C5C8C6 #C5C8C6 #282828
     active_workspace #1d2021 #1d2021 #928374
     inactive_workspace #32302f #32302f #928374
     urgent_workspace #cc241d #cc241d #ebdbb2
