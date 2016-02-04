@@ -1,28 +1,26 @@
 #!/bin/bash
 
-SSID=$(nmcli device | awk 'NR==2' | awk '{print $4;}')
+#SSID=$(nmcli device | awk 'NR==2' | awk '{print $4;}')
+SSID=$(nmcli -p device wifi | grep -e '*' | awk '{ if (! /SSID/) print $2 }')
 ENABLED=$(nmcli radio wifi | grep enabled)
 CONNECTED=$(nmcli connection show --active | grep wlp2s0)
 
 if [ $ENABLED ]
 then
-    if [ $SSID = "BCPublic" ]
+    if [[ $CONNECTED ]]
     then
-        echo   @$SSID
-    elif [ $CONNECTED ]
-    then
-        STRENGTH=$(nmcli device wifi | grep $SSID | awk '{print $7;}')
-        echo    $STRENGTH% @$SSID
+        STRENGTH=$(nmcli -p device wifi | grep -e '*' | awk '{ if (! /SSID/) print $7 }')
+        echo "  $STRENGTH% @$SSID"
     else
         echo "   No Wifi"
     fi
-else [ ! $ENABLED ]
-    echo "  Airpane Mode"
+elif [ ! $ENABLED ]
+then
+    echo "  Airplane Mode"
     separator_block_width=3
 fi
 
 case $BLOCK_BUTTON in
 	1) gnome-terminal -e nmtui ;;
-	2) sh ~/dotfiles/scripts/i3blocks/toggle_wifi.sh ;;
-    3) nm-applet ;;
+	3) sh ~/dotfiles/scripts/i3blocks/toggle_wifi.sh ;;
 esac
