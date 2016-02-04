@@ -228,6 +228,7 @@ let g:mta_filetypes = {
     \ 'xml' : 1,
     \ 'jinja' : 1,
     \ 'blade' : 1,
+    \ 'php' : 1,
     \}
 
 " Startify Settings

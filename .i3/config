@@ -43,8 +43,11 @@ mouse_warping none
 
 #i3-gaps stuff :)
 for_window [class="^.*"] border pixel 3
+#for_window [class="inactive"] border pixel 0
+#figure out how to do this ^
 gaps inner 20
 gaps outer 15
+smart_borders on
 #edit gaps mode
 #########################################################################
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -212,8 +215,8 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 # assignments (need 2 fix)
 assign [class="^Vim$" instance="^Vim$"] $ws1
 assign [class="^firefox$" instance="^firefox$"] $ws3
-assign [class="Spotify" instance="^spotify$"] $ws4
-assign [class="^thunderbird$" instance="^thunderbird$"] $ws5
+assign [title="Spotify" instance="^spotify$"] $ws4
+assign [title="^thunderbird$" instance="^thunderbird$"] $ws5
 assign [class="^mpv$" instance="^gl$"] $ws6
 
 # adjust displays
