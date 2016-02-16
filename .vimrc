@@ -1,9 +1,6 @@
-"Todo
-"find better html solution
-
 set nocompatible   	" Disable vi-compatibility
-filetype off		" required for Vundle
 
+filetype off		" required for Vundle
 set rtp+=~/.vim/bundle/Vundle.vim " set runtime path to include Vundle
 call vundle#begin() " init Vundle
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
@@ -72,7 +69,8 @@ set relativenumber              " show line numbers relative to cursor position
 set mouse=a                     " enable mouse usage in vim
 set virtualedit=onemore
 set timeout timeoutlen=200 ttimeoutlen=100
-
+set splitbelow
+set splitright
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader = ","
@@ -85,11 +83,11 @@ imap jj <esc>
 " (e.g. in .bashrc or .zshrc)
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
-map <C-t> <esc>:tabnew<CR>:NERDTreeToggle<CR><C-h>
+map <C-t> <esc>:tabnew<CR>
 
-map <Leader>vr :edit ~/.vimrc<cr>
-map <Leader>zr :edit ~/.zshrc<cr>
-map <Leader>i3 :edit ~/.i3/config<cr>
+nmap <Leader>vr :edit ~/.vimrc<cr>
+nmap <Leader>zr :edit ~/.zshrc<cr>
+nmap <Leader>i3 :edit ~/.i3/config<cr>
 
 "move an entire line or block of lines up or down
 nnoremap <silent> <C-S-Up> :m .-2<CR>==
@@ -100,7 +98,7 @@ vnoremap <silent> <C-S-Up> :m '<-2<CR>gv=gv
 vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
 
 "Change directory to match current file ,cd
-nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
 "easier window navigation
 nnoremap <C-h> <C-w>h
@@ -149,7 +147,7 @@ let g:airline#extensions#tabline#enabled = 1
 autocmd BufWritePre *.php :%s/\s\+$//e
 
 " Edit todo list for project
-nmap ,todo :e todo.txt<cr>
+nmap <Leader>todo :e todo.txt<cr>
 
 " Use Silver Searcher instead of grep
 set grepprg=ag
@@ -177,14 +175,14 @@ function! FacadeLookup()
 
 execute ":edit vendor/laravel/framework/src/Illuminate/" . classes[facade]
 endfunction
-nmap ,lf :call FacadeLookup()<cr>
+nmap <Leader>lf :call FacadeLookup()<cr>
 
 " CtrlP Stuff
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 " Use custom agignore file, skip vcs ignore files, show hidden files
 let g:ctrlp_user_command = 'ag %s --path-to-agignore=/home/jay/.vim/.agignore -l -U --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
-nmap ,p :CtrlPBuffer<cr>
+nmap <Leader>p :CtrlPBuffer<cr>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -241,22 +239,12 @@ let g:startify_list_order = [
       \ ['   Recent Files '],       'files' ,
       \ ['   Recent files in cwd '],   'dir']
 
-    autocmd VimEnter *
-                \   if !argc()
-                \ |   Startify
-                \ |   NERDTree
-                \ |   wincmd w
-                \ | endif
-
-autocmd User Startified setlocal buftype=
-
 " Jump to last cursor position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 " Put at the very end of your .vimrc file.
-
 function! PhpSyntaxOverride()
   hi! def link phpDocTags  phpDefine
   hi! def link phpDocParam phpType

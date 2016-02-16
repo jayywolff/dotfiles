@@ -1,7 +1,5 @@
 #!/bin/bash
-
-#SSID=$(nmcli device | awk 'NR==2' | awk '{print $4;}')
-SSID=$(nmcli -p device wifi | grep -e '*' | awk '{ if (! /SSID/) print $2 }')
+SSID=$(nmcli device wifi | grep -e '*' | awk '{ if (! /SSID/) print $2 }')
 ENABLED=$(nmcli radio wifi | grep enabled)
 CONNECTED=$(nmcli connection show --active | grep wlp2s0)
 
@@ -9,7 +7,7 @@ if [ $ENABLED ]
 then
     if [[ $CONNECTED ]]
     then
-        STRENGTH=$(nmcli -p device wifi | grep -e '*' | awk '{ if (! /SSID/) print $7 }')
+        STRENGTH=$(nmcli device wifi | grep -e '*' | awk '{ if (! /SSID/) print $7 }')
         echo "  $STRENGTH% @$SSID"
     else
         echo "   No Wifi"

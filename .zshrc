@@ -82,7 +82,7 @@ export EDITOR='vim'
 #
 # Aliases
 alias homestead='function __homestead() { (cd ~/Dev/vboxes/homestead && vagrant $*); unset -f __homestead; }; __homestead'
-
+alias n64=mupen64plus
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
 stty stop undef

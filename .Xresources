@@ -31,26 +31,27 @@
 
     rofi.background: #181818
     rofi.foreground: #EEEEEE
-    rofi.highlightbg: #689D6A
+    rofi.highlightbg: #AFD700
     rofi.highlightfg: #EEEEEE
-    rofi.bordercolor: #689D6A
-    rofi.bg-active: #8C9440
-    rofi.hlbg-active: #689D6A
+    rofi.bordercolor: #AFD700
+    rofi.bg-active: #016200
+    rofi.hlbg-active: #AFD700
     rofi.hlfg-active: #EEEEEE
-    rofi.hlbg-urgent: #689D6A
+    rofi.hlbg-urgent: #AFD700
     rofi.hlfg-urgent: #EEEEEE
     rofi.fg-active: #EEEEEE
     rofi.bg-urgent: #A54242
     rofi.fg-urgent: #EEEEEE
     rofi.padding: 2
-    rofi.lines: 10
-    rofi.borderwidth: 4
+
+    rofi.lines: 15
+    rofi.borderwidth: 3
     rofi.opacity: 100
-    rofi.font: Hack 12
+    rofi.font:  Meslo LG S DZ for Powerline Regular 12
     rofi.location: 0
-    rofi.yoffset: 0
+    rofi.yoffset: -312
     rofi.xoffset: 0
-    rofi.width: 50
+    rofi.width: 100
     rofi.fixed_num_lines: 1
     rofi.hmode: false
     rofi.terminal: gnome-terminal
