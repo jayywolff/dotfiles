@@ -154,8 +154,6 @@ set grepprg=ag
 
 " common annoying typos
 command! Q q " Bind :Q to :q
-command! Qall qall
-command! QA qall
 command! W w
 command! Wq wq
 

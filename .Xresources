@@ -42,16 +42,16 @@
     rofi.fg-active: #EEEEEE
     rofi.bg-urgent: #A54242
     rofi.fg-urgent: #EEEEEE
-    rofi.padding: 2
+    rofi.padding: 15
 
-    rofi.lines: 15
+    rofi.lines: 8
     rofi.borderwidth: 3
-    rofi.opacity: 100
-    rofi.font:  Meslo LG S DZ for Powerline Regular 12
-    rofi.location: 0
-    rofi.yoffset: -312
+    rofi.opacity: 60
+    rofi.font:  Meslo LG M DZ for Powerline Italic 18
+    rofi.location: 2
+    rofi.yoffset: 50
     rofi.xoffset: 0
-    rofi.width: 100
+    rofi.width: 50
     rofi.fixed_num_lines: 1
     rofi.hmode: false
     rofi.terminal: gnome-terminal
