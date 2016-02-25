@@ -187,8 +187,8 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
 
 " Open splits
-nmap vs :vsplit<cr>
-nmap sp :split<cr>
+nnoremap vs :vsplit<cr>
+nnoremap sp :split<cr>
 
 " Tab handling
 "set showtabline=2  " always display tab bar
