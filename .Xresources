@@ -29,11 +29,10 @@
 *color7: #707880
 *color15: #C5C8C6
 
-    rofi.background: #181818
-    rofi.foreground: #EEEEEE
-    rofi.highlightbg: #AFD700
+    rofi.background: #2F343F
+    rofi.foreground: #6D727E
+    rofi.highlightbg: #5294E2
     rofi.highlightfg: #EEEEEE
-    rofi.bordercolor: #AFD700
     rofi.bg-active: #016200
     rofi.hlbg-active: #AFD700
     rofi.hlfg-active: #EEEEEE
@@ -45,13 +44,12 @@
     rofi.padding: 15
 
     rofi.lines: 8
-    rofi.borderwidth: 3
-    rofi.opacity: 60
-    rofi.font:  Meslo LG M DZ for Powerline Italic 18
+    rofi.borderwidth: 0
+    rofi.font:  Meslo LG M DZ for Powerline Bold 16
     rofi.location: 2
     rofi.yoffset: 50
     rofi.xoffset: 0
-    rofi.width: 50
+    rofi.width: 40
     rofi.fixed_num_lines: 1
     rofi.hmode: false
     rofi.terminal: gnome-terminal
