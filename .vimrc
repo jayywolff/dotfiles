@@ -25,12 +25,9 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rking/ag.vim'
 Plugin 'shawncplus/phpcomplete.vim' 
 Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
-Plugin 'Rykka/riv.vim'
 Plugin 'NLKNguyen/copy-cut-paste.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,12 +64,12 @@ set noerrorbells                " don't beep
 set autowrite                   " save on buffer switch
 set relativenumber              " show line numbers relative to cursor position
 set mouse=a                     " enable mouse usage in vim
-set virtualedit=onemore
+set virtualedit=onemore         " allow cursor to be placed after last character at end of line
+set splitbelow                  " create split below when doing horizontal split
+set splitright                  " create split on right when doing a vertical split
 set timeout timeoutlen=200 ttimeoutlen=100
-set splitbelow
-set splitright
+
 " With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
 
@@ -99,20 +96,32 @@ vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
 
 "Change directory to match current file ,cd
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>pwd :pwd<CR>
+nnoremap <Leader>e :e 
 
-"easier window navigation
+" Quickly add semi-colon to end of current line
+nmap ;; A;<esc>
+
+" Easier window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-"Resize vsplit
-map <C-v> :vertical resize +5<cr>
+" Familiar copy/cut/paste to clipboard shortcuts
+let g:copy_cut_paste_no_mappings = 1
+nmap <C-c> <Plug>CCP_CopyLine
+vmap <C-c> <Plug>CCP_CopyText
+"nmap <C-x> <Plug>CCP_CutLine
+"vmap <C-x> <Plug>CCP_CutText
+nmap <C-v> <Plug>CCP_PasteText
+
+" Resize vsplit
 map <Leader>25 :vertical resize 40<cr>
 map <Leader>50 <c-w>=
 map <Leader>75 :vertical resize 120<cr>
 
-"NerdTree Stuff
+" NerdTree Stuff
 nmap <C-b> :NERDTreeToggle<cr>
 nmap <C-m> :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = ''
@@ -121,17 +130,15 @@ let g:NERDTreeWinPos="right"
 let g:NERDTreeMouseMode=2
 let NERDTreeMinimalUI=1
 let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
-"Close vim if NERDTree is the only open buffer
+" Close vim if NERDTree is the only open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Create split below
-nmap :sp :rightbelow sp<cr>
-
-" Quickly go forward or backward to buffer
-nmap :bp :BufSurfBack<cr>
-nmap :bn :BufSurfForward<cr>
-
+" custom global higlighting enabled for all colorscheme
 highlight Search cterm=underline
+highlight vertSplit ctermfg=fg ctermbg=bg
+"highlight LineNr ctermbg=233
+"highlight SignColumn ctermbg=233
+set incsearch
 
 " Airline Stuff
 let g:airline_theme='powerlineish'
@@ -194,7 +201,7 @@ nnoremap sp :split<cr>
 "set showtabline=2  " always display tab bar
 set nohidden "remove file from buffer when closing tab
 map <Leader>l :tabnext<cr>
-map <silent> <Leader>h :tabprevious<cr>
+map <Leader>h :tabprevious<cr>
 
 " PHP stuff
 let php_htmlInStrings = 1  "Syntax highlight HTML code inside PHP strings.

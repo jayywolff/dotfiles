@@ -8,7 +8,6 @@ images/
 *.docx
 *.ods
 *.pdf
-*.sql*
 *.bak
 *.swp
 .*.swp
