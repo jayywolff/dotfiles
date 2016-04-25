@@ -1,6 +1,5 @@
 #To do list
 #fix switch to dev mode (might need a bash script for this)
-#fix up colorschemes
 #fix up bar
 #
 # See http://i3wm.org/docs/userguide.html for a complete reference!
@@ -9,29 +8,32 @@ set $mod Mod4
 
 #AUTOSTART STUFF
 exec xset r rate 175 25
-exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
-exec --no-startup-id compton -b -c #--inactive-opacity 0.85
+exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
+exec --no-startup-id compton -b -c
+exec --no-startup-id nm-applet
 
 #Font for window titles.
-font pango:Meslo LG S DZ for Powerline Regular 9
+font pango:Meslo LG S DZ for Powerline Regular 12
 
 #Colors
 set $back               #1d1F21
 set $black              #282A2E
-set $grey               #181818
+set $grey               #303030
 set $lightgrey          #707880
 set $white              #C5C8C6
 set $yellow             #F0C674
 set $red                #CC6666
 set $darkred            #A54242
-set $green              #689D6A 
+set $green              #AFD700 
+set $blue               #0087AF
 set $archblue           #33B5E5
+set $orange             #FFAF00
 
 #class                  border      backgr.     text        split
-client.focused          $white      $white      $black      $white
-client.focused_inactive $grey       $grey       $lightgrey  $grey
-client.unfocused        $grey       $grey       $lightgrey  $grey
-client.urgent           $red        $red        $black      $grey
+client.focused          $lightgrey     $lightgrey      $black      $lightgrey
+client.focused_inactive $white      $grey       $lightgrey  $grey
+client.unfocused        $white      $grey       $lightgrey  $grey
+client.urgent           $orange    $orange     $black      $grey
 client.background       $back
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -42,11 +44,11 @@ bindsym $mod+Return exec gnome-terminal
 mouse_warping none
 
 #i3-gaps stuff :)
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 #for_window [class="inactive"] border pixel 0
 #figure out how to do this ^
-gaps inner 20
-gaps outer 15
+gaps inner 25
+gaps outer 0
 smart_borders on
 #edit gaps mode
 #########################################################################
@@ -90,6 +92,7 @@ mode "$mode_gaps_outer" {
 
 #custom app commands (?i) just means case insenitive..
 for_window [class="(?i)pavucontrol"] floating enable
+for_window [class="(?i)qemu-system-x86_64"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
@@ -104,17 +107,17 @@ new_window none
 
 # start rofi (program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show run
-#start rofi in window switcher mode
+# start rofi (window switcher)
 bindsym $mod+Shift+d exec --no-startup-id rofi -show window
 
-#use "xmodmap -pke" to get a listing of the special keys
+#use "xmodmap -pke" to get list of special keys
 #custom special key fixes
 #bindsym XF86AudioLowerVolume exec amixer set Master 2dB-
 #bindsym XF86AudioRaiseVolume exec amixer set Master 2dB+
 bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
 bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
 bindsym XF86AudioMute exec pulseaudio-ctl mute
-bindsym XF86ScreenSaver exec i3lock-wrapper -l
+bindsym $mod+Shift+Escape exec i3lock-wrapper -l
 bindsym XF86Sleep exec i3lock-wrapper -l && echo mem > /sys/power/state
 bindsym XF86TouchpadToggle exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 bindsym Print exec scrot -e 'mv $f ~/Pictures/screenshots/'
@@ -173,21 +176,18 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
-# focus the child container
-#bindsym $mod+d focus child
-
+bindsym $mod+p focus parent
 
 # workspaces
-set $ws1 1:
-set $ws2 2:
-set $ws3 3:
-set $ws4 4:
-set $ws5 5:
-set $ws6 6:
-set $ws7 7:
-set $ws8 8:
-set $ws9 9:
+set $ws1 1: 
+set $ws2 2: 
+set $ws3 3: 
+set $ws4 4: 
+set $ws5 5: 
+set $ws6 6: 
+set $ws7 7: 
+set $ws8 8: 
+set $ws9 9: 
 
 # switch to workspaces
 bindsym $mod+1 workspace $ws1
@@ -226,50 +226,49 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym $key_left resize shrink width 2 px or 2 ppt
-        bindsym $key_up resize grow height 2 px or 2 ppt
-        bindsym $key_down resize shrink height 2 px or 2 ppt
-        bindsym $key_right resize grow width 2 px or 2 ppt
+    bindsym $key_left resize shrink width 2 px or 2 ppt
+    bindsym $key_up resize grow height 2 px or 2 ppt
+    bindsym $key_down resize shrink height 2 px or 2 ppt
+    bindsym $key_right resize grow width 2 px or 2 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 2 px or 2 ppt
+    bindsym Down resize grow height 2 px or 2 ppt
+    bindsym Up resize shrink height 2 px or 2 ppt
+    bindsym Right resize grow width 2 px or 2 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 2 px or 2 ppt
-        bindsym Down resize grow height 2 px or 2 ppt
-        bindsym Up resize shrink height 2 px or 2 ppt
-        bindsym Right resize grow width 2 px or 2 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
 #switch into dev mode
 #bindsym $mod+Shift+w exec pkill compton, gaps inner 10, gaps outer 5
-
-workspace $ws1 output eDP-1
-workspace $ws2 output HDMI-1
+#switch into entertainment mode
+bindsym $mod+Shift+n exec sh ~/dotfiles/scripts/entertainment_mode.sh
 
 bar {
-  status_command i3blocks -c ~/.i3/i3blocks.conf 2>~/.i3/.i3blocks.err
-  strip_workspace_numbers yes
-  tray_output eDP-1
-  mode dock
-  position top
-  height 22
-  font pango: Meslo LG S DZ for Powerline Bold 10
-  colors {
-    separator #928374
-    background #282828
-    statusline #ebdbb2
-    focused_workspace #C5C8C6 #C5C8C6 #282828
-    active_workspace #1d2021 #1d2021 #928374
-    inactive_workspace #32302f #32302f #928374
-    urgent_workspace #cc241d #cc241d #ebdbb2
-  }
+    status_command i3blocks -c ~/.i3/i3blocks.conf 2>~/.i3/.i3blocks.err
+    strip_workspace_numbers no
+    tray_output eDP-1
+    tray_padding 0
+    mode dock
+    position top
+    height 24
+    font pango: Meslo LG S for Powerline Bold 14
+    colors {
+        separator #928374
+        background #2F343F
+        statusline #ebdbb2
+        focused_workspace #5294E2 #5294E2 #2F343F
+        active_workspace #1d2021 #1d2021 #B9BCB5
+        inactive_workspace #2F343F #2F343F #B9BCB5
+        urgent_workspace #cc241d #cc241d #ebdbb2
+    }
 }
 
