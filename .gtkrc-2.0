@@ -2,14 +2,14 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/jay/.gtkrc-2.0.mine"
-gtk-theme-name="Mona 3.0"
+gtk-theme-name="Arc-Dark"
 gtk-icon-theme-name="Paper"
-gtk-font-name="Meslo LG S for Powerline 10"
-gtk-cursor-theme-name="Adwaita"
+gtk-font-name="Meslo LG S for Powerline 11"
+gtk-cursor-theme-name="Paper"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
-gtk-button-images=1
+gtk-button-images=0
 gtk-menu-images=1
 gtk-enable-event-sounds=0
 gtk-enable-input-feedback-sounds=0
