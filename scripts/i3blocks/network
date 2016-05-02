@@ -1,14 +1,11 @@
 #!/bin/bash
+IP=$(ifconfig | grep -e "broadcast" | awk 'NR==1' | awk '{print $2;}')
 
-IP=$(ifconfig  | grep inet | awk 'NR==1' | awk '{print $2;}')
-WIRED=$(nmcli connection show --active | grep -e 'enp3s0')
-
-if [ ! $WIRED ] 
+if [ $IP ]
 then
-    echo "  127.0.0.1"
-else [ $WIRED ] 
     echo "  $IP"
-separator_block_width=3
+else 
+    echo "  127.0.0.1"
 fi
 
 case $BLOCK_BUTTON in
