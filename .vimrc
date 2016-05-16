@@ -28,6 +28,7 @@ Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Plugin 'NLKNguyen/copy-cut-paste.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'editorconfig/editorconfig-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -123,7 +124,6 @@ map <Leader>75 :vertical resize 120<cr>
 
 " NerdTree Stuff
 nmap <C-b> :NERDTreeToggle<cr>
-nmap <C-m> :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeWinPos="right"
@@ -198,10 +198,13 @@ nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
 
 " Tab handling
-"set showtabline=2  " always display tab bar
 set nohidden "remove file from buffer when closing tab
 map <Leader>l :tabnext<cr>
 map <Leader>h :tabprevious<cr>
+
+" EditorConfig Settings
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 " PHP stuff
 let php_htmlInStrings = 1  "Syntax highlight HTML code inside PHP strings.
