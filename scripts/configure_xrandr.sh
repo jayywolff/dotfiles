@@ -1,25 +1,20 @@
 #! /bin/bash
 
-PRIMARY="eDP-1"
-EXT1="HDMI-1"
-EXT2="VGA-0"
+#This script is basically a toggle switch between my most used setups
+#built-in display only & built-in + external to the right
+#Todo - also setup clamp-shell mode
 
-if (xrandr | grep "$EXT2 disconnected" && xrandr | grep "$EXT1 connected"); then
-    xrandr --output $EXT2 --off
-    xrandr --output $EXT1 --primary --auto --output $PRIMARY --auto --left-of $EXT1
-elif ((xrandr | grep "$EXT1 connected") && (xrandr | grep "$EXT2 connected")); then
-	xrandr --output $PRIMARY --off
-	xrandr --output $EXT2 --primary --auto --output $EXT1 --auto --right-of $EXT2
-	echo "EXT1 & EXT2 enabled"
-	echo "$EXT1 & $PRIMARY enabled"
-elif (xrandr | grep "$EXT1 disconnected" && xrandr | grep "$EXT2 connected"); then
-	xrandr --output $EXT1 --off
-	xrandr --output $EXT2 --primary --auto --output $PRIMARY --auto --left-of $EXT2
-	echo "$EXT2 && $PRIMARY enabled"
-else
-	xrandr --output $EXT1 --off
-	xrandr --output $EXT2 --off
-	xrandr --output $PRIMARY --primary --auto
-	echo "$PRIMARY enabled"
+LAPTOP="eDP-1"
+HDMI="HDMI-1"
+
+if (xrandr | grep "$LAPTOP connected" && xrandr | grep "$HDMI connected"); then
+    xrandr --output $HDMI --auto --right-of $LAPTOP
+elif (xrandr | grep "$HDMI disconnected" && xrandr | grep "$LAPTOP connected"); then
+	xrandr --output $HDMI --off
+	xrandr --output $LAPTOP --primary --auto
+else #reset and default to only laptop display, manually config other setups
+	xrandr --output $HDMI --off
+	xrandr --output $LAPTOP --off
+	xrandr --output $LAPTOP --primary --auto
 fi
 
