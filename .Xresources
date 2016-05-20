@@ -1,57 +1,36 @@
-! Hybrid Terminal Colours. Uses the palette from Tomorrow-Night:
-! https://github.com/chriskempson/tomorrow-theme/blob/master/vim/colors/Tomorrow-Night.vim
-! vim: ft=xdefaults
+! Rofi Settings
 
-*background: #1D1F21
-*foreground: #C5C8C6
-! black
-*color0: #282A2E
-*color8: #373B41
-! red
-*color1: #A54242
-*color9: #CC6666
-! green
-*color2: #8C9440
-*color10: #B5BD68
-! yellow
-*color3: #DE935F
-*color11: #F0C674
-! blue
-*color4: #5F819D
-*color12: #81A2BE
-! magenta
-*color5: #85678F
-*color13: #B294BB
-! cyan
-*color6: #5E8D87
-*color14: #8ABEB7
-! white
-*color7: #707880
-*color15: #C5C8C6
+! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+rofi.color-normal: #2F343F,  #FFFFFF,  #2F343F,  #AFD700,  #FFFFFF
+rofi.color-urgent: #2F343F,  #FFFFFF,  #2F343F,  #D70100,  #FFFFFF
+rofi.color-active: #2F343F,  #FFFFFF,  #2F343F,  #AFD700,  #FFFFFF
 
-    rofi.background: #2F343F
-    rofi.foreground: #6D727E
-    rofi.highlightbg: #5294E2
-    rofi.highlightfg: #EEEEEE
-    rofi.bg-active: #016200
-    rofi.hlbg-active: #AFD700
-    rofi.hlfg-active: #EEEEEE
-    rofi.hlbg-urgent: #AFD700
-    rofi.hlfg-urgent: #EEEEEE
-    rofi.fg-active: #EEEEEE
-    rofi.bg-urgent: #A54242
-    rofi.fg-urgent: #EEEEEE
-    rofi.padding: 15
+!                  'background', 'border'
+rofi.color-window: #2F343F,      #2F343F
 
-    rofi.lines: 8
-    rofi.borderwidth: 0
-    rofi.font:  Meslo LG M DZ for Powerline Bold 16
-    rofi.location: 2
-    rofi.yoffset: 50
-    rofi.xoffset: 0
-    rofi.width: 40
-    rofi.fixed_num_lines: 1
-    rofi.hmode: false
-    rofi.terminal: gnome-terminal
-    rofi.ssh-set-title: false
-    rofi.hide-scrollbar: true
+rofi.background: #2F343F
+rofi.foreground: #6D727E
+rofi.highlightbg: #5294E2
+rofi.highlightfg: #EEEEEE
+rofi.bg-active: #016200
+rofi.hlbg-active: #AFD700
+rofi.hlfg-active: #EEEEEE
+rofi.hlbg-urgent: #AFD700
+rofi.hlfg-urgent: #EEEEEE
+rofi.fg-active: #EEEEEE
+rofi.bg-urgent: #A54242
+rofi.fg-urgent: #EEEEEE
+rofi.padding: 15
+
+rofi.lines: 8
+rofi.borderwidth: 0
+rofi.font:  Meslo LG M DZ for Powerline Bold 16
+rofi.location: 2
+rofi.yoffset: 50
+rofi.xoffset: 0
+rofi.width: 40
+rofi.fixed_num_lines: 1
+rofi.hmode: false
+rofi.terminal: gnome-terminal
+rofi.ssh-set-title: false
+rofi.hide-scrollbar: true
