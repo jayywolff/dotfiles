@@ -5,8 +5,6 @@ set rtp+=~/.vim/bundle/Vundle.vim " set runtime path to include Vundle
 call vundle#begin() " init Vundle
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 
-" Plugin 'flazz/vim-colorschemes'
-Plugin 'vim-airline/vim-airline'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
@@ -136,19 +134,13 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " custom global higlighting enabled for all colorscheme
 highlight Search cterm=underline
 highlight vertSplit ctermfg=fg ctermbg=bg
-"highlight LineNr ctermbg=233
-"highlight SignColumn ctermbg=233
 set incsearch
 
-" Airline Stuff
-let g:airline_theme='powerlineish'
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
+" Powerline Stuff
+let g:powerline_pycmd = 'py3'
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-let g:airline_powerline_fonts = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#enabled = 1
+set laststatus=2    " Always show the statusline
+set showtabline=2   " Always show the tabline
 
 " Auto-remove trailing spaces
 autocmd BufWritePre *.php :%s/\s\+$//e
