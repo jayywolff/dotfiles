@@ -15,3 +15,7 @@ then echo "  $perc%"
 else
 echo "  $perc%"
 fi
+
+case $BLOCK_BUTTON in
+	3) mate-power-statistics ;;
+esac
