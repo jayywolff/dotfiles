@@ -1,9 +1,9 @@
 ! Rofi Settings
 
 ! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
-rofi.color-normal: #2F343F,  #FFFFFF,  #2F343F,  #AFD700,  #FFFFFF
+rofi.color-normal: #2F343F,  #FFFFFF,  #2F343F,  #5294E2,  #FFFFFF
 rofi.color-urgent: #2F343F,  #FFFFFF,  #2F343F,  #D70100,  #FFFFFF
-rofi.color-active: #2F343F,  #FFFFFF,  #2F343F,  #AFD700,  #FFFFFF
+rofi.color-active: #2F343F,  #FFFFFF,  #2F343F,  #5294E2,  #FFFFFF
 
 !                  'background', 'border'
 rofi.color-window: #2F343F,      #2F343F
@@ -13,9 +13,9 @@ rofi.foreground: #6D727E
 rofi.highlightbg: #5294E2
 rofi.highlightfg: #EEEEEE
 rofi.bg-active: #016200
-rofi.hlbg-active: #AFD700
+rofi.hlbg-active: #5294E2
 rofi.hlfg-active: #EEEEEE
-rofi.hlbg-urgent: #AFD700
+rofi.hlbg-urgent: #5294E2
 rofi.hlfg-urgent: #EEEEEE
 rofi.fg-active: #EEEEEE
 rofi.bg-urgent: #A54242
