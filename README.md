@@ -19,7 +19,7 @@ Still need to add configs for irssi, mpd & ncmpcpp, & urxvt. Installation Script
 ##To recreate a minimal install with my current setup
   * Install Arch Linux or the minimal install of Debian, Ubuntu, Fedora, OpenSuse, and even FreeBSD
   
-  * Install xorg-server, i3-gaps-git, lightdm,lightdm-gtk-greeter, gnome-terminal, rofi-git, i3status, i3-lock-wrapper, i3bar, i3blocks, gvim, compton-git, ranger, irssi, zsh, zsh-completions, git, xdotool
+  * Install xorg-server, i3-gaps-git, lightdm, lightdm-gtk-greeter, gnome-terminal, rofi, i3status, i3-lock-wrapper, i3bar, i3blocks, gvim, compton-git, ranger, irssi, zsh, zsh-completions, git, xdotool, nm-applet
 
   * Copy over dotfiles to ~/
 
@@ -27,8 +27,8 @@ Still need to add configs for irssi, mpd & ncmpcpp, & urxvt. Installation Script
 
   * Change default shell to zsh, install oh-my-zsh
 
-  * chmod +x ~/dotfiles/scripts/updateDotfiles.sh && bash ~/dotfiles/scripts/updateDotfiles.sh
+  * `chmod +x ~/dotfiles/scripts/updateDotfiles.sh && bash ~/dotfiles/scripts/updateDotfiles.sh`
 
-  * Setup vim by installing Vundle and then :PluginInstall, and manually compile YouCompleteMe
+  * Setup vim by manually compiling YouCompleteMe `python2 ~/.vim/bundle/YouCompleteMe/install.py`
 
   * Fix/customize everything that's broken
