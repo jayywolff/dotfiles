@@ -16,7 +16,11 @@ ln -sf $dotdir/.vim/ $HOME/.vim
 ln -sf $dotdir/.vimrc $HOME/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
+python3 $dotdir/.vim/bundle/YouCompleteMe/install.py
 
 #etc files
 sudo ln -f $dotdir/etc/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 sudo chown root /etc/lightdm/lightdm-gtk-greeter.conf
+
+#setup zsh (must open a new terminal to finish zsh setup 
+sudo chsh -s /bin/zsh $USER

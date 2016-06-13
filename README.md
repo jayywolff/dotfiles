@@ -4,7 +4,7 @@ My dotfiles for:
 * i3-gaps
 * i3-blocks
 * zsh
-* vim
+* vim <3
 * ranger
 * lightdm
 * gtk2 & gtk3
@@ -25,12 +25,11 @@ I need to clean out a lot of junk. This is a work in progress.
 
   * Install fonts (FontAwesome, Powerline patched fonts, infinality-bundle(Arch only))
 
-  * Change default shell to zsh, install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
   * adjust variables to your env in scripts/updateDotfiles.sh
 
   * `chmod +x ~/dotfiles/scripts/updateDotfiles.sh && bash ~/dotfiles/scripts/updateDotfiles.sh`
 
-  * Setup vim by manually compiling YouCompleteMe `python2 ~/.vim/bundle/YouCompleteMe/install.py`
+  * Install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
   * Fix/customize everything that's broken and specific to your setup
