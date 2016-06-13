@@ -1,36 +1,18 @@
 ! Rofi Settings
-
-! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
-rofi.color-normal: #2F343F,  #FFFFFF,  #2F343F,  #5294E2,  #FFFFFF
-rofi.color-urgent: #2F343F,  #FFFFFF,  #2F343F,  #D70100,  #FFFFFF
-rofi.color-active: #2F343F,  #FFFFFF,  #2F343F,  #5294E2,  #FFFFFF
-
-!                  'background', 'border'
-rofi.color-window: #2F343F,      #2F343F
-
-rofi.background: #2F343F
-rofi.foreground: #6D727E
-rofi.highlightbg: #5294E2
-rofi.highlightfg: #EEEEEE
-rofi.bg-active: #016200
-rofi.hlbg-active: #5294E2
-rofi.hlfg-active: #EEEEEE
-rofi.hlbg-urgent: #5294E2
-rofi.hlfg-urgent: #EEEEEE
-rofi.fg-active: #EEEEEE
-rofi.bg-urgent: #A54242
-rofi.fg-urgent: #EEEEEE
-rofi.padding: 15
-
-rofi.lines: 8
-rofi.borderwidth: 0
-rofi.font:  Meslo LG M DZ for Powerline Bold 16
-rofi.location: 2
-rofi.yoffset: 50
-rofi.xoffset: 0
-rofi.width: 40
-rofi.fixed_num_lines: 1
-rofi.hmode: false
-rofi.terminal: gnome-terminal
-rofi.ssh-set-title: false
+rofi.width:		50
+rofi.padding:	300
+rofi.fullscreen: true
+rofi.fixed-num-lines: true
+rofi.bw:		0
+rofi.location:	0
+rofi.terminal:	gnome-terminal
+rofi.lines:		10
+rofi.eh:		1
 rofi.hide-scrollbar: true
+rofi.font:      Meslo LG S DZ for Powerline Regular 36
+! Rofi Colorsheme
+! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+rofi.color-window: argb:aa263238, argb:aa263238, #26a69a
+rofi.color-normal: argb:0263238, #eceff1, argb:0263238, #f4246b, #eceff1
+rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
+rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
