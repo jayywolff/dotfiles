@@ -68,6 +68,10 @@ set splitbelow                  " create split below when doing horizontal split
 set splitright                  " create split on right when doing a vertical split
 set timeout timeoutlen=200 ttimeoutlen=100
 
+" Group all swp files and backups into a dir
+set backupdir=~/.vim/backups
+set directory=~/.vim/backups
+
 " With a map leader it's possible to do extra key combinations
 let mapleader = ","
 let g:mapleader = ","
@@ -100,6 +104,15 @@ nnoremap <Leader>e :e
 
 " Quickly add semi-colon to end of current line
 nmap ;; A;<esc>
+
+" Open splits
+nnoremap vs :vsplit<cr>
+nnoremap sp :split<cr>
+
+" Tab handling
+set nohidden "remove file from buffer when closing tab
+map <leader>l :tabnext<cr>
+map <leader>h :tabprevious<cr>
 
 " Easier window navigation
 nnoremap <C-h> <C-w>h
@@ -184,16 +197,6 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
-
-" Open splits
-nnoremap vs :vsplit<cr>
-nnoremap sp :split<cr>
-
-" Tab handling
-set nohidden "remove file from buffer when closing tab
-map <Leader>l :tabnext<cr>
-map <Leader>h :tabprevious<cr>
-
 " EditorConfig Settings
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
