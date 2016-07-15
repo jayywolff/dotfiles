@@ -105,6 +105,10 @@ nnoremap <Leader>e :e
 " Quickly add semi-colon to end of current line
 nmap ;; A;<esc>
 
+" Delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
 " Open splits
 nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
@@ -180,12 +184,12 @@ function! FacadeLookup()
 \       'Form': 'Html/FormBuilder.php',
 \       'Html': 'Html/HtmlBuilder.php',
 \       'File': 'Filesystem/Filesystem.php',
-\       'Eloquent': 'Database/Eloquent/Model.php'
+\       'Eloquent': 'Database/Eloquent/Model.php',
 \   }
 
-execute ":edit vendor/laravel/framework/src/Illuminate/" . classes[facade]
+execute ":vs vendor/laravel/framework/src/Illuminate/" . classes[facade]
 endfunction
-nmap <Leader>lf :call FacadeLookup()<cr>
+nmap <Leader>fl :call FacadeLookup()<cr>
 
 " CtrlP Stuff
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
