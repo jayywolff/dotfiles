@@ -56,6 +56,7 @@ plugins=(git dircycle sudo vagrant vi-mode web-search)
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 # export MANPATH="/usr/local/man:$MANPATH"
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 source $ZSH/oh-my-zsh.sh
 
