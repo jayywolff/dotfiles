@@ -21,11 +21,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors' 
 Plugin 'rking/ag.vim'
+Plugin 'skwp/greplace.vim'
 Plugin 'shawncplus/phpcomplete.vim' 
 Plugin 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Plugin 'NLKNguyen/copy-cut-paste.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-dispatch'
 Plugin 'editorconfig/editorconfig-vim'
 
 " All of your Plugins must be added before the following line
@@ -167,6 +169,7 @@ nmap <Leader>todo :e todo.txt<cr>
 
 " Use Silver Searcher instead of grep
 set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 " common annoying typos
 command! Q q " Bind :Q to :q
@@ -190,6 +193,9 @@ function! FacadeLookup()
 execute ":vs vendor/laravel/framework/src/Illuminate/" . classes[facade]
 endfunction
 nmap <Leader>fl :call FacadeLookup()<cr>
+
+" Custom script to generate awesome ctags for Laravel projects
+nmap <Leader>ct :Make ~/dotfiles/scripts/laravel_ctags.sh .<cr>
 
 " CtrlP Stuff
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
