@@ -1,35 +1,39 @@
 #Jay's dotfiles
   
-My dotfiles for: 
+
+My dotfiles for a sweet tiling wm Arch Linux setup. Install this as a base and throw your tools/packages on top.  
+The main attractions:  
+* vim <3
 * i3-gaps
 * i3-blocks
 * zsh
-* vim <3
+* gtk
+* termite
 * ranger
 * lightdm
-* gtk2 & gtk3
 * git
 
 Some configurations/keybindings are specific to Arch Linux and the keyboard of my thinkpad  
-I need to clean out a lot of junk. This is a work in progress.  
+This is a work in progress.  
 
 ##Current setup screenshot
 ![Screenshot] (http://i.imgur.com/WBf6UES.png)
 
 ##To recreate a minimal install with my current setup
-  * Install Arch Linux or the headless install of Debian, Ubuntu, Fedora, OpenSuse, and even FreeBSD
+  * Install Arch Linux or the headless install of Debian, Ubuntu, Fedora, OpenSuse, or even FreeBSD
   
-  * Install x11, i3-gaps-git, lightdm, lightdm-gtk-greeter, gnome-terminal, rofi, i3status, i3-lock-wrapper, i3bar, i3blocks, gvim, compton-git, ranger, irssi, feh, zsh, zsh-completions, git, xdotool, nm-applet, powerline
+  * Install x11, i3-gaps, i3status, i3bar, i3blocks, i3-lock-wrapper, lightdm, lightdm-gtk-greeter, termite, rofi, gvim, compton-git, ranger, irssi, feh, zsh, zsh-completions, git, xdotool, nm-applet
 
   * Clone or copy dotfiles to ~/
 
   * Install fonts (FontAwesome, Powerline patched fonts, infinality-bundle(Arch only))
 
-
-  * adjust variables to your env in scripts/updateDotfiles.sh
+  * adjust variables to your local setup in scripts/updateDotfiles.sh
 
   * `chmod +x ~/dotfiles/scripts/updateDotfiles.sh && bash ~/dotfiles/scripts/updateDotfiles.sh`
 
   * Install [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
   * Fix/customize everything that's broken and specific to your setup
+  
+  * Setup your 

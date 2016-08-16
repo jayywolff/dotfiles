@@ -1,62 +1,62 @@
 #To do list
-#fix switch to dev mode (might need a bash script for this)
 #fix up bar
 #
 # See http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
 
-#AUTOSTART STUFF
+#default keyboard repeat is too slow for me
 exec xset r rate 175 25
+
+#AUTOSTART STUFF
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
+exec_always --no-startup-id  python3 ~/.i3/i3-autoname-workspaces.py
 exec --no-startup-id compton -b -c
-exec --no-startup-id nm-applet
+exec --no-startup-id guake
+#exec --no-startup-id nm-applet
 
 #Font for window titles.
-font pango:Meslo LG S DZ for Powerline Regular 12
+font pango:Meslo LG S for Powerline Regular 14
 
 #Colors
-set $back               #1d1F21
+set $back               #2F343F
+set $primary            #D0D0D0
+set $secondary          #0FE0C9
 set $black              #282A2E
 set $grey               #303030
-set $lightgrey          #707880
 set $white              #C5C8C6
-set $yellow             #F0C674
-set $red                #CC6666
-set $darkred            #A54242
-set $green              #AFD700 
-set $blue               #0087AF
-set $archblue           #33B5E5
-set $orange             #FFAF00
 
-#class                  border      backgr.     text        split
-client.focused          $lightgrey     $lightgrey      $black      $lightgrey
-client.focused_inactive $white      $grey       $lightgrey  $grey
-client.unfocused        $white      $grey       $lightgrey  $grey
-client.urgent           $orange    $orange     $black      $grey
-client.background       $back
+# class                 border   backgr.  text    indicator child_border
+client.focused          $primary $primary $black  #2e9ef4   $primary
+client.focused_inactive $black   $primary $black  #484e50   $black
+client.unfocused        $black   $back    $white  #292d2e   $black
+client.urgent           #2f343a  #900000  $white  #900000   #900000
+client.placeholder      #000000  #0c0c0c  $white  #000000   #0c0c0c
+client.background       $white
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 popup_during_fullscreen smart
-bindsym $mod+t exec gnome-terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+t exec termite
+bindsym $mod+Return exec termite
 mouse_warping none
 
-#i3-gaps stuff :)
 for_window [class="^.*"] border pixel 2
-#for_window [class="inactive"] border pixel 0
-#figure out how to do this ^
+for_window [class="Main.py"] floating enable, border none, move position 0 25 
+
+# i3-gaps stuff :)
 gaps inner 25
 gaps outer 0
 smart_borders on
+new_window none
+
+bindsym $mod+g exec ~/dotfiles/scripts/toggle_gaps.sh
 #edit gaps mode
 #########################################################################
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
-
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
         bindsym i      mode "$mode_gaps_inner"
@@ -99,11 +99,9 @@ for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
+
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# Fix graphics glitch
-new_window none
 
 # start rofi (program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show run
@@ -112,8 +110,6 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show window
 
 #use "xmodmap -pke" to get list of special keys
 #custom special key fixes
-#bindsym XF86AudioLowerVolume exec amixer set Master 2dB-
-#bindsym XF86AudioRaiseVolume exec amixer set Master 2dB+
 bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
 bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
 bindsym XF86AudioMute exec pulseaudio-ctl mute
@@ -122,20 +118,21 @@ bindsym XF86Sleep exec i3lock-wrapper -l && echo mem > /sys/power/state
 bindsym XF86TouchpadToggle exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 bindsym Print exec scrot -e 'mv $f ~/Pictures/screenshots/'
 bindsym $mod+Print exec scrot -u -e 'mv $f ~/Pictures/screenshots/'
+bindsym $mod+Shift+Print exec guake -e "scrot -s -e 'mv \$f ~/Pictures/screenshots/'"
 bindsym $mod+F11 exec light -U 5
 bindsym $mod+F12 exec light -A 5
 
-# vim keys
-set $key_left h
-set $key_down j
-set $key_up k
-set $key_right l
+# vi keybindings
+set $vi_left h
+set $vi_down j
+set $vi_up k
+set $vi_right l
 
 # change focus
-bindsym $mod+$key_left focus left
-bindsym $mod+$key_down focus down
-bindsym $mod+$key_up focus up
-bindsym $mod+$key_right focus right
+bindsym $mod+$vi_left focus left
+bindsym $mod+$vi_down focus down
+bindsym $mod+$vi_up focus up
+bindsym $mod+$vi_right focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -144,10 +141,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+$key_left move left
-bindsym $mod+Shift+$key_down move down
-bindsym $mod+Shift+$key_up move up
-bindsym $mod+Shift+$key_right move right
+bindsym $mod+Shift+$vi_left move left
+bindsym $mod+Shift+$vi_down move down
+bindsym $mod+Shift+$vi_up move up
+bindsym $mod+Shift+$vi_right move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -178,62 +175,45 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+p focus parent
 
-# workspaces
-set $ws1 1: 
-set $ws2 2: 
-set $ws3 3: 
-set $ws4 4: 
-set $ws5 5: 
-set $ws6 6: 
-set $ws7 7: 
-set $ws8 8: 
-set $ws9 9: 
+# switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
 
-# switch to workspaces
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
+bindsym $mod+bracketleft workspace prev
+bindsym $mod+bracketright workspace next
 bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-
-# assignments (need 2 fix)
-assign [class="^Vim$" instance="^Vim$"] $ws1
-assign [class="^firefox$" instance="^firefox$"] $ws3
-assign [title="Spotify" instance="^spotify$"] $ws4
-assign [title="^thunderbird$" instance="^thunderbird$"] $ws5
-assign [class="^mpv$" instance="^gl$"] $ws6
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
 
 # adjust displays
-bindsym $mod+Shift+m exec sh ~/dotfiles/scripts/configure_xrandr.sh
+bindsym $mod+Shift+m exec bash ~/dotfiles/scripts/configure_xrandr.sh
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-    bindsym $key_left resize shrink width 2 px or 2 ppt
-    bindsym $key_up resize grow height 2 px or 2 ppt
-    bindsym $key_down resize shrink height 2 px or 2 ppt
-    bindsym $key_right resize grow width 2 px or 2 ppt
+    bindsym $vi_left resize shrink width 2 px or 2 ppt
+    bindsym $vi_up resize grow height 2 px or 2 ppt
+    bindsym $vi_down resize shrink height 2 px or 2 ppt
+    bindsym $vi_right resize grow width 2 px or 2 ppt
     # same bindings, but for the arrow keys
     bindsym Left resize shrink width 2 px or 2 ppt
     bindsym Down resize grow height 2 px or 2 ppt
@@ -247,28 +227,23 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#switch into dev mode
-#bindsym $mod+Shift+w exec pkill compton, gaps inner 10, gaps outer 5
-#switch into entertainment mode
-bindsym $mod+Shift+n exec sh ~/dotfiles/scripts/entertainment_mode.sh
-
 bar {
-    status_command i3blocks -c ~/.i3/i3blocks.conf 2>~/.i3/.i3blocks.err
+    status_command i3blocks -c ~/.i3/i3blocks.conf 2> ~/.i3/.i3blocks.err
     strip_workspace_numbers no
     tray_output eDP-1
-    tray_padding 0
     mode dock
     position top
-    height 24
-    font pango: Meslo LG S for Powerline Bold 14
+    height 25
+    font pango: Meslo LG S for Powerline Bold 16
     colors {
-        separator #928374
-        background #2F343F
-        statusline #ebdbb2
-        focused_workspace #5294E2 #5294E2 #2F343F
-        active_workspace #1d2021 #1d2021 #B9BCB5
-        inactive_workspace #2F343F #2F343F #B9BCB5
-        urgent_workspace #cc241d #cc241d #ebdbb2
+        background $back
+        separator $primary
+        statusline $primary
+        focused_workspace $primary $primary $back
+        active_workspace #1D2021 #1D2021 $primary
+        inactive_workspace $back $back $primary
+        urgent_workspace #CC241D #CC241D #EBDBB2
     }
 }
 
+# vim:filetype=i3
