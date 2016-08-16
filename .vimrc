@@ -4,10 +4,10 @@ filetype off		" required for Vundle
 set rtp+=~/.vim/bundle/Vundle.vim " set runtime path to include Vundle
 call vundle#begin() " init Vundle
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
-
-Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'vim-airline/vim-airline'
+Plugin 'morhetz/gruvbox'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
@@ -15,14 +15,12 @@ Plugin 'mhinz/vim-startify'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'posva/vim-vue'
 Plugin 'valloric/MatchTagAlways'
-Plugin 'amirh/HTML-AutoCloseTag'
 Plugin 'Raimondi/delimitMate'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors' 
 Plugin 'rking/ag.vim'
-Plugin 'skwp/greplace.vim'
 Plugin 'shawncplus/phpcomplete.vim' 
 Plugin 'tobyS/vmustache'
 Plugin 'tobyS/pdv'
@@ -38,15 +36,15 @@ filetype plugin indent on    " required
 
 " Put your non-Plugin stuff after this line
 set shell=/bin/zsh	" zsh is cooler than bash
-set t_Co=256
 set background=dark
-colorscheme  hybrid_material
+colorscheme gruvbox
 syntax enable
 
 set guioptions-=m               " Removes top menu bar
 set guioptions-=T               " Removes top toolbar
 set guioptions-=r               " Removes right hand scroll bar
-set go-=L                       " Removes left hand scroll bar
+set guioptions-=L               " Removes left hand scroll bar
+set guifont=Meslo\ LG\ M\ for\ Powerline\ Regular\ 12
 
 set nowrap                      " don't wrap lines
 set tabstop=4                   " a tab is four spaces
@@ -69,6 +67,7 @@ set mouse=a                     " enable mouse usage in vim
 set virtualedit=onemore         " allow cursor to be placed after last character at end of line
 set splitbelow                  " create split below when doing horizontal split
 set splitright                  " create split on right when doing a vertical split
+set incsearch
 set timeout timeoutlen=200 ttimeoutlen=100
 
 " Group all swp files and backups into a dir
@@ -80,7 +79,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 "Easy escaping to normal mode
-imap jj <esc>
+imap jk <esc>
 
 " Note that remapping C-s requires flow control to be disabled
 " (e.g. in .bashrc or .zshrc)
@@ -110,7 +109,7 @@ nnoremap <leader>r :e!<CR>
 " Misc helpers
 " Quickly add semi-colon to end of current line
 nmap ;; A;<esc>
-"quickly insert blank line
+" Quickly insert blank line
 nnoremap <leader>o o<Esc>
 
 " Open splits
@@ -132,9 +131,8 @@ nnoremap <C-l> <C-w>l
 let g:copy_cut_paste_no_mappings = 1
 nmap <C-c> <Plug>CCP_CopyLine
 vmap <C-c> <Plug>CCP_CopyText
-"nmap <C-x> <Plug>CCP_CutLine
-"vmap <C-x> <Plug>CCP_CutText
 nmap <C-v> <Plug>CCP_PasteText
+imap <C-v> <Plug>CCP_PasteText
 
 " Resize vsplit
 map <leader>25 :vertical resize 40<cr>
@@ -152,19 +150,16 @@ let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
 " Close vim if NERDTree is the only open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" custom global higlighting enabled for all colorscheme
-highlight Search cterm=underline
+" Custom global higlighting enabled for all colorscheme
+highlight CursorLineNr ctermfg=214 ctermbg=bg guibg=bg
 highlight vertSplit ctermfg=fg ctermbg=bg
-set incsearch
 
-" Powerline Stuff
-let g:powerline_pycmd = 'py3'
+" Airline Stuff
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set laststatus=2    " Always show the statusline
-"set showtabline=2   " Always show the tabline
-
-" Auto-remove trailing spaces
-autocmd BufWritePre *.php :%s/\s\+$//e
+set showtabline=2   " Always show the tabline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Edit todo list for project
 nmap <leader>todo :e todo.txt<cr>
@@ -180,22 +175,6 @@ command! Wq wq
 
 map Q <Nop>
 
-" Need to rewrite this to work with ctrlP
-" Stole from Jeffrey Way
-" Concept - load underlying class for Laravel
-function! FacadeLookup()
-    let facade = input('Facade Name: ')
-    let classes = {
-\       'Form': 'Html/FormBuilder.php',
-\       'Html': 'Html/HtmlBuilder.php',
-\       'File': 'Filesystem/Filesystem.php',
-\       'Eloquent': 'Database/Eloquent/Model.php',
-\   }
-
-execute ":vs vendor/laravel/framework/src/Illuminate/" . classes[facade]
-endfunction
-nmap <leader>fl :call FacadeLookup()<cr>
-
 " Custom script to generate awesome ctags for Laravel projects
 nmap <leader>ct :Make ~/dotfiles/scripts/laravel_ctags.sh .<cr>
 
@@ -209,6 +188,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
+
 " EditorConfig Settings
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
@@ -221,14 +201,8 @@ let g:phpcomplete_mappings = {
   \ }
 
 " PHP docblocks
-" inoremap <C-d> <ESC>:call PhpDocSingle()<CR>i 
-" nnoremap <C-d> :call PhpDocSingle()<CR> 
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
-
-" SyntasticCheck Settings
-let g:syntastic_check_on_wq = 0
-let g:syntastic_php_checkers = ['php', 'phpmd']
 
 " YouCompleteMe Settings
 let g:ycm_register_as_syntastic_checker = 0
@@ -259,11 +233,6 @@ let g:startify_list_order = [
       \ ['   Bookmarks '], 'bookmarks',
       \ ['   Sessions '],  'sessions',
       \ ['   Recent Files '],       'files']
-
-" Jump to last cursor position when reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
 
 " Put at the very end of your .vimrc file.
 function! PhpSyntaxOverride()
