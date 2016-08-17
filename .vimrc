@@ -26,7 +26,7 @@ Plugin 'tobyS/vmustache'
 Plugin 'tobyS/pdv'
 Plugin 'NLKNguyen/copy-cut-paste.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-dispatch'
 Plugin 'editorconfig/editorconfig-vim'
 
