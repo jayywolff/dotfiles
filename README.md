@@ -17,7 +17,7 @@ Some configurations/keybindings are specific to Arch Linux and the keyboard of m
 This is a work in progress.  
 
 ##Current setup screenshot
-![Screenshot] (http://i.imgur.com/WBf6UES.png)
+![Screenshot] (http://i.imgur.com/Aa4KPoI.png)
 
 ##Installation (1-2 hours)
   * Install Arch Linux or a headless install of Debian, Ubuntu, Fedora, OpenSuse, or even FreeBSD
