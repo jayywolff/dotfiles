@@ -12,3 +12,7 @@ fonts/
 *.bak
 *.swp
 .*.swp
+*.png
+*.jpg
+*.gif
+*.ico
