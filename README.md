@@ -1,8 +1,8 @@
 #Jay's dotfiles
   
 
-My dotfiles for a great tiling wm Arch Linux setup. Install this as a base and throw your tools/packages on top.  
-Featuring some of the following projects:
+My dotfiles for a great tiling wm Arch Linux setup. Install your preferred distro and this as a base and throw your tools/packages on top.
+Featuring some of the following projects:  
 * vim
 * i3-gaps
 * i3-blocks
@@ -17,9 +17,9 @@ Some configurations/keybindings are specific to Arch Linux and the keyboard of m
 This is a work in progress.  
 
 ##Current setup screenshot
-![Screenshot] (http://i.imgur.com/Aa4KPoI.png)
+![Screenshot] (http://i.imgur.com/a9K7F0X.png)
 
-##Installation (1-2 hours)
+##Installation
   * Install Arch Linux or a headless install of Debian, Ubuntu, Fedora, OpenSuse, or even FreeBSD
   
   * Install x11, i3-gaps, i3status, i3bar, i3blocks, i3-lock-wrapper, lightdm, lightdm-gtk-greeter, termite, rofi, gvim, compton, ranger, irssi, feh, zsh, zsh-completions, git, xdotool, nm-applet
