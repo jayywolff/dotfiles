@@ -102,7 +102,7 @@ vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
 
 "Change directory to match current file ,cd
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <leader>pwd :pwd<CR>
+nnoremap <leader>pd :pwd<CR>
 "Reload the current buffer
 nnoremap <leader>r :e!<CR> 
 
@@ -132,7 +132,6 @@ let g:copy_cut_paste_no_mappings = 1
 nmap <C-c> <Plug>CCP_CopyLine
 vmap <C-c> <Plug>CCP_CopyText
 nmap <C-v> <Plug>CCP_PasteText
-imap <C-v> <Plug>CCP_PasteText
 
 " Resize vsplit
 map <leader>25 :vertical resize 40<cr>
@@ -227,12 +226,15 @@ let g:mta_filetypes = {
 
 " Startify Settings
 let g:startify_session_dir = '~/.vim/session'
+let g:startify_change_to_vcs_root = 1
+let g:startify_files_number = 5
 let g:startify_custom_header = 
 \ map(split(system('fortune -s | cowsay -f tux'), '\n'), '"   ". v:val') + ['','']
 let g:startify_list_order = [
-      \ ['   Bookmarks '], 'bookmarks',
-      \ ['   Sessions '],  'sessions',
-      \ ['   Recent Files '],       'files']
+      \ ['   bookmarks: '], 'bookmarks',
+      \ ['   sessions: '],  'sessions',
+      \ ['   cwd mru: '],       'dir',
+      \ ['   mru: '],       'files']
 
 " Put at the very end of your .vimrc file.
 function! PhpSyntaxOverride()
