@@ -1,7 +1,8 @@
 [options]
-font = Meslo LG M for Powerline Regular 12
+font = Fira Mono Regular 13
 clickable_url = true
 scrollback_lines = 15000
+allow_bold = false
 
 [colors]
 foreground = #D3DAE3

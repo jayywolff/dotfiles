@@ -16,7 +16,7 @@ exec --no-startup-id guake
 #exec --no-startup-id nm-applet
 
 #Font for window titles.
-font pango:Meslo LG S for Powerline Regular 14
+font pango:Fira Mono Medium 13
 
 #Colors
 set $back               #2F343F
@@ -42,7 +42,7 @@ bindsym $mod+Return exec termite
 mouse_warping none
 
 for_window [class="^.*"] border pixel 2
-for_window [class="Main.py"] floating enable, border none, move position 0 25 
+for_window [class="Main.py"] floating enable, border none, move position 0 25
 
 # i3-gaps stuff :)
 gaps inner 25
@@ -234,7 +234,7 @@ bar {
     mode dock
     position top
     height 25
-    font pango: Meslo LG S for Powerline Bold 16
+    font pango: Fira Mono Medium 16
     colors {
         background $back
         separator $primary

@@ -5,11 +5,11 @@ rofi.fullscreen: true
 rofi.fixed-num-lines: true
 rofi.bw:		0
 rofi.location:	0
-rofi.terminal:	gnome-terminal
+rofi.terminal:	termite
 rofi.lines:		10
 rofi.eh:		1
 rofi.hide-scrollbar: true
-rofi.font:      Meslo LG S DZ for Powerline Regular 36
+rofi.font:      Fira Mono Medium 40
 ! Rofi Colorsheme
 ! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
 rofi.color-window: argb:aa263238, argb:aa263238, #26a69a

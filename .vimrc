@@ -21,6 +21,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors' 
 Plugin 'rking/ag.vim'
+Plugin 'skwp/greplace.vim'
 Plugin 'shawncplus/phpcomplete.vim' 
 Plugin 'tobyS/vmustache'
 Plugin 'tobyS/pdv'
@@ -44,7 +45,7 @@ set guioptions-=m               " Removes top menu bar
 set guioptions-=T               " Removes top toolbar
 set guioptions-=r               " Removes right hand scroll bar
 set guioptions-=L               " Removes left hand scroll bar
-set guifont=Meslo\ LG\ M\ for\ Powerline\ Regular\ 12
+set guifont=Fira\ Mono\ Regular\ 13
 
 set nowrap                      " don't wrap lines
 set tabstop=4                   " a tab is four spaces
@@ -111,7 +112,8 @@ nnoremap <leader>r :e!<CR>
 nmap ;; A;<esc>
 " Quickly insert blank line
 nnoremap <leader>o o<Esc>
-
+" Quickly move the text following the cursor to the line below
+nmap <leader>j i<CR><Esc>
 " Open splits
 nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
@@ -169,6 +171,7 @@ let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore
 
 " common annoying typos
 command! Q q " Bind :Q to :q
+command! Qa qa 
 command! W w
 command! Wq wq
 
