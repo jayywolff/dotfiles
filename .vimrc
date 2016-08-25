@@ -84,36 +84,39 @@ imap jk <esc>
 
 " Note that remapping C-s requires flow control to be disabled
 " (e.g. in .bashrc or .zshrc)
-map <C-s> <esc>:wall<CR>
-imap <C-s> <esc>:wall<CR>
-nmap <leader>w :w<CR>
-map <C-t> <esc>:tabnew<CR>
+map <C-s> <esc>:wall<cr>
+imap <C-s> <esc>:wall<cr>
+nmap <leader>w :w<cr>
+map <C-t> <esc>:tabnew<cr>
 
 nmap <leader>vr :edit ~/.vimrc<cr>
 nmap <leader>zr :edit ~/.zshrc<cr>
 nmap <leader>i3 :edit ~/.i3/config<cr>
 
 "move an entire line or block of lines up or down
-nnoremap <silent> <C-S-Up> :m .-2<CR>==
-nnoremap <silent> <C-S-Down> :m .+1<CR>==
-inoremap <silent> <C-S-Up> <Esc>:m .-2<CR>==gi
-inoremap <silent> <C-S-Down> <Esc>:m .+1<CR>==gi
-vnoremap <silent> <C-S-Up> :m '<-2<CR>gv=gv
-vnoremap <silent> <C-S-Down> :m '>+1<CR>gv=gv
+nnoremap <silent> <C-S-Up> :m .-2<cr>==
+nnoremap <silent> <C-S-Down> :m .+1<cr>==
+inoremap <silent> <C-S-Up> <esc>:m .-2<cr>==gi
+inoremap <silent> <C-S-Down> <esc>:m .+1<cr>==gi
+vnoremap <silent> <C-S-Up> :m '<-2<cr>gv=gv
+vnoremap <silent> <C-S-Down> :m '>+1<cr>gv=gv
 
 "Change directory to match current file ,cd
-nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-nnoremap <leader>pd :pwd<CR>
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+nnoremap <leader>pd :pwd<cr>
 "Reload the current buffer
-nnoremap <leader>r :e!<CR> 
+nnoremap <leader>r :e!<cr> 
 
 " Misc helpers
 " Quickly add semi-colon to end of current line
 nmap ;; A;<esc>
+" Quickly add period to end of current line
+nmap <leader>. A.<esc>
+nmap <leader>bd :bd %<cr>
 " Quickly insert blank line
-nnoremap <leader>o o<Esc>
+nnoremap <leader>o o<esc>
 " Quickly move the text following the cursor to the line below
-nmap <leader>j i<CR><Esc>
+nmap <leader>j i<cr><esc>
 " Open splits
 nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
@@ -204,7 +207,7 @@ let g:phpcomplete_mappings = {
 
 " PHP docblocks
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-nnoremap <leader>d :call pdv#DocumentWithSnip()<CR>
+nnoremap <leader>d :call pdv#DocumentWithSnip()<cr>
 
 " YouCompleteMe Settings
 let g:ycm_register_as_syntastic_checker = 0
