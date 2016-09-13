@@ -112,6 +112,7 @@ nnoremap <leader>r :e!<cr>
 nmap ;; A;<esc>
 " Quickly add period to end of current line
 nmap <leader>. A.<esc>
+nmap <leader><space> i<space><esc>
 nmap <leader>bd :bd %<cr>
 " Quickly insert blank line
 nnoremap <leader>o o<esc>

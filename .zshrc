@@ -85,7 +85,6 @@ export EDITOR='vim'
 alias homestead='function __homestead() { (cd ~/Dev/vboxes/homestead && vagrant $*); unset -f __homestead; }; __homestead'
 alias n64=mupen64plus
 alias tv_home="bash ~/dotfiles/scripts/home_dualscreen.sh"
-alias agisoft-photoscan="bash ~/Builds/photoscan-pro/photoscan.sh"
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
 stty stop undef
