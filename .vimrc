@@ -87,6 +87,7 @@ imap jk <esc>
 map <C-s> <esc>:wall<cr>
 imap <C-s> <esc>:wall<cr>
 nmap <leader>w :w<cr>
+nmap <leader>q :q<cr>
 map <C-t> <esc>:tabnew<cr>
 
 nmap <leader>vr :edit ~/.vimrc<cr>
