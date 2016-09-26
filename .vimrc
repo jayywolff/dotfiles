@@ -20,7 +20,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors' 
-Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'skwp/greplace.vim'
 Plugin 'shawncplus/phpcomplete.vim' 
 Plugin 'tobyS/vmustache'
@@ -170,10 +170,6 @@ let g:airline#extensions#tabline#enabled = 1
 " Edit todo list for project
 nmap <leader>todo :e todo.txt<cr>
 
-" Use Silver Searcher instead of grep
-set grepprg=ag
-let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor'
-
 " common annoying typos
 command! Q q " Bind :Q to :q
 command! Qa qa 
@@ -185,10 +181,15 @@ map Q <Nop>
 " Custom script to generate awesome ctags for Laravel projects
 nmap <leader>ct :Make ~/dotfiles/scripts/laravel_ctags.sh .<cr>
 
+" Use Silver Searcher instead of grep (Greplace settings)
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor'
+let g:ackprg = 'ag --vimgrep'
+
 " CtrlP Stuff
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 " Use custom agignore file, skip vcs ignore files, show hidden files
-let g:ctrlp_user_command = 'ag %s --path-to-agignore=/home/jay/.vim/.agignore -l -U --hidden --nocolor -g ""'
+let g:ctrlp_user_command = 'ag %s --path-to-ignore=/home/jay/.vim/.agignore -l -U --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
 nmap <leader>p :CtrlPBuffer<cr>
 let g:ctrlp_map = '<c-p>'
