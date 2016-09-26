@@ -81,6 +81,7 @@ WINDOW_ICONS = {
     'Thunderbird': FA_ENVELOPE_O,
     'libreoffice': FA_FILE_TEXT_O,
     'feh': FA_PICTURE_O,
+    'eog': FA_PICTURE_O,
     'gcolor2': FA_EYEDROPPER,
     'atril': FA_FILE_PDF_O,
     'evince': FA_FILE_PDF_O,
