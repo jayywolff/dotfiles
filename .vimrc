@@ -176,15 +176,26 @@ command! Qa qa
 command! W w
 command! Wq wq
 
+" disabled keys
 map Q <Nop>
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
 
 " Custom script to generate awesome ctags for Laravel projects
 nmap <leader>ct :Make ~/dotfiles/scripts/laravel_ctags.sh .<cr>
+nmap <leader>cc :!ctags .<cr>
 
 " Use Silver Searcher instead of grep (Greplace settings)
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor'
 let g:ackprg = 'ag --vimgrep'
+nmap <leader>s :Ack! '' ./<C-Left><Left><Left>
 
 " CtrlP Stuff
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
@@ -201,6 +212,9 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:20'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
+" GitGutter Settings
+nnoremap <Leader>hp :GitGutterPreviewHunk<cr>
+
 " PHP stuff
 let php_htmlInStrings = 1  "Syntax highlight HTML code inside PHP strings.
 let php_sql_query = 1      "Syntax highlight SQL code inside PHP strings.
@@ -212,13 +226,17 @@ let g:phpcomplete_mappings = {
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <leader>d :call pdv#DocumentWithSnip()<cr>
 
+" Emmet Settings
+let g:user_emmet_leader_key = '<C-e>'
+nmap <leader>e :Emmet<space>
+
 " YouCompleteMe Settings
 let g:ycm_register_as_syntastic_checker = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 " Ultisnips Settings
-let g:UltiSnipsExpandTrigger="<c-y>"
+let g:UltiSnipsExpandTrigger="<C-y>"
 let g:UltiSnipsJumpForwardTrigger="<c-]>"
 let g:UltiSnipsJumpBackwardTrigger="<c-[>"
 
