@@ -113,6 +113,9 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show window
 bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
 bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
 bindsym XF86AudioMute exec pulseaudio-ctl mute
+bindsym $mod+F4 exec pulseaudio-ctl up
+bindsym $mod+F3 exec pulseaudio-ctl down
+bindsym $mod+F2 exec pulseaudio-ctl mute
 bindsym $mod+Shift+Escape exec i3lock-wrapper -l
 bindsym XF86Sleep exec i3lock-wrapper -l && echo mem > /sys/power/state
 bindsym XF86TouchpadToggle exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
