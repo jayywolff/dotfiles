@@ -54,7 +54,7 @@ plugins=(git dircycle sudo vagrant vi-mode web-search)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/jay/.gem/ruby/2.3.0/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
