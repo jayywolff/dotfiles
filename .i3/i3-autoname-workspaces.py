@@ -83,11 +83,11 @@ WINDOW_ICONS = {
     'feh': FA_PICTURE_O,
     'eog': FA_PICTURE_O,
     'gcolor2': FA_EYEDROPPER,
-    'atril': FA_FILE_PDF_O,
     'evince': FA_FILE_PDF_O,
     'Nautilus': FA_FILES_O,
-    'Caja': FA_FILES_O,
     'gimp': FA_PAINTBRUSH,
+    'gimp-2.8': FA_PAINTBRUSH,
+    'inkscape': FA_PAINTBRUSH,
     'VirtualBox': FA_CUBE,
     'mpv': FA_PLAY_CIRCLE,
     'Kodi': FA_PLAY_CIRCLE,
@@ -97,6 +97,7 @@ WINDOW_ICONS = {
     'qgis': FA_MAP_O,
     'Steam': FA_STEAM,
     'SWT': FA_DATABASE, #DBeaver changed its wm_class name?
+    'DBeaver': FA_DATABASE,
     'KeeWeb': FA_KEY,
 }
 

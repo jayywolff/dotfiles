@@ -11,8 +11,9 @@ exec xset r rate 175 25
 #AUTOSTART STUFF
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
 exec_always --no-startup-id  python3 ~/.i3/i3-autoname-workspaces.py
-exec --no-startup-id compton -b -c
-exec --no-startup-id guake
+exec --no-startup-id redshift-gtk
+#exec --no-startup-id compton -b -c
+#exec --no-startup-id guake
 #exec --no-startup-id nm-applet
 
 #Font for window titles.
@@ -233,6 +234,7 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3blocks -c ~/.i3/i3blocks.conf 2> ~/.i3/.i3blocks.err
     strip_workspace_numbers no
+    output eDP-1
     tray_output eDP-1
     mode dock
     position top
