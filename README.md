@@ -6,6 +6,7 @@ Featuring some of the following projects:
 * vim
 * i3-gaps
 * i3-blocks
+* tmux
 * zsh
 * gtk
 * termite

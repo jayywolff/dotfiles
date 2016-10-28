@@ -19,6 +19,13 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 python3 $dotdir/.vim/bundle/YouCompleteMe/install.py
 
+
+# setup tmux
+ln -sf $dotdir/.tmux.conf $HOME/.tmux.conf 
+if "test ! -d ~/.tmux/plugins/tpm" "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm'"
+tmux source $HOME/.tmux.conf
+~/.tmux/plugins/tpm/bin/install_plugins
+
 #etc files
 sudo ln -f $dotdir/etc/lightdm/lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 sudo chown root /etc/lightdm/lightdm-gtk-greeter.conf
