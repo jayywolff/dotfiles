@@ -1,12 +1,12 @@
 [options]
-font = Fira Mono Regular 13
+font = Fira Mono Regular 12
 clickable_url = true
 scrollback_lines = 15000
 #allow_bold = false
 
 [colors]
-foreground = #D3DAE3
-background = #2F343F
+foreground = #E9DAB2
+background = #282828
 
 # gruvbox colors
 
