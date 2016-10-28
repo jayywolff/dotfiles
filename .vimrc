@@ -1,4 +1,5 @@
 set nocompatible   	" Disable vi-compatibility
+set t_Co=256        " Use 256 Colors in terminal
 
 filetype off		" required for Vundle
 set rtp+=~/.vim/bundle/Vundle.vim " set runtime path to include Vundle
@@ -30,6 +31,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-dispatch'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'benmills/vimux'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -64,7 +67,6 @@ set smartcase                   " ignore case if search pattern is all lowercase
 set noerrorbells                " don't beep
 set autowrite                   " save on buffer switch
 set relativenumber              " show line numbers relative to cursor position
-set mouse=a                     " enable mouse usage in vim
 set virtualedit=onemore         " allow cursor to be placed after last character at end of line
 set splitbelow                  " create split below when doing horizontal split
 set splitright                  " create split on right when doing a vertical split
@@ -79,6 +81,15 @@ set directory=~/.vim/backups
 let mapleader = ","
 let g:mapleader = ","
 
+"tmux settings
+nmap \r :VimuxPromptCommand<cr>
+nmap \l :VimuxRunLastCommand<cr>
+nmap \q :VimuxCloseRunner<cr>
+nmap \i :VimuxInspectRunner<cr>
+nmap \o :VimuxOpenPane<cr>
+nmap \k :VimuxInterruptRunner<cr>
+nmap \\ :VimuxInterruptRunner<cr>
+
 "Easy escaping to normal mode
 imap jk <esc>
 
@@ -87,6 +98,7 @@ imap jk <esc>
 map <C-s> <esc>:wall<cr>
 imap <C-s> <esc>:wall<cr>
 nmap <leader>w :w<cr>
+imap <leader>w :w<cr>
 nmap <leader>q :q<cr>
 map <C-t> <esc>:tabnew<cr>
 
@@ -122,6 +134,10 @@ nmap <leader>j i<cr><esc>
 " Open splits
 nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
+" Open new vertical split with a new buffer
+nmap vns :new<cr>
+" Open new horizontal split with a new buffer
+nmap vns :vne<cr>
 
 " Tab handling
 set nohidden "remove file from buffer when closing tab
@@ -149,16 +165,15 @@ map <leader>75 :vertical resize 120<cr>
 nmap <C-b> :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
-let g:NERDTreeWinPos="right"
-let g:NERDTreeMouseMode=2
+"let g:NERDTreeMouseMode=2
+let NERDTreeWinPos='right'
 let NERDTreeMinimalUI=1
 let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
 " Close vim if NERDTree is the only open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Custom global higlighting enabled for all colorscheme
-highlight CursorLineNr ctermfg=214 ctermbg=bg guibg=bg
-highlight vertSplit ctermfg=fg ctermbg=bg
+"highlight CursorLineNr ctermfg=214 ctermbg=bg guibg=bg
 
 " Airline Stuff
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
@@ -168,7 +183,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " Edit todo list for project
-nmap <leader>todo :e todo.txt<cr>
+nmap <leader>todo vs :e todo.md<cr>
 
 " common annoying typos
 command! Q q " Bind :Q to :q
@@ -178,7 +193,14 @@ command! Wq wq
 
 " disabled keys
 map Q <Nop>
-map <up> <nop>
+
+" Vim - Semi Hard Mode
+set mouse+=a
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+endif
+map <up> <nop>                  " no arrow key navigation
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
