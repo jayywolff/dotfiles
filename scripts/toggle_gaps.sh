@@ -8,14 +8,14 @@
 tmp_file="/tmp/.i3-gaps"
 
 if [ ! -e "$tmp_file" ]; then
-    pkill compton
-    compton -b
+    #pkill compton
+    #compton -b
     i3-msg gaps inner all set 0
     feh --bg-scale ~/Pictures/wallpaper_getBacktoCode.jpg
     touch $tmp_file
 else
-    pkill compton
-    compton -bc
+    #pkill compton
+    #compton -bc
     feh --bg-scale ~/Pictures/wallpaper.*
     i3-msg gaps inner all set 25
     rm $tmp_file
