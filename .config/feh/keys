@@ -1,0 +1,11 @@
+# vi bindings
+
+scroll_left h
+scroll_right l
+scroll_up k
+scroll_down j
+
+zoom_in C-k
+zoom_out C-j
+next_img C-l
+prev_img C-h

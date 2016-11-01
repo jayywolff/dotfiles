@@ -11,6 +11,7 @@ Featuring some of the following projects:
 * gtk
 * termite
 * ranger
+* feh
 * lightdm
 * git
 
