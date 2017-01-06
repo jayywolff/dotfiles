@@ -242,11 +242,11 @@ version = 2
 # Controller configuration mode: 0=Fully Manual, 1=Auto with named SDL Device, 2=Fully automatic
 mode = 0
 # Specifies which joystick is bound to this controller: -1=No joystick, 0 or more= SDL Joystick number
-device = 2
+device = -1
 # SDL joystick name (or Keyboard)
 name = "HuiJia  USB GamePad"
 # Specifies whether this controller is 'plugged in' to the simulated N64
-plugged = True
+plugged = False
 # Specifies which type of expansion pak is in the controller: 1=None, 2=Mem pak, 5=Rumble pak
 plugin = 2
 # If True, then mouse buttons may be used with this controller
@@ -286,11 +286,11 @@ version = 2
 # Controller configuration mode: 0=Fully Manual, 1=Auto with named SDL Device, 2=Fully automatic
 mode = 0
 # Specifies which joystick is bound to this controller: -1=No joystick, 0 or more= SDL Joystick number
-device = 3
+device = -1
 # SDL joystick name (or Keyboard)
 name = "HuiJia  USB GamePad"
 # Specifies whether this controller is 'plugged in' to the simulated N64
-plugged = True
+plugged = False
 # Specifies which type of expansion pak is in the controller: 1=None, 2=Mem pak, 5=Rumble pak
 plugin = 2
 # If True, then mouse buttons may be used with this controller
@@ -302,25 +302,25 @@ AnalogDeadzone = "100,100"
 # An absolute value of the SDL joystick axis >= AnalogPeak will saturate the N64 controller axis value (at 80).  For X, Y axes. For each axis, this must be greater than the corresponding AnalogDeadzone value
 AnalogPeak = "20000,20000"
 # Digital button configuration mappings
-DPad R = "button(13)"
-DPad L = "button(15)"
-DPad D = "button(14)"
-DPad U = "button(12)"
-Start = "button(9)"
-Z Trig = "button(8)"
-B Button = "button(2)"
-A Button = "button(1)"
-C Button R = "axis(3-)"
-C Button L = "axis(3+)"
-C Button D = "axis(2+)"
-C Button U = "axis(2-)"
-R Trig = "button(7)"
-L Trig = "button(6)"
+DPad R = "button(29)"
+DPad L = "button(31)"
+DPad D = "button(30)"
+DPad U = "button(28)"
+Start = "button(25)"
+Z Trig = "button(24)"
+B Button = "button(18)"
+A Button = "button(17)"
+C Button R = "axis(7-)"
+C Button L = "axis(7+)"
+C Button D = "axis(6+)"
+C Button U = "axis(6-)"
+R Trig = "button(23)"
+L Trig = "button(22)"
 Mempak switch = "key(109)"
 Rumblepak switch = "key(114)"
 # Analog axis configuration mappings
-X Axis = "axis(0-,0+)"
-Y Axis = "axis(1-,1+)"
+X Axis = "axis(4-,4+)"
+Y Axis = "axis(5-,5+)"
 
 
 [UI-Console]

@@ -25,6 +25,7 @@
 # Forked from Justin Buchanan
 # https://gist.github.com/justbuchanan/70fdae0d5182f6039aa8383c06a3f4ad
 #
+# Todo list:
 # Additional Features:
 #  Integrated Terminal app icons
 #  Integrated multi monitor setup
@@ -72,6 +73,7 @@ WINDOW_ICONS = {
     'Galculator': FA_CALCULATOR,
     'Franz': FA_COMMENTS_O,
     'hipchat4': FA_COMMENTS_O,
+    'google-chrome': FA_CHROME,
     'chromium': FA_CHROME,
     'vivaldi-stable': FA_CHROME,
     'gvim': FA_CODE,

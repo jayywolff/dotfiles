@@ -70,7 +70,7 @@ AutoStateSlotIncrement = False
 # Activate the R4300 debugger when ROM execution begins, if core was built with Debugger support
 EnableDebugger = False
 # Save state slot (0-9) to use when saving/loading the emulator state
-CurrentStateSlot = 2
+CurrentStateSlot = 0
 # Path to directory where screenshots are saved. If this is blank, the default value of ${UserConfigPath}/screenshot will be used
 ScreenshotPath = ""
 # Path to directory where emulator save states (snapshots) are saved. If this is blank, the default value of ${UserConfigPath}/save will be used
@@ -78,7 +78,7 @@ SaveStatePath = ""
 # Path to directory where SRAM/EEPROM data (in-game saves) are stored. If this is blank, the default value of ${UserConfigPath}/save will be used
 SaveSRAMPath = ""
 # Path to a directory to search when looking for shared data files
-SharedDataPath = "/usr/share/mupen64plus"
+SharedDataPath = ""
 # Delay interrupt after DMA SI read/write
 DelaySI = True
 # Force number of cycles per emulated instruction
@@ -152,7 +152,7 @@ Joy Mapping Gameshark = ""
 # Mupen64Plus SDL Input Plugin config parameter version number.  Please don't change this version number.
 version = 2
 # Controller configuration mode: 0=Fully Manual, 1=Auto with named SDL Device, 2=Fully automatic
-mode = 2
+mode = 0
 # Specifies which joystick is bound to this controller: -1=No joystick, 0 or more= SDL Joystick number
 device = 0
 # SDL joystick name (or Keyboard)
@@ -242,11 +242,11 @@ version = 2
 # Controller configuration mode: 0=Fully Manual, 1=Auto with named SDL Device, 2=Fully automatic
 mode = 0
 # Specifies which joystick is bound to this controller: -1=No joystick, 0 or more= SDL Joystick number
-device = 1
+device = 2
 # SDL joystick name (or Keyboard)
 name = "HuiJia  USB GamePad"
 # Specifies whether this controller is 'plugged in' to the simulated N64
-plugged = False
+plugged = True
 # Specifies which type of expansion pak is in the controller: 1=None, 2=Mem pak, 5=Rumble pak
 plugin = 2
 # If True, then mouse buttons may be used with this controller
@@ -286,11 +286,11 @@ version = 2
 # Controller configuration mode: 0=Fully Manual, 1=Auto with named SDL Device, 2=Fully automatic
 mode = 0
 # Specifies which joystick is bound to this controller: -1=No joystick, 0 or more= SDL Joystick number
-device = 1
+device = 3
 # SDL joystick name (or Keyboard)
 name = "HuiJia  USB GamePad"
 # Specifies whether this controller is 'plugged in' to the simulated N64
-plugged = False
+plugged = True
 # Specifies which type of expansion pak is in the controller: 1=None, 2=Mem pak, 5=Rumble pak
 plugin = 2
 # If True, then mouse buttons may be used with this controller
@@ -302,29 +302,25 @@ AnalogDeadzone = "100,100"
 # An absolute value of the SDL joystick axis >= AnalogPeak will saturate the N64 controller axis value (at 80).  For X, Y axes. For each axis, this must be greater than the corresponding AnalogDeadzone value
 AnalogPeak = "20000,20000"
 # Digital button configuration mappings
-DPad R = "button(29)"
-DPad L = "button(31)"
-DPad D = "button(30)"
-DPad U = "button(28)"
-Start = "button(25)"
-Z Trig = "button(24)"
-B Button = "button(18)"
-A Button = "button(17)"
-C Button R = "axis(7-)"
-C Button L = "axis(7+)"
-C Button D = "axis(6+)"
-C Button U = "axis(6-)"
-R Trig = "button(23)"
-L Trig = "button(22)"
+DPad R = "button(13)"
+DPad L = "button(15)"
+DPad D = "button(14)"
+DPad U = "button(12)"
+Start = "button(9)"
+Z Trig = "button(8)"
+B Button = "button(2)"
+A Button = "button(1)"
+C Button R = "axis(3-)"
+C Button L = "axis(3+)"
+C Button D = "axis(2+)"
+C Button U = "axis(2-)"
+R Trig = "button(7)"
+L Trig = "button(6)"
 Mempak switch = "key(109)"
 Rumblepak switch = "key(114)"
 # Analog axis configuration mappings
-X Axis = "axis(4-,4+)"
-Y Axis = "axis(5-,5+)"
-
-
-[Rsp-Hle]
-
+X Axis = "axis(0-,0+)"
+Y Axis = "axis(1-,1+)"
 
 
 [UI-Console]
@@ -348,157 +344,11 @@ RspPlugin = "mupen64plus-rsp-hle.so"
 # Use fullscreen mode if True, or windowed mode if False
 Fullscreen = False
 # Width of output window or fullscreen width
-ScreenWidth = 640
+ScreenWidth = 1920
 # Height of output window or fullscreen height
-ScreenHeight = 480
+ScreenHeight = 1080
 # If true, activate the SDL_GL_SWAP_CONTROL attribute
 VerticalSync = False
-# Rotate screen contents: 0=0 degree, 1=90 degree, 2 = 180 degree, 3=270 degree
-Rotate = 0
-
-
-[Video-Glide64mk2]
-
-# Enable full-scene anti-aliasing by setting this to a value greater than 1
-wrpAntiAliasing = 0
-# Card ID
-card_id = 0
-# If true, use polygon offset values specified below
-force_polygon_offset = False
-# Specifies a scale factor that is used to create a variable depth offset for each polygon
-polygon_offset_factor = 0
-# Is multiplied by an implementation-specific value to create a constant depth offset
-polygon_offset_units = 0
-# Vertical sync
-vsync = True
-# TODO:ssformat
-ssformat = False
-# Display performance stats (add together desired flags): 1=FPS counter, 2=VI/s counter, 4=% speed, 8=FPS transparent
-show_fps = 0
-# Clock enabled
-clock = False
-# Clock is 24-hour
-clock_24_hr = True
-# Wrapper resolution
-wrpResolution = 0
-# Wrapper VRAM
-wrpVRAM = 0
-# Wrapper FBO
-wrpFBO = True
-# Wrapper Anisotropic Filtering
-wrpAnisotropic = True
-# Texture Enhancement: Smooth/Sharpen Filters
-ghq_fltr = 0
-# Texture Compression: 0 for S3TC, 1 for FXT1
-ghq_cmpr = 0
-# Texture Enhancement: More filters
-ghq_enht = 0
-# Hi-res texture pack format (0 for none, 1 for Rice)
-ghq_hirs = 0
-# Compress texture cache with S3TC or FXT1
-ghq_enht_cmpr = False
-# Tile textures (saves memory but could cause issues)
-ghq_enht_tile = 0
-# Force 16bpp textures (saves ram but lower quality)
-ghq_enht_f16bpp = False
-# Compress texture cache
-ghq_enht_gz = True
-# Don't enhance textures for backgrounds
-ghq_enht_nobg = False
-# Enable S3TC and FXT1 compression
-ghq_hirs_cmpr = False
-# Tile hi-res textures (saves memory but could cause issues)
-ghq_hirs_tile = False
-# Force 16bpp hi-res textures (saves ram but lower quality)
-ghq_hirs_f16bpp = False
-# Compress hi-res texture cache
-ghq_hirs_gz = True
-# Alternative CRC calculation -- emulates Rice bug
-ghq_hirs_altcrc = True
-# Save tex cache to disk
-ghq_cache_save = True
-# Texture Cache Size (MB)
-ghq_cache_size = 128
-# Use full alpha channel -- could cause issues for some tex packs
-ghq_hirs_let_texartists_fly = False
-# Dump textures
-ghq_hirs_dump = False
-# Alternate texture size method: -1=Game default, 0=disable. 1=enable
-alt_tex_size = -1
-# Use first SETTILESIZE only: -1=Game default, 0=disable. 1=enable
-use_sts1_only = -1
-# Use spheric mapping only: -1=Game default, 0=disable. 1=enable
-force_calc_sphere = -1
-# Force positive viewport: -1=Game default, 0=disable. 1=enable
-correct_viewport = -1
-# Force texrect size to integral value: -1=Game default, 0=disable. 1=enable
-increase_texrect_edge = -1
-# Reduce fillrect size by 1: -1=Game default, 0=disable. 1=enable
-decrease_fillrect_edge = -1
-# Enable perspective texture correction emulation: -1=Game default, 0=disable. 1=enable
-texture_correction = -1
-# Set special scale for PAL games: -1=Game default, 0=disable. 1=enable
-pal230 = -1
-# 3DFX Dithered alpha emulation mode: -1=Game default, >=0=dithered alpha emulation mode
-stipple_mode = -1
-# 3DFX Dithered alpha pattern: -1=Game default, >=0=pattern used for dithered alpha emulation
-stipple_pattern = -1
-# Check microcode each frame: -1=Game default, 0=disable. 1=enable
-force_microcheck = -1
-# Force 0xb5 command to be quad, not line 3D: -1=Game default, 0=disable. 1=enable
-force_quad3d = -1
-# Enable near z clipping: -1=Game default, 0=disable. 1=enable
-clip_zmin = -1
-# Enable far plane clipping: -1=Game default, 0=disable. 1=enable
-clip_zmax = -1
-# Use fast CRC algorithm: -1=Game default, 0=disable. 1=enable
-fast_crc = -1
-# Adjust screen aspect for wide screen mode: -1=Game default, 0=disable. 1=enable
-adjust_aspect = -1
-# Force strict check in Depth buffer test: -1=Game default, 0=disable. 1=enable
-zmode_compare_less = -1
-# Apply alpha dither regardless of alpha_dither_mode: -1=Game default, 0=disable. 1=enable
-old_style_adither = -1
-# Scale vertex z value before writing to depth buffer: -1=Game default, 0=disable. 1=enable
-n64_z_scale = -1
-# Fast texrect rendering with hwfbe: -1=Game default, 0=disable. 1=enable
-optimize_texrect = -1
-# Do not copy auxiliary frame buffers: -1=Game default, 0=disable. 1=enable
-ignore_aux_copy = -1
-# Clear auxiliary texture frame buffers: -1=Game default, 0=disable. 1=enable
-hires_buf_clear = -1
-# Read alpha from framebuffer: -1=Game default, 0=disable. 1=enable
-fb_read_alpha = -1
-# Handle unchanged fb: -1=Game default, 0=disable. 1=enable
-useless_is_useless = -1
-# Set frambuffer CRC mode: -1=Game default, 0=disable CRC, 1=fast CRC, 2=safe CRC
-fb_crc_mode = -1
-# Filtering mode: -1=Game default, 0=automatic, 1=force bilinear, 2=force point sampled
-filtering = -1
-# Fog: -1=Game default, 0=disable. 1=enable
-fog = -1
-# Buffer clear on every frame: -1=Game default, 0=disable. 1=enable
-buff_clear = -1
-# Buffer swapping method: -1=Game default, 0=swap buffers when vertical interrupt has occurred, 1=swap buffers when set of conditions is satisfied. Prevents flicker on some games, 2=mix of first two methods
-swapmode = -1
-# Aspect ratio: -1=Game default, 0=Force 4:3, 1=Force 16:9, 2=Stretch, 3=Original
-aspect = -1
-# LOD calculation: -1=Game default, 0=disable. 1=fast, 2=precise
-lodmode = -1
-# Smart framebuffer: -1=Game default, 0=disable. 1=enable
-fb_smart = -1
-# Hardware frame buffer emulation: -1=Game default, 0=disable. 1=enable
-fb_hires = -1
-# Read framebuffer every frame (may be slow use only for effects that need it e.g. Banjo Kazooie, DK64 transitions): -1=Game default, 0=disable. 1=enable
-fb_read_always = -1
-# Render N64 frame buffer as texture: -1=Game default, 0=disable, 1=mode1, 2=mode2
-read_back_to_screen = -1
-# Show images written directly by CPU: -1=Game default, 0=disable. 1=enable
-detect_cpu_write = -1
-# Get frame buffer info: -1=Game default, 0=disable. 1=enable
-fb_get_info = -1
-# Enable software depth render: -1=Game default, 0=disable. 1=enable
-fb_render = -1
 
 
 [Video-Rice]

@@ -1,5 +1,5 @@
 ! Rofi Settings
-rofi.width:		50
+rofi.width:		52
 rofi.padding:	300
 rofi.fullscreen: true
 rofi.fixed-num-lines: true
@@ -10,9 +10,35 @@ rofi.lines:		10
 rofi.eh:		1
 rofi.hide-scrollbar: true
 rofi.font:      Fira Mono Medium 40
-! Rofi Colorsheme
-! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
-rofi.color-window: argb:aa263238, argb:aa263238, #26a69a
-rofi.color-normal: argb:0263238, #eceff1, argb:0263238, #f4246b, #eceff1
-rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
-rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+
+!! Rofi Colorsheme
+!! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+!rofi.color-window: argb:aa263238, argb:aa263238, #26a69a
+!rofi.color-normal: argb:0263238, #eceff1, argb:0263238, #f4246b, #eceff1
+!rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
+!rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+
+! gruvbox-rofi
+!-------------------------------------------------------------------------------
+! Rofi color theme
+!
+! Based on the Gruvbox color scheme for Vim by morhetz
+! https://github.com/morhetz/gruvbox
+!
+! File: gruvbox-dark.theme
+! Desc: Gruvbox dark color theme for Rofi
+! Author: bardisty <b@bah.im>
+! Source: https://github.com/bardisty/gruvbox-rofi
+! Modified: Sat Oct 22 2016 03:11:40 PDT -0700
+!-------------------------------------------------------------------------------
+
+! Enable the extended coloring options
+rofi.color-enabled: true
+
+!                  bg       border   separator
+rofi.color-window: #282828, #a89984, #a89984
+
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #282828, #ebdbb2, #32302f, #665c54, #fbf1c7
+rofi.color-active: #d79921, #282828, #d79921, #fabd2f, #282828
+rofi.color-urgent: #cc241d, #282828, #cc241d, #fb4934, #282828

@@ -11,16 +11,13 @@ exec xset r rate 175 25
 #AUTOSTART STUFF
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
 exec_always --no-startup-id  python3 ~/.i3/i3-autoname-workspaces.py
-exec --no-startup-id redshift-gtk
-#exec --no-startup-id compton -b -c
-#exec --no-startup-id guake
-#exec --no-startup-id nm-applet
+exec --no-startup-id redshift
 
 #Font for window titles.
-font pango:Fira Mono Medium 13
+font pango:Fira Mono Medium 12
 
 #Colors
-set $back               #2F343F
+set $back               #383C4A
 set $primary            #D0D0D0
 set $secondary          #0FE0C9
 set $black              #282A2E
@@ -43,7 +40,14 @@ bindsym $mod+Return exec termite
 mouse_warping none
 
 for_window [class="^.*"] border pixel 2
-for_window [class="Main.py"] floating enable, border none, move position 0 25
+# Float Guake to the top of the screen
+# for_window [class="Main.py"] floating enable, border none, move position 0 25
+
+# Scratchpad stuff
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+s move scratchpad
+# Show the first scratchpad window
+bindsym $mod+s scratchpad show
 
 # i3-gaps stuff :)
 gaps inner 25
@@ -94,9 +98,13 @@ mode "$mode_gaps_outer" {
 #custom app commands (?i) just means case insenitive..
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="(?i)qemu-system-x86_64"] floating enable
+#for_window [class="VirtualBox"] floating enable
 #for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [title="About Mozilla Firefox"] floating enable
+for_window [title="About Nightly"] floating enable
+for_window [title="Library"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
@@ -105,26 +113,31 @@ for_window [window_type="menu"] floating enable
 bindsym $mod+Shift+q kill
 
 # start rofi (program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id rofi -monitor -1 -show run
 # start rofi (window switcher)
-bindsym $mod+Shift+d exec --no-startup-id rofi -show window
+bindsym $mod+Shift+d exec --no-startup-id rofi -monitor -1 -show window
 
 #use "xmodmap -pke" to get list of special keys
 #custom special key fixes
+
+#audio controls
 bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
 bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
 bindsym XF86AudioMute exec pulseaudio-ctl mute
 bindsym $mod+equal exec pulseaudio-ctl up
 bindsym $mod+minus exec pulseaudio-ctl down
 bindsym $mod+0 exec pulseaudio-ctl mute
-bindsym $mod+Shift+Escape exec i3lock-wrapper -l
+
+#backlight controls (laptop monitor)
+bindsym $mod+Shift+minus exec light -U 5
+bindsym $mod+Shift+plus exec light -A 5
+
+bindsym $mod+Ctrl+Escape exec i3lock-wrapper -l
 bindsym XF86Sleep exec i3lock-wrapper -l && echo mem > /sys/power/state
 bindsym XF86TouchpadToggle exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 bindsym Print exec scrot -e 'mv $f ~/Pictures/screenshots/'
 bindsym $mod+Print exec scrot -u -e 'mv $f ~/Pictures/screenshots/'
-bindsym $mod+Shift+Print exec guake -e "scrot -s -e 'mv \$f ~/Pictures/screenshots/'"
-bindsym $mod+F11 exec light -U 5
-bindsym $mod+F12 exec light -A 5
+bindsym $mod+Shift+Print exec termite -e "scrot -s -e 'mv \$f ~/Pictures/screenshots/'"
 
 # vi keybindings
 set $vi_left h
@@ -138,23 +151,11 @@ bindsym $mod+$vi_down focus down
 bindsym $mod+$vi_up focus up
 bindsym $mod+$vi_right focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+$vi_left move left
 bindsym $mod+Shift+$vi_down move down
 bindsym $mod+Shift+$vi_up move up
 bindsym $mod+Shift+$vi_right move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in burger (horizontal) orientation
 bindsym $mod+b split h
@@ -166,7 +167,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 

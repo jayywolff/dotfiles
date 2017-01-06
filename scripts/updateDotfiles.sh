@@ -39,3 +39,7 @@ sudo chown root /etc/lightdm/lightdm-gtk-greeter.conf
 
 #setup zsh (must open a new terminal to finish zsh setup 
 # sudo chsh -s /bin/zsh $USER
+
+# misc directories to be created
+mkdir -p $HOME/Pictures/screenshots
+

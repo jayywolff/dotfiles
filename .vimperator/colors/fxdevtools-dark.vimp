@@ -12,34 +12,34 @@ highlight CmdLine color:  #D0D0D0;  background: #404552; font-size: 14px;font-fa
 highlight CmdLine>* border: 0;font-family: Fira Mono,sans-serif;
 highlight CompDesc color: #d33682;
 highlight CompItem>* height: auto; padding: 2px 5px;
-highlight CompItem[selected] color: cyan;  background: #1D4F73;
-highlight CompTitle background: #252C33;
+highlight CompItem[selected] color: #D0D0D0;  background: #1D4F73;
+highlight CompTitle background: #383C4A;
 highlight CompTitle>* color: #78ABCB; padding: 5px; border-bottom: 1px solid #21272E; border-top: 1px solid #2E363E;
 highlight ContentSeparator border: 0;
-highlight ErrorMsg color: #002b36;  background: red;  font-size: 14px;
+highlight ErrorMsg color: #383C4A;  background: red;  font-size: 14px;
 highlight Function color:  #268bd2;
-highlight Hint font-size: 14px; font-weight: normal; color: #dc322f; background-color: #002b36; border-color: #839496; border-width: 0px; border-style: solid; padding: 0px 5px 0px 5px; background-color: rgba(253, 246, 227, 0.7); border: 1px solid #fdf6e3; -moz-border-radius: 4px; -moz-box-shadow: 0px 0px 1px black;
-highlight HintActive background-color: #dc322f; color: #073642; text-decoration: none; -moz-border-radius: 4px; -moz-box-shadow: 0 0 2px #002b36;
-highlight HintElem background-color: #073642; color: #b58900; text-decoration: none; -moz-border-radius: 4px; -moz-box-shadow: 0 0 2px #002b36;
+highlight Hint font-size: 14px; font-weight: normal; color: #dc322f; background-color: #383C4A; border-color: #839496; border-width: 0px; border-style: solid; padding: 0px 5px 0px 5px; background-color: rgba(253, 246, 227, 0.7); border: 1px solid #fdf6e3; -moz-border-radius: 4px; -moz-box-shadow: 0px 0px 1px black;
+highlight HintActive background-color: #dc322f; color: #073642; text-decoration: none; -moz-border-radius: 4px; -moz-box-shadow: 0 0 2px #383C4A;
+highlight HintElem background-color: #073642; color: #b58900; text-decoration: none; -moz-border-radius: 4px; -moz-box-shadow: 0 0 2px #383C4A;
 highlight Indicator color:  #b58900;
-highlight InfoMsg color:  #D0D0D0;  background: #002b36; font-size: 14px;
-highlight LineNr color:  #dc322f; background: #002b36; font-size: 14px;
+highlight InfoMsg color:  #D0D0D0;  background: #383C4A; font-size: 14px;
+highlight LineNr color:  #dc322f; background: #383C4A; font-size: 14px;
 highlight ModeMsg background: #1D4F73; border-top: 2px solid #d7f1ff; border-bottom: 2px solid #173F5C; padding: 3px 5px 0 5px; color: #EDF0F1;
-highlight MoreMsg color:  #859900; background: #002b36;
+highlight MoreMsg color:  #859900; background: #383C4A;
 highlight NonText background: #000;
 highlight Normal color:  #D0D0D0;  background: #383C4A; font-size: 14px; opacity: 1.0; font-family: Fira Mono,sans-serif; border-top: 1px solid #2F363F;
 highlight Null color: CornflowerBlue;
-highlight Number color:  #002b36;
+highlight Number color:  #383C4A;
 highlight Object color: #2aa198;
 highlight PromptText background: #1D4F73; border-top: 2px solid #d7f1ff; border-bottom: 2px solid #173F5C; padding: 3px 5px 0 5px; color: #EDF0F1;
-highlight Question color: #b58900;  background: #002b36;  font-size: 14px;
+highlight Question color: #b58900;  background: #383C4A;  font-size: 14px;
 highlight StatusLine color: #F5F7FA; background: #404552; font-size: 14px; padding: 2px;font-family: Fira Mono,sans-serif;
-highlight String color:  #002b36;
-highlight TabNumber color: #002b36; font-weight: bold; font-size:10px;
+highlight String color:  #383C4A;
+highlight TabNumber color: #383C4A; font-weight: bold; font-size:10px;
 highlight Tag color: CornflowerBlue;
-highlight Title color:  #002b36;
+highlight Title color:  #383C4A;
 highlight URL color:  #859900;
-highlight WarningMsg color: #dc322f;  background: #002b36;  font-size: 14px;
+highlight WarningMsg color: #dc322f;  background: #383C4A;  font-size: 14px;
 
 
 " TODO: consider not using highlight syntax and just piping all styling
@@ -47,7 +47,7 @@ highlight WarningMsg color: #dc322f;  background: #002b36;  font-size: 14px;
 
 style -name chrome_tabs chrome://* <<EOF
     .tabbrowser-strip {
-        background: #002b36 !important;
+        bac#D0D0D0: #383C4A !important;
     }
 
     /* Remove close tab button */

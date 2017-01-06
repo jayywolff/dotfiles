@@ -290,7 +290,7 @@ device = 3
 # SDL joystick name (or Keyboard)
 name = "HuiJia  USB GamePad"
 # Specifies whether this controller is 'plugged in' to the simulated N64
-plugged = True
+plugged = False
 # Specifies which type of expansion pak is in the controller: 1=None, 2=Mem pak, 5=Rumble pak
 plugin = 2
 # If True, then mouse buttons may be used with this controller

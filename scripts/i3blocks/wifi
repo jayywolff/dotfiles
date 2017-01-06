@@ -19,6 +19,6 @@ then
 fi
 
 case $BLOCK_BUTTON in
-	1) gnome-terminal -e nmtui ;;
+	1) termite -e nmtui ;;
 	3) sh ~/dotfiles/scripts/i3blocks/toggle_wifi.sh ;;
 esac
