@@ -1,10 +1,10 @@
 set nocompatible   	" Disable vi-compatibility
 set t_Co=256        " Use 256 Colors in terminal
 
-filetype off		" required for Vundle
+filetype off		              " required for Vundle
 set rtp+=~/.vim/bundle/Vundle.vim " set runtime path to include Vundle
-call vundle#begin() " init Vundle
-Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
+call vundle#begin()               " init Vundle
+Plugin 'VundleVim/Vundle.vim'     " let Vundle manage Vundle, required
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
 Plugin 'Valloric/YouCompleteMe'
@@ -12,27 +12,29 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
-Plugin 'mhinz/vim-startify'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'posva/vim-vue'
 Plugin 'valloric/MatchTagAlways'
 Plugin 'Raimondi/delimitMate'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'terryma/vim-multiple-cursors' 
 Plugin 'mileszs/ack.vim'
 Plugin 'skwp/greplace.vim'
 Plugin 'shawncplus/phpcomplete.vim' 
 Plugin 'tobyS/vmustache'
+Plugin 'duggiefresh/vim-easydir'
 Plugin 'tobyS/pdv'
 Plugin 'NLKNguyen/copy-cut-paste.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-dispatch'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'benmills/vimux'
 Plugin 'christoomey/vim-tmux-navigator'
+"Plugin 'posva/vim-vue'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -40,15 +42,20 @@ filetype plugin indent on    " required
 
 " Put your non-Plugin stuff after this line
 set shell=/bin/zsh	" zsh is cooler than bash
+
+" Color Settings
+syntax enable
 set background=dark
 colorscheme gruvbox
-syntax enable
 
-set guioptions-=m               " Removes top menu bar
-set guioptions-=T               " Removes top toolbar
-set guioptions-=r               " Removes right hand scroll bar
-set guioptions-=L               " Removes left hand scroll bar
-set guifont=Fira\ Mono\ Regular\ 13
+" gVim - Gui Settings
+if has("gui_running")
+    set guioptions-=m   " Removes top menu bar
+    set guioptions-=T   " Removes top toolbar
+    set guioptions-=r   " Removes right hand scroll bar
+    set guioptions-=L   " Removes left hand scroll bar
+    set guifont=Fira\ Mono\ Medium\ 13
+endif
 
 set nowrap                      " don't wrap lines
 set tabstop=4                   " a tab is four spaces
@@ -65,7 +72,6 @@ set number                      " always show line numbers
 set ignorecase                  " ignore case when searching
 set smartcase                   " ignore case if search pattern is all lowercase,
 set noerrorbells                " don't beep
-set autowrite                   " save on buffer switch
 set relativenumber              " show line numbers relative to cursor position
 set virtualedit=onemore         " allow cursor to be placed after last character at end of line
 set splitbelow                  " create split below when doing horizontal split
@@ -81,15 +87,6 @@ set directory=~/.vim/backups
 let mapleader = ","
 let g:mapleader = ","
 
-"tmux settings
-nmap \r :VimuxPromptCommand<cr>
-nmap \l :VimuxRunLastCommand<cr>
-nmap \q :VimuxCloseRunner<cr>
-nmap \i :VimuxInspectRunner<cr>
-nmap \o :VimuxOpenPane<cr>
-nmap \k :VimuxInterruptRunner<cr>
-nmap \\ :VimuxInterruptRunner<cr>
-
 "Easy escaping to normal mode
 imap jk <esc>
 
@@ -98,27 +95,20 @@ imap jk <esc>
 map <C-s> <esc>:wall<cr>
 imap <C-s> <esc>:wall<cr>
 nmap <leader>w :w<cr>
-imap <leader>w :w<cr>
 nmap <leader>q :q<cr>
 map <C-t> <esc>:tabnew<cr>
 
-nmap <leader>vr :edit ~/.vimrc<cr>
-nmap <leader>zr :edit ~/.zshrc<cr>
-nmap <leader>i3 :edit ~/.i3/config<cr>
-
-"move an entire line or block of lines up or down
-nnoremap <silent> <C-S-Up> :m .-2<cr>==
-nnoremap <silent> <C-S-Down> :m .+1<cr>==
-inoremap <silent> <C-S-Up> <esc>:m .-2<cr>==gi
-inoremap <silent> <C-S-Down> <esc>:m .+1<cr>==gi
-vnoremap <silent> <C-S-Up> :m '<-2<cr>gv=gv
-vnoremap <silent> <C-S-Down> :m '>+1<cr>gv=gv
+nmap <leader>vr :edit ~/dotfiles/.vimrc<cr>
+nmap <leader>zr :edit ~/dotfiles/.zshrc<cr>
+nmap <leader>i3 :edit ~/dotfiles/.i3/config<cr>
 
 "Change directory to match current file ,cd
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>pd :pwd<cr>
 "Reload the current buffer
 nnoremap <leader>r :e!<cr> 
+"Open a file browser in the current buffer
+nnoremap <leader>f :e .<cr> 
 
 " Misc helpers
 " Quickly add semi-colon to end of current line
@@ -135,9 +125,17 @@ nmap <leader>j i<cr><esc>
 nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
 " Open new vertical split with a new buffer
-nmap vns :new<cr>
+nmap nvs :new<cr>
 " Open new horizontal split with a new buffer
-nmap vns :vne<cr>
+nmap nsp :vne<cr>
+
+" Resize vsplit;
+nnoremap ;h :vertical resize +5<cr>
+nnoremap ;l :vertical resize -5<cr>
+nnoremap ;k :resize +5<cr>
+nnoremap ;j :resize -5<cr>
+nnoremap <leader>1 <c-w>=
+nnoremap <leader>2 <C-h>:vertical resize 120<cr>
 
 " Tab handling
 set nohidden "remove file from buffer when closing tab
@@ -156,16 +154,17 @@ nmap <C-c> <Plug>CCP_CopyLine
 vmap <C-c> <Plug>CCP_CopyText
 nmap <C-v> <Plug>CCP_PasteText
 
-" Resize vsplit
-map <leader>25 :vertical resize 40<cr>
-map <leader>50 <c-w>=
-map <leader>75 :vertical resize 120<cr>
+" Vim Session Handling vim-session
+set sessionoptions-=buffers
+let g:session_autoload = 'no'
+let g:session_autosave = 'no'
+let g:session_persist_colors = 0
 
 " NerdTree Stuff
 nmap <C-b> :NERDTreeToggle<cr>
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
-"let g:NERDTreeMouseMode=2
+let g:NERDTreeMouseMode=2
 let NERDTreeWinPos='right'
 let NERDTreeMinimalUI=1
 let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
@@ -194,13 +193,15 @@ command! Wq wq
 " disabled keys
 map Q <Nop>
 
-" Vim - Semi Hard Mode
 set mouse+=a
 if &term =~ '^screen'
     " tmux knows the extended mouse mode
     set ttymouse=xterm2
 endif
-map <up> <nop>                  " no arrow key navigation
+
+" Vim - Semi Hard Mode
+" no arrow key navigation
+map <up> <nop>                  
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
@@ -211,13 +212,14 @@ imap <right> <nop>
 
 " Custom script to generate awesome ctags for Laravel projects
 nmap <leader>ct :Make ~/dotfiles/scripts/laravel_ctags.sh .<cr>
-nmap <leader>cc :!ctags .<cr>
 
-" Use Silver Searcher instead of grep (Greplace settings)
+" Use Silver Searcher instead of grep (Greplace/Ack.vim settings)
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor'
 let g:ackprg = 'ag --vimgrep'
 nmap <leader>s :Ack! '' ./<C-Left><Left><Left>
+nnoremap <leader>gs :Gsearch<cr>
+nnoremap <leader>gr :Greplace<cr>a:wall<cr>
 
 " CtrlP Stuff
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
@@ -272,18 +274,6 @@ let g:mta_filetypes = {
     \ 'vue' : 1,
     \ 'php' : 1,
     \}
-
-" Startify Settings
-let g:startify_session_dir = '~/.vim/session'
-let g:startify_change_to_vcs_root = 1
-let g:startify_files_number = 5
-let g:startify_custom_header = 
-\ map(split(system('fortune -s | cowsay -f tux'), '\n'), '"   ". v:val') + ['','']
-let g:startify_list_order = [
-      \ ['   bookmarks: '], 'bookmarks',
-      \ ['   sessions: '],  'sessions',
-      \ ['   cwd mru: '],       'dir',
-      \ ['   mru: '],       'files']
 
 " Put at the very end of your .vimrc file.
 function! PhpSyntaxOverride()
