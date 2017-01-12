@@ -73,7 +73,6 @@ set ignorecase                  " ignore case when searching
 set smartcase                   " ignore case if search pattern is all lowercase,
 set noerrorbells                " don't beep
 set relativenumber              " show line numbers relative to cursor position
-set virtualedit=onemore         " allow cursor to be placed after last character at end of line
 set splitbelow                  " create split below when doing horizontal split
 set splitright                  " create split on right when doing a vertical split
 set incsearch
@@ -187,11 +186,10 @@ nmap <leader>todo vs :e todo.md<cr>
 " common annoying typos
 command! Q q " Bind :Q to :q
 command! Qa qa 
-command! W w
 command! Wq wq
 
 " disabled keys
-map Q <Nop>
+"map Q <Nop>
 
 set mouse+=a
 if &term =~ '^screen'
