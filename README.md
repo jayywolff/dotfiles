@@ -16,6 +16,7 @@ Featuring some of the following projects:
 * lightdm
 * git
 * vimperator
+* compton
 
 
 ##Current setup screenshot
@@ -24,7 +25,7 @@ Featuring some of the following projects:
 ##Installation
   * Install Arch Linux or a headless install of Debian, Ubuntu, Fedora, OpenSuse, or even FreeBSD
   
-  * Install x11, i3-gaps, i3status, i3bar, i3blocks, i3-lock-wrapper, lightdm, lightdm-gtk-greeter, termite, rofi, gvim, compton, ranger, irssi, feh, zsh, zsh-completions, git, xdotool, nm-applet, net-tools, ssh, light, pulseaudio, etc..
+  * Install x11, i3-gaps, i3status, i3bar, i3blocks, i3-lock-wrapper, lightdm, lightdm-gtk-greeter, termite, rofi, gvim, compton, ranger, irssi, feh, zsh, zsh-completions, git, net-tools, ssh, light, pulseaudio, etc..
 
   * Clone or copy dotfiles to ~/
 

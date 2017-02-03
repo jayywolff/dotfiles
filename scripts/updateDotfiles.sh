@@ -11,6 +11,7 @@ mkdir -p $HOME/.vimperator/colors && ln -sf $dotdir/.vimperator/colors $HOME/.vi
 ln -sf $dotdir/.i3/ $HOME/.i3
 ln -sf $dotdir/.config/feh $HOME/.config/feh
 ln -sf $dotdir/.config/mupen64plus $HOME/.config/mupen64plus
+ln -sf $dotdir/.config/compton.conf $HOME/.config/compton.conf
 ln -sf $dotdir/.gtkrc-2.0 $HOME/.gtkrc-2.0
 ln -sf $dotdir/.zshrc $HOME/.zshrc
 ln -sf $dotdir/.Xresources $HOME/.Xresources
