@@ -65,7 +65,6 @@ set softtabstop=4               " when hitting <BS>, pretend like a tab is remov
 set expandtab                   " expand tabs by default (overloadable per file type later)
 set shiftwidth=4                " number of spaces to use for autoindenting
 set shiftround                  " use multiple of shiftwidth when indenting with '<' and '>'
-set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 set autoindent                  " always set autoindenting on
 set copyindent                  " copy the previous indentation on autoindenting
 set number                      " always show line numbers
@@ -207,9 +206,10 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+"set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 
 " Custom script to generate awesome ctags for Laravel projects
-nmap <leader>ct :Make ~/dotfiles/scripts/laravel_ctags.sh .<cr>
+nmap <leader>ct :! ~/dotfiles/scripts/laravel_ctags.sh .<cr>
 
 " Use Silver Searcher instead of grep (Greplace/Ack.vim settings)
 set grepprg=ag
