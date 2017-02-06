@@ -6,7 +6,7 @@
 #
 # Dependencies
 # * xorg-xprop - install through system package manager
-# * i3ipc - install with pip
+# * i3ipc - install with pip or through the AUR
 #
 # Installation:
 # * Download this script and place it in ~/.config/i3/ (or anywhere you want)
