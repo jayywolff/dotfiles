@@ -7,7 +7,6 @@ mkdir -p $HOME/.config/htop && ln -sf $dotdir/.config/htop/htoprc $HOME/.config/
 mkdir -p $HOME/.config/termite && ln -sf $dotdir/.config/termite/config $HOME/.config/termite/config
 mkdir -p $HOME/.config/gtk-3.0 && ln -sf $dotdir/.config/gtk-3.0/settings.ini $HOME/.config/gtk-3.0/settings.ini
 mkdir -p $HOME/.irssi && ln -sf $dotdir/.irssi/config $HOME/.irssi/config
-mkdir -p $HOME/.vimperator/colors && ln -sf $dotdir/.vimperator/colors $HOME/.vimperator/colors
 ln -sf $dotdir/.i3/ $HOME/.i3
 ln -sf $dotdir/.config/feh $HOME/.config/feh
 ln -sf $dotdir/.config/mupen64plus $HOME/.config/mupen64plus
@@ -16,6 +15,7 @@ ln -sf $dotdir/.gtkrc-2.0 $HOME/.gtkrc-2.0
 ln -sf $dotdir/.zshrc $HOME/.zshrc
 ln -sf $dotdir/.Xresources $HOME/.Xresources
 ln -sf $dotdir/.vimperatorrc $HOME/.vimperatorrc
+ln -sf $dotdir/.vimperator/ $HOME/.vimperator
 
 # setup vim
 ln -sf $dotdir/.vim/ $HOME/.vim
