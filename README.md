@@ -1,4 +1,4 @@
-#Jay's dotfiles
+# Jay's dotfiles
   
 
 My dotfiles for a great tiling wm Arch Linux setup. Install your preferred distro and this as a base and throw your tools/packages on top
@@ -19,10 +19,10 @@ Featuring some of the following projects:
 * compton
 
 
-##Current setup screenshot
+## Current setup screenshot
 ![Screenshot] (http://i.imgur.com/a9K7F0X.png)
 
-##Installation
+## Installation
   * Install Arch Linux or a headless install of Debian, Ubuntu, Fedora, OpenSuse, or even FreeBSD
 
   * Install x11, i3-gaps, i3status, i3bar, i3blocks, i3-lock-wrapper, lightdm, lightdm-gtk-greeter, termite, rofi, gvim, compton, ranger, irssi, feh, zsh, zsh-completions, git, net-tools, ssh, light, pulseaudio, etc..
