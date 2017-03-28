@@ -27,6 +27,8 @@ Plugin 'tobyS/vmustache'
 Plugin 'duggiefresh/vim-easydir'
 Plugin 'tobyS/pdv'
 Plugin 'NLKNguyen/copy-cut-paste.vim'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-dispatch'
@@ -34,7 +36,17 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'christoomey/vim-tmux-navigator'
-"Plugin 'posva/vim-vue'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'posva/vim-vue'
+
+"Clojure Plugins to check out
+Plugin 'tpope/vim-fireplace'                                                                                                        
+"Plugin 'guns/vim-sexp'                                                                                                              
+"Plugin 'tpope/vim-sexp-mappings-for-regular-people'                                                                                
+"Plugin 'guns/vim-clojure-static'                                                                                                    
+"Plugin 'guns/vim-clojure-highlight'                                                                                                
+"Plugin 'rkneufeld/vim-boot'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -47,6 +59,7 @@ set shell=/bin/zsh	" zsh is cooler than bash
 syntax enable
 set background=dark
 colorscheme gruvbox
+set encoding=utf8
 
 " gVim - Gui Settings
 if has("gui_running")
@@ -54,7 +67,7 @@ if has("gui_running")
     set guioptions-=T   " Removes top toolbar
     set guioptions-=r   " Removes right hand scroll bar
     set guioptions-=L   " Removes left hand scroll bar
-    set guifont=Fira\ Mono\ Medium\ 13
+    set guifont=FuraMonoForPowerline\ Nerd\ Font\ Regular\ 13
 endif
 
 set nowrap                      " don't wrap lines
@@ -107,6 +120,7 @@ nnoremap <leader>pd :pwd<cr>
 nnoremap <leader>r :e!<cr> 
 "Open a file browser in the current buffer
 nnoremap <leader>f :e .<cr> 
+nnoremap <leader>of :exe ':silent !firefox %'<CR>
 
 " Misc helpers
 " Quickly add semi-colon to end of current line
@@ -206,7 +220,6 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
-"set backspace=indent,eol,start  " allow backspacing over everything in insert mode
 
 " Custom script to generate awesome ctags for Laravel projects
 nmap <leader>ct :! ~/dotfiles/scripts/laravel_ctags.sh .<cr>
@@ -250,7 +263,6 @@ nnoremap <leader>d :call pdv#DocumentWithSnip()<cr>
 
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-e>'
-nmap <leader>e :Emmet<space>
 
 " YouCompleteMe Settings
 let g:ycm_register_as_syntastic_checker = 0
@@ -271,7 +283,19 @@ let g:mta_filetypes = {
     \ 'blade' : 1,
     \ 'vue' : 1,
     \ 'php' : 1,
+    \ 'erb' : 1,
     \}
+autocmd BufNewFile,BufRead  *.cljs.hl,*.boot set filetype=clojure
+"Ruby / Rails Settings
+autocmd FileType ruby set sw=2 sts=2 et
+" rails-vim shortcuts to jump to related files
+nmap <leader>em :Emodel<cr>
+nmap <leader>ev :Eview<cr>
+nmap <leader>ec :Econtroller<cr>
+nmap <leader>eu :Eunittest<cr>
+nmap <leader>ei :Eintegrationtest<cr>
+nmap <leader>ef :Efunctionaltest<cr>
+nmap <leader>es :Estylesheet<cr>
 
 " Put at the very end of your .vimrc file.
 function! PhpSyntaxOverride()
