@@ -14,6 +14,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'valloric/MatchTagAlways'
+Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
@@ -125,10 +126,7 @@ nnoremap <leader>of :exe ':silent !firefox %'<CR>
 " Misc helpers
 " Quickly add semi-colon to end of current line
 nmap ;; A;<esc>
-" Quickly add period to end of current line
-nmap <leader>. A.<esc>
 nmap <leader><space> i<space><esc>
-nmap <leader>bd :bd %<cr>
 " Quickly insert blank line
 nnoremap <leader>o o<esc>
 " Quickly move the text following the cursor to the line below
@@ -136,10 +134,8 @@ nmap <leader>j i<cr><esc>
 " Open splits
 nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
-" Open new vertical split with a new buffer
-nmap nvs :new<cr>
-" Open new horizontal split with a new buffer
-nmap nsp :vne<cr>
+" Open a new buffer
+nmap <leader>n :new<cr>
 
 " Resize vsplit;
 nnoremap ;h :vertical resize +5<cr>
@@ -200,9 +196,6 @@ nmap <leader>todo vs :e todo.md<cr>
 command! Q q " Bind :Q to :q
 command! Qa qa 
 command! Wq wq
-
-" disabled keys
-"map Q <Nop>
 
 set mouse+=a
 if &term =~ '^screen'
@@ -285,17 +278,16 @@ let g:mta_filetypes = {
     \ 'php' : 1,
     \ 'erb' : 1,
     \}
+
+" Clojure Settings
 autocmd BufNewFile,BufRead  *.cljs.hl,*.boot set filetype=clojure
-"Ruby / Rails Settings
+
+" Ruby / Rails Settings
 autocmd FileType ruby set sw=2 sts=2 et
 " rails-vim shortcuts to jump to related files
 nmap <leader>em :Emodel<cr>
 nmap <leader>ev :Eview<cr>
 nmap <leader>ec :Econtroller<cr>
-nmap <leader>eu :Eunittest<cr>
-nmap <leader>ei :Eintegrationtest<cr>
-nmap <leader>ef :Efunctionaltest<cr>
-nmap <leader>es :Estylesheet<cr>
 
 " Put at the very end of your .vimrc file.
 function! PhpSyntaxOverride()
