@@ -28,7 +28,6 @@ Plugin 'tobyS/vmustache'
 Plugin 'duggiefresh/vim-easydir'
 Plugin 'tobyS/pdv'
 Plugin 'NLKNguyen/copy-cut-paste.vim'
-Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -39,14 +38,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'posva/vim-vue'
-
-"Clojure Plugins to check out
-Plugin 'tpope/vim-fireplace'                                                                                                        
-"Plugin 'guns/vim-sexp'                                                                                                              
-"Plugin 'tpope/vim-sexp-mappings-for-regular-people'                                                                                
-"Plugin 'guns/vim-clojure-static'                                                                                                    
-"Plugin 'guns/vim-clojure-highlight'                                                                                                
-"Plugin 'rkneufeld/vim-boot'
+"Plugin 'edkolev/tmuxline.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -68,7 +60,7 @@ if has("gui_running")
     set guioptions-=T   " Removes top toolbar
     set guioptions-=r   " Removes right hand scroll bar
     set guioptions-=L   " Removes left hand scroll bar
-    set guifont=FuraMonoForPowerline\ Nerd\ Font\ Regular\ 13
+    set guifont=FuraMonoForPowerline\ Nerd\ Font\ Regular\ 12
 endif
 
 set nowrap                      " don't wrap lines
@@ -111,7 +103,7 @@ nmap <leader>q :q<cr>
 map <C-t> <esc>:tabnew<cr>
 
 nmap <leader>vr :edit ~/dotfiles/.vimrc<cr>
-nmap <leader>zr :edit ~/dotfiles/.zshrc<cr>
+nmap <leader>zr :edit ~/.zshrc<cr>
 nmap <leader>i3 :edit ~/dotfiles/.i3/config<cr>
 
 "Change directory to match current file ,cd
@@ -188,6 +180,10 @@ set laststatus=2    " Always show the statusline
 set showtabline=2   " Always show the tabline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ''
+"let g:airline#extensions#tabline#left_alt_sep = ''
+"let g:airline_left_sep = ''
+"let g:airline_right_sep = ''
 
 " Edit todo list for project
 nmap <leader>todo vs :e todo.md<cr>
@@ -250,6 +246,9 @@ let g:phpcomplete_mappings = {
   \ 'jump_to_def': '<leader>g',
   \ }
 
+" drop a PsySH debug statement
+nmap <leader>dd ieval(\Psy\sh());<esc>==
+
 " PHP docblocks
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <leader>d :call pdv#DocumentWithSnip()<cr>
@@ -276,18 +275,7 @@ let g:mta_filetypes = {
     \ 'blade' : 1,
     \ 'vue' : 1,
     \ 'php' : 1,
-    \ 'erb' : 1,
     \}
-
-" Clojure Settings
-autocmd BufNewFile,BufRead  *.cljs.hl,*.boot set filetype=clojure
-
-" Ruby / Rails Settings
-autocmd FileType ruby set sw=2 sts=2 et
-" rails-vim shortcuts to jump to related files
-nmap <leader>em :Emodel<cr>
-nmap <leader>ev :Eview<cr>
-nmap <leader>ec :Econtroller<cr>
 
 " Put at the very end of your .vimrc file.
 function! PhpSyntaxOverride()
