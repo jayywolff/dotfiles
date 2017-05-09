@@ -50,7 +50,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git dircycle sudo vagrant vi-mode)
+plugins=(git vi-mode)
 
 # User configuration
 
@@ -80,7 +80,10 @@ export EDITOR='vim'
 # Aliases
 alias homestead='function __homestead() { (cd ~/Dev/vboxes/homestead && vagrant $*); unset -f __homestead; }; __homestead'
 alias n64=mupen64plus
-alias tv_home="bash ~/dotfiles/scripts/home_dualscreen.sh"
+alias huhs="homestead up;homestead ssh"
+alias ta="tmux attach-session"
+alias tmux-resurrect="bash ~/dotfiles/scripts/tmux-resurrect.sh"
+
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
 stty stop undef
