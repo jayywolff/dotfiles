@@ -2,8 +2,8 @@
 
 # This script is basically a toggle switch between my most used monitor setups
 
-LAPTOP="eDP-1"
-HDMI="HDMI-1"
+LAPTOP="eDP-1-1"
+HDMI="HDMI-1-1"
 
 if (xrandr | grep "$LAPTOP connected" && xrandr | grep "$HDMI connected"); then
     xrandr --output $HDMI --auto --right-of $LAPTOP
