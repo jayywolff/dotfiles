@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 
 # This script listens for i3 events and updates workspace names to show icons
 # for running programs.  It contains icons for a few programs, but more can
@@ -66,13 +65,13 @@ FA_PAINTBRUSH = '\uf1fc'
 FA_FILM = '\uf008'
 FA_MAP_O = '\uf278'
 FA_DATABASE = '\uf1c0'
+FA_TELEGRAM = '\uf2c6'
 WINDOW_ICONS = {
-    'Gnome-terminal': FA_TERMINAL,
     'termite': FA_TERMINAL,
-    'guake': FA_TERMINAL,
     'Galculator': FA_CALCULATOR,
     'Franz': FA_COMMENTS_O,
-    'hipchat4': FA_COMMENTS_O,
+    'Telegram': FA_TELEGRAM,
+    'TelegramDesktop': FA_TELEGRAM,
     'google-chrome': FA_CHROME,
     'chromium': FA_CHROME,
     'vivaldi-stable': FA_CHROME,
@@ -83,10 +82,9 @@ WINDOW_ICONS = {
     'Thunderbird': FA_ENVELOPE_O,
     'libreoffice': FA_FILE_TEXT_O,
     'feh': FA_PICTURE_O,
-    'eog': FA_PICTURE_O,
     'gcolor2': FA_EYEDROPPER,
-    'evince': FA_FILE_PDF_O,
-    'Nautilus': FA_FILES_O,
+    'atril': FA_FILE_PDF_O,
+    'spacefm': FA_FILES_O,
     'gimp': FA_PAINTBRUSH,
     'gimp-2.8': FA_PAINTBRUSH,
     'inkscape': FA_PAINTBRUSH,
@@ -95,8 +93,6 @@ WINDOW_ICONS = {
     'Kodi': FA_PLAY_CIRCLE,
     'transmission-gtk': FA_DOWNLOAD,
     'pavucontrol': FA_VOLUME_UP,
-    'Photoscan': FA_FILM,
-    'qgis': FA_MAP_O,
     'Steam': FA_STEAM,
     'SWT': FA_DATABASE, #DBeaver changed its wm_class name?
     'DBeaver': FA_DATABASE,

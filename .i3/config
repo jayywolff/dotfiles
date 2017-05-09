@@ -11,11 +11,11 @@ exec xset r rate 175 25
 #AUTOSTART STUFF
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
 exec_always --no-startup-id  python3 ~/.i3/i3-autoname-workspaces.py
+exec --no-startup-id compton -b
 exec --no-startup-id redshift
 
 #Font for window titles.
-font pango:Fira Mono Medium 12
-
+font pango:FuraMonoForPowerline Nerd Font Regular 13
 #Colors
 set $back               #383C4A
 set $primary            #D0D0D0
@@ -96,6 +96,7 @@ mode "$mode_gaps_outer" {
 ##########################################################################
 
 #custom app commands (?i) just means case insenitive..
+#for_window [class="(?i)feh"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
 for_window [class="(?i)qemu-system-x86_64"] floating enable
 #for_window [class="VirtualBox"] floating enable
@@ -127,6 +128,11 @@ bindsym XF86AudioMute exec pulseaudio-ctl mute
 bindsym $mod+equal exec pulseaudio-ctl up
 bindsym $mod+minus exec pulseaudio-ctl down
 bindsym $mod+0 exec pulseaudio-ctl mute
+
+#cmus controls
+bindsym $mod+p exec cmus-remote --pause
+bindsym $mod+bracketleft exec cmus-remote --prev
+bindsym $mod+bracketright exec cmus-remote --next
 
 #backlight controls (laptop monitor)
 bindsym $mod+Shift+minus exec light -U 5
@@ -178,7 +184,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+p focus parent
+#bindsym $mod+p focus parent
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
@@ -191,8 +197,6 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 
-bindsym $mod+bracketleft workspace prev
-bindsym $mod+bracketright workspace next
 bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
@@ -235,12 +239,12 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3blocks -c ~/.i3/i3blocks.conf 2> ~/.i3/.i3blocks.err
     strip_workspace_numbers no
-    output eDP-1
-    tray_output eDP-1
+    output eDP-1-1
+    tray_output eDP-1-1
     mode dock
     position top
-    height 25
-    font pango: Fira Mono Medium 16
+    height 24
+    font pango: FuraMonoForPowerline Nerd Font Regular 15
     colors {
         background $back
         separator $primary
