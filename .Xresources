@@ -1,3 +1,10 @@
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+!Xft.autohint: 0
+
 ! Rofi Settings
 rofi.width:		52
 rofi.padding:	300
@@ -9,7 +16,7 @@ rofi.terminal:	termite
 rofi.lines:		10
 rofi.eh:		1
 rofi.hide-scrollbar: true
-rofi.font:      Fira Mono Medium 40
+rofi.font:      FuraMonoForPowerline Nerd Font Medium 40
 
 !! Rofi Colorsheme
 !! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'

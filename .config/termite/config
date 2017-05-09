@@ -1,5 +1,5 @@
 [options]
-font = Fira Mono Regular 12
+font = FuraMonoForPowerline Nerd Font Regular 12
 clickable_url = true
 scrollback_lines = 15000
 #allow_bold = false
