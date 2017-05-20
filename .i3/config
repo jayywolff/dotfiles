@@ -239,12 +239,12 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3blocks -c ~/.i3/i3blocks.conf 2> ~/.i3/.i3blocks.err
     strip_workspace_numbers no
-    output eDP-1-1
+    #output eDP-1-1
     tray_output eDP-1-1
     mode dock
     position top
     height 24
-    font pango: FuraMonoForPowerline Nerd Font Regular 15
+    font pango: Fira Mono Medium for Powerline 15
     colors {
         background $back
         separator $primary

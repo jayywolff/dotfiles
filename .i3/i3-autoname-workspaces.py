@@ -66,6 +66,7 @@ FA_FILM = '\uf008'
 FA_MAP_O = '\uf278'
 FA_DATABASE = '\uf1c0'
 FA_TELEGRAM = '\uf2c6'
+FA_CLOCK_O = '\uf017'
 WINDOW_ICONS = {
     'termite': FA_TERMINAL,
     'Galculator': FA_CALCULATOR,
@@ -97,6 +98,7 @@ WINDOW_ICONS = {
     'SWT': FA_DATABASE, #DBeaver changed its wm_class name?
     'DBeaver': FA_DATABASE,
     'KeeWeb': FA_KEY,
+    'pystopwatch': FA_CLOCK_O,
 }
 
 
