@@ -7,6 +7,7 @@ call vundle#begin()               " init Vundle
 Plugin 'VundleVim/Vundle.vim'     " let Vundle manage Vundle, required
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'Valloric/YouCompleteMe'
 "Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
@@ -20,10 +21,10 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'terryma/vim-multiple-cursors' 
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'
 Plugin 'skwp/greplace.vim'
-Plugin 'shawncplus/phpcomplete.vim' 
+Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'tobyS/vmustache'
 Plugin 'duggiefresh/vim-easydir'
 Plugin 'tobyS/pdv'
@@ -38,7 +39,6 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'posva/vim-vue'
-"Plugin 'edkolev/tmuxline.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -110,9 +110,9 @@ nmap <leader>i3 :edit ~/dotfiles/.i3/config<cr>
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>pd :pwd<cr>
 "Reload the current buffer
-nnoremap <leader>r :e!<cr> 
+nnoremap <leader>r :e!<cr>
 "Open a file browser in the current buffer
-nnoremap <leader>f :e .<cr> 
+nnoremap <leader>f :e .<cr>
 nnoremap <leader>of :exe ':silent !firefox %'<CR>
 
 " Misc helpers
@@ -128,6 +128,7 @@ nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
 " Open a new buffer
 nmap <leader>n :new<cr>
+nmap <leader>tt :%s/\s\+$//ei<cr>:w<cr>
 
 " Resize vsplit;
 nnoremap ;h :vertical resize +5<cr>
@@ -190,7 +191,7 @@ nmap <leader>todo vs :e todo.md<cr>
 
 " common annoying typos
 command! Q q " Bind :Q to :q
-command! Qa qa 
+command! Qa qa
 command! Wq wq
 
 set mouse+=a
@@ -201,7 +202,7 @@ endif
 
 " Vim - Semi Hard Mode
 " no arrow key navigation
-map <up> <nop>                  
+map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>

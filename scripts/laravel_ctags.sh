@@ -10,7 +10,6 @@ ctags --recurse=yes --fields=+aimlS --languages=php \
     --exclude=".env" \
     --exclude="bootstrap/cache" \
     --exclude="storage" \
-    --regex-php="/^[ \t]*trait[ \t]+([a-z0_9_]+)/\1/t,traits/i" \
     --append "vendor/laravel" .
 
 # rm junk (need to replace with sed commands)
@@ -18,4 +17,3 @@ grep -v "/\^use" tags > tags_temp; mv tags_temp tags
 grep -v "/\^namespace" tags > tags_temp; mv tags_temp tags
 
 echo "Fresh ctags generated @$(pwd) on $(date)"
-sleep 3
