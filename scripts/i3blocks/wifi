@@ -1,7 +1,7 @@
 #!/bin/bash
 SSID=$(nmcli device wifi | grep -e '*' | awk '{ if (! /SSID/) print $2 }')
 ENABLED=$(nmcli radio wifi | grep enabled)
-CONNECTED=$(nmcli connection show --active | grep wlp2s0)
+CONNECTED=$(nmcli connection show --active | grep wlp59s0)
 
 if [ $ENABLED ]
 then
