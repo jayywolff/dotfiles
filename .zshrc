@@ -84,6 +84,17 @@ alias huhs="homestead up;homestead ssh"
 alias ta="tmux attach-session"
 alias tmux-resurrect="bash ~/dotfiles/scripts/tmux-resurrect.sh"
 
+alias pat='php artisan tinker'
+alias pac='php artisan cache:clear;php artisan view:clear; php artisan route:clear;php artisan config:clear; composer dump-autoload'
+alias pu='./vendor/bin/phpunit'
+
+today="$(date --rfc-3339=date)"
+laravel_log="~/Dev/cateredFit/phoenix/storage/logs/laravel-$today.log"
+if [ ! -f $laravel_log ]; then
+    echo $laravel_log
+    touch $laravel_log
+fi
+ 
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
 stty stop undef

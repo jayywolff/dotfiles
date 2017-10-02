@@ -3,6 +3,8 @@
 # generate custom ctags for laravel projects
 cd $1
 
+rm tags
+
 ctags --recurse=yes --fields=+aimlS --languages=php \
     --exclude="node_modules" \
     --exclude="vendor" \

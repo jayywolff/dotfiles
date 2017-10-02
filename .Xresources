@@ -1,51 +1,34 @@
 Xft.antialias: 1
 Xft.hinting: 1
-Xft.hintstyle: hintslight
+Xft.hintstyle: hintfull
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 !Xft.autohint: 0
 
 ! Rofi Settings
-rofi.width:		52
+rofi.width:		50
 rofi.padding:	300
 rofi.fullscreen: true
 rofi.fixed-num-lines: true
 rofi.bw:		0
 rofi.location:	0
 rofi.terminal:	termite
-rofi.lines:		10
+rofi.lines:		4
 rofi.eh:		1
 rofi.hide-scrollbar: true
-rofi.font:      FuraMonoForPowerline Nerd Font Medium 40
+rofi.font:      FuraMono Nerd Font Medium 40
 
-!! Rofi Colorsheme
-!! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
-!rofi.color-window: argb:aa263238, argb:aa263238, #26a69a
-!rofi.color-normal: argb:0263238, #eceff1, argb:0263238, #f4246b, #eceff1
-!rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
-!rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
-
-! gruvbox-rofi
-!-------------------------------------------------------------------------------
-! Rofi color theme
-!
-! Based on the Gruvbox color scheme for Vim by morhetz
-! https://github.com/morhetz/gruvbox
-!
-! File: gruvbox-dark.theme
-! Desc: Gruvbox dark color theme for Rofi
-! Author: bardisty <b@bah.im>
-! Source: https://github.com/bardisty/gruvbox-rofi
-! Modified: Sat Oct 22 2016 03:11:40 PDT -0700
-!-------------------------------------------------------------------------------
-
-! Enable the extended coloring options
-rofi.color-enabled: true
-
-!                  bg       border   separator
-rofi.color-window: #282828, #a89984, #a89984
-
-!                  bg       fg       bg-alt   hl-bg    hl-fg
-rofi.color-normal: #282828, #ebdbb2, #32302f, #665c54, #fbf1c7
-rofi.color-active: #d79921, #282828, #d79921, #fabd2f, #282828
-rofi.color-urgent: #cc241d, #282828, #cc241d, #fb4934, #282828
+! ------------------------------------------------------------------------------
+! ROFI Color theme: Arc-Dark
+! Copyright: 2017 leofa
+! ------------------------------------------------------------------------------
+! "Color scheme for normal row" Set from: File
+rofi.color-normal:                   argb:0383c4a, #c4cbd4, argb:96404552, #4084d6, #f9f9f9
+! "Color scheme for urgent row" Set from: File
+rofi.color-urgent:                   argb:02d303b, #cc6666, argb:e52d303b, #a54242, #f9f9f9
+! "Color scheme for active row" Set from: File
+rofi.color-active:                   argb:02d303b, #b5bd68, argb:e42d303b, #8c9440, #f9f9f9
+! "Color scheme window" Set from: File
+rofi.color-window:                   argb:f22d303b, #7c8389, #1d1f21
+! "Separator style (none, dash, solid)" Set from: XResources
+rofi.separator-style:                solid

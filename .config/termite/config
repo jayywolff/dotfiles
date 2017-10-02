@@ -1,5 +1,5 @@
 [options]
-font = FuraMonoForPowerline Nerd Font Regular 12
+font = FuraMono Nerd Font Regular 14
 clickable_url = true
 scrollback_lines = 15000
 #allow_bold = false

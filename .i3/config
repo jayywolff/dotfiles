@@ -9,15 +9,16 @@ set $mod Mod4
 exec xset r rate 175 25
 
 #AUTOSTART STUFF
+exec --no-startup-id bash ~/dotfiles/scripts/display_setup.sh
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
 exec_always --no-startup-id  python3 ~/.i3/i3-autoname-workspaces.py
-exec --no-startup-id compton -b
+#exec --no-startup-id compton -b
 exec --no-startup-id redshift
 
 #Font for window titles.
-font pango:FuraMonoForPowerline Nerd Font Regular 13
+font pango:FuraMono  Nerd Font Medium 12
 #Colors
-set $back               #383C4A
+set $back               #2F343F
 set $primary            #D0D0D0
 set $secondary          #0FE0C9
 set $black              #282A2E
@@ -37,7 +38,7 @@ floating_modifier $mod
 popup_during_fullscreen smart
 bindsym $mod+t exec termite
 bindsym $mod+Return exec termite
-mouse_warping none
+#mouse_warping none
 
 for_window [class="^.*"] border pixel 2
 # Float Guake to the top of the screen
@@ -46,8 +47,9 @@ for_window [class="^.*"] border pixel 2
 # Scratchpad stuff
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+s move scratchpad
-# Show the first scratchpad window
+bindsym $mod+a [title="^Developer Tools"] scratchpad show
 bindsym $mod+s scratchpad show
+# Show the first scratchpad window
 
 # i3-gaps stuff :)
 gaps inner 25
@@ -98,13 +100,13 @@ mode "$mode_gaps_outer" {
 #custom app commands (?i) just means case insenitive..
 #for_window [class="(?i)feh"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
-for_window [class="(?i)qemu-system-x86_64"] floating enable
+#for_window [class="(?i)qemu-system-x86_64"] floating enable
 #for_window [class="VirtualBox"] floating enable
 #for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="About Mozilla Firefox"] floating enable
-for_window [title="About Nightly"] floating enable
+#for_window [title="About Nightly"] floating enable
 for_window [title="Library"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
@@ -135,8 +137,10 @@ bindsym $mod+bracketleft exec cmus-remote --prev
 bindsym $mod+bracketright exec cmus-remote --next
 
 #backlight controls (laptop monitor)
-bindsym $mod+Shift+minus exec light -U 5
-bindsym $mod+Shift+plus exec light -A 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 4
+bindsym XF86MonBrightnessUp exec xbacklight -inc 4
+bindsym $mod+Shift+minus exec xbacklight -dec 4
+bindsym $mod+Shift+plus exec xbacklight -inc 4
 
 bindsym $mod+Ctrl+Escape exec i3lock-wrapper -l
 bindsym XF86Sleep exec i3lock-wrapper -l && echo mem > /sys/power/state
@@ -211,7 +215,7 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 
 # adjust displays
-bindsym $mod+Shift+m exec bash ~/dotfiles/scripts/configure_xrandr.sh
+bindsym $mod+Shift+m exec bash ~/dotfiles/scripts/display_setup.sh
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -239,12 +243,12 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3blocks -c ~/.i3/i3blocks.conf 2> ~/.i3/.i3blocks.err
     strip_workspace_numbers no
-    #output eDP-1-1
-    tray_output eDP-1-1
+    output eDP1
+    tray_output eDP1
     mode dock
     position top
-    height 24
-    font pango: Fira Mono Medium for Powerline 15
+    height 30
+    font pango: FuraMono Nerd Font Medium 14
     colors {
         background $back
         separator $primary

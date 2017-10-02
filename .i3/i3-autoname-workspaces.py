@@ -77,7 +77,6 @@ WINDOW_ICONS = {
     'chromium': FA_CHROME,
     'vivaldi-stable': FA_CHROME,
     'gvim': FA_CODE,
-    'subl3': FA_CODE,
     'spotify': FA_SPOTIFY,
     'Firefox': FA_FIREFOX,
     'Thunderbird': FA_ENVELOPE_O,
@@ -85,7 +84,7 @@ WINDOW_ICONS = {
     'feh': FA_PICTURE_O,
     'gcolor2': FA_EYEDROPPER,
     'atril': FA_FILE_PDF_O,
-    'spacefm': FA_FILES_O,
+    'Caja': FA_FILES_O,
     'gimp': FA_PAINTBRUSH,
     'gimp-2.8': FA_PAINTBRUSH,
     'inkscape': FA_PAINTBRUSH,
@@ -97,8 +96,7 @@ WINDOW_ICONS = {
     'Steam': FA_STEAM,
     'SWT': FA_DATABASE, #DBeaver changed its wm_class name?
     'DBeaver': FA_DATABASE,
-    'KeeWeb': FA_KEY,
-    'pystopwatch': FA_CLOCK_O,
+    'KeeWeb': FA_KEY
 }
 
 

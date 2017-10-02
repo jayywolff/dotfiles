@@ -7,8 +7,8 @@ call vundle#begin()               " init Vundle
 Plugin 'VundleVim/Vundle.vim'     " let Vundle manage Vundle, required
 Plugin 'vim-airline/vim-airline'
 Plugin 'morhetz/gruvbox'
-Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'mhinz/vim-startify'
 "Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -39,7 +39,9 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'posva/vim-vue'
-
+Plugin 'noahfrederick/vim-composer'
+Plugin 'noahfrederick/vim-laravel'
+Plugin 'tpope/vim-projectionist'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -60,7 +62,7 @@ if has("gui_running")
     set guioptions-=T   " Removes top toolbar
     set guioptions-=r   " Removes right hand scroll bar
     set guioptions-=L   " Removes left hand scroll bar
-    set guifont=FuraMonoForPowerline\ Nerd\ Font\ Regular\ 12
+    set guifont=FuraMono\ Nerd\ Font\ Regular\ 14
 endif
 
 set nowrap                      " don't wrap lines
@@ -96,11 +98,12 @@ imap jk <esc>
 
 " Note that remapping C-s requires flow control to be disabled
 " (e.g. in .bashrc or .zshrc)
-map <C-s> <esc>:wall<cr>
+map <C-s> <esc>:wall<cr>:SSave return<cr>y<cr>
 imap <C-s> <esc>:wall<cr>
 nmap <leader>w :w<cr>
 nmap <leader>q :q<cr>
 map <C-t> <esc>:tabnew<cr>
+map <leader>t <esc>:tabnew<cr>:Startify<cr>
 
 nmap <leader>vr :edit ~/dotfiles/.vimrc<cr>
 nmap <leader>zr :edit ~/.zshrc<cr>
@@ -136,7 +139,7 @@ nnoremap ;l :vertical resize -5<cr>
 nnoremap ;k :resize +5<cr>
 nnoremap ;j :resize -5<cr>
 nnoremap <leader>1 <c-w>=
-nnoremap <leader>2 <C-h>:vertical resize 120<cr>
+nnoremap <leader>2 <C-h>:vertical resize 105<cr>
 
 " Tab handling
 set nohidden "remove file from buffer when closing tab
@@ -211,9 +214,6 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
-" Custom script to generate awesome ctags for Laravel projects
-nmap <leader>ct :! ~/dotfiles/scripts/laravel_ctags.sh .<cr>
-
 " Use Silver Searcher instead of grep (Greplace/Ack.vim settings)
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor'
@@ -250,9 +250,20 @@ let g:phpcomplete_mappings = {
 " drop a PsySH debug statement
 nmap <leader>dd ieval(\Psy\sh());<esc>==
 
+" PHP phpunit test function shortcut
+nmap <leader>dt zz0==o<esc>o/** @test */<esc>ofunction ()<esc>o{<cr><cr><esc>?f<cr>ela
+
 " PHP docblocks
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <leader>d :call pdv#DocumentWithSnip()<cr>
+
+" Composer Stuff
+nmap <leader>lf <Plug>(composer-find)
+nmap <leader>lu <Plug>(composer-use)
+nmap <leader>ld :!composer dump-autoload<cr>
+
+" Laravel stuff
+nmap <leader>ct :! ~/dotfiles/scripts/laravel_ctags.sh .<cr>
 
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-e>'
@@ -277,6 +288,18 @@ let g:mta_filetypes = {
     \ 'vue' : 1,
     \ 'php' : 1,
     \}
+
+" Startify Settings
+let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_change_to_vcs_root = 1
+let g:startify_files_number = 5
+let g:startify_custom_header =
+\ map(split(system('echo "Vim Tip of the day:"; fortune vimtips'), '\n'), '"   ". v:val') + ['','']
+let g:startify_list_order = [
+      \ ['   bookmarks: '], 'bookmarks',
+      \ ['   sessions: '],  'sessions',
+      \ ['   cwd mru: '],       'dir',
+      \ ['   mru: '],       'files']
 
 " Put at the very end of your .vimrc file.
 function! PhpSyntaxOverride()
