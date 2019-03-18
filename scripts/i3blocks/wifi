@@ -19,6 +19,7 @@ then
 fi
 
 case $BLOCK_BUTTON in
-	1) termite -e nmtui ;;
-	3) sh ~/dotfiles/scripts/i3blocks/toggle_wifi.sh ;;
+	1) termite -e nmtui;;
+	2) nm-applet;;
+	3) bash ~/dotfiles/scripts/i3blocks/toggle_wifi.sh;;
 esac
