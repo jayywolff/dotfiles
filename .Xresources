@@ -3,32 +3,74 @@ Xft.hinting: 1
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
-!Xft.autohint: 0
 
 ! Rofi Settings
-rofi.width:		50
-rofi.padding:	300
-rofi.fullscreen: true
-rofi.fixed-num-lines: true
-rofi.bw:		0
-rofi.location:	0
-rofi.terminal:	termite
-rofi.lines:		4
-rofi.eh:		1
+rofi.color-window: argb:EE2F343F, #2F343F
+rofi.color-normal: argb:002F343F, #737783, argb:002F343F, argb:002F343F, #f9f9f9
+rofi.color-urgent: argb:002F343F, #cc6666, argb:e54b5160, argb:002F343F, #f9f9f9
+rofi.color-active: argb:002F343F, #65acff, argb:e44b5160, argb:002F343F, #f9f9f9
+rofi.width: 20
+rofi.lines: 16
+rofi.font: Iosevka Nerd Font Light 16
+rofi.bw: 0
+rofi.padding: 10
+rofi.eh: 1
+rofi.sidebar-mode: true
+rofi.yoffset: 31
+rofi.separator-style: none
 rofi.hide-scrollbar: true
-rofi.font:      FuraMono Nerd Font Medium 40
+rofi.show-icons: true
+rofi.drun-icon-theme: Papirus-Dark
+rofi.location: 1
+rofi.modi: window,run,drun
 
-! ------------------------------------------------------------------------------
-! ROFI Color theme: Arc-Dark
-! Copyright: 2017 leofa
-! ------------------------------------------------------------------------------
-! "Color scheme for normal row" Set from: File
-rofi.color-normal:                   argb:0383c4a, #c4cbd4, argb:96404552, #4084d6, #f9f9f9
-! "Color scheme for urgent row" Set from: File
-rofi.color-urgent:                   argb:02d303b, #cc6666, argb:e52d303b, #a54242, #f9f9f9
-! "Color scheme for active row" Set from: File
-rofi.color-active:                   argb:02d303b, #b5bd68, argb:e42d303b, #8c9440, #f9f9f9
-! "Color scheme window" Set from: File
-rofi.color-window:                   argb:f22d303b, #7c8389, #1d1f21
-! "Separator style (none, dash, solid)" Set from: XResources
-rofi.separator-style:                solid
+! Urxvt settings
+URxvt.font: xft:Iosevka Nerd Font:regular:size=15,xft:Iosevka Nerd Font Mono:regular:size=15:antialias=true:hinting:false
+URxvt.scrollBar: false
+URxvt.termName: rxvt-unicode
+URxvt.letterSpace: 1
+URxvt.saveLines: 10000
+URxvt.scrollstyle: rxvt
+URxvt.perl-ext-common: default,selection-to-clipboard,pasta,matcher,keyboard-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.underlineURLs: True
+URxvt.matcher.button: 1
+
+! Colorscheme
+! special
+*.foreground:   #ABB2BF
+*.background:   #282C34
+*.cursorColor:  #ABB2BF
+
+! black
+*.color0:       #282C34
+*.color8:       #3E4452
+
+! red
+*.color1:       #E06C75
+*.color9:       #BE5046
+
+! green
+*.color2:       #98C379
+*.color10:      #98C379
+
+! yellow
+*.color3:       #E5C07B
+*.color11:      #D19A66
+
+! blue
+*.color4:       #61AFEF
+*.color12:      #61AFEF
+
+! magenta
+*.color5:       #C678DD
+*.color13:      #C678DD
+
+! cyan
+*.color6:       #56B6C2
+*.color14:      #56B6C2
+
+! white
+*.color7:       #ABB2BF
+*.color15:      #5C6370
