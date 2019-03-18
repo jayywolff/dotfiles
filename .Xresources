@@ -24,20 +24,7 @@ rofi.drun-icon-theme: Papirus-Dark
 rofi.location: 1
 rofi.modi: window,run,drun
 
-! Urxvt settings
-URxvt.font: xft:Iosevka Nerd Font:regular:size=15,xft:Iosevka Nerd Font Mono:regular:size=15:antialias=true:hinting:false
-URxvt.scrollBar: false
-URxvt.termName: rxvt-unicode
-URxvt.letterSpace: 1
-URxvt.saveLines: 10000
-URxvt.scrollstyle: rxvt
-URxvt.perl-ext-common: default,selection-to-clipboard,pasta,matcher,keyboard-select
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.underlineURLs: True
-URxvt.matcher.button: 1
-
-! Colorscheme
+! OneDark Colorscheme
 ! special
 *.foreground:   #ABB2BF
 *.background:   #282C34
