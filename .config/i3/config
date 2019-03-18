@@ -10,13 +10,13 @@ exec xset r rate 175 25
 
 #AUTOSTART STUFF
 exec --no-startup-id bash ~/dotfiles/scripts/display_setup.sh
-exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
-exec_always --no-startup-id  python3 ~/.i3/i3-autoname-workspaces.py
-#exec --no-startup-id compton -b
+exec --no-startup-id compton -b
 exec --no-startup-id redshift
+exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
+exec_always --no-startup-id  python3 ~/.config/i3/i3-autoname-workspaces.py
 
 #Font for window titles.
-font pango:FuraMono  Nerd Font Medium 12
+font pango:Iosevka Nerd Font Medium 14
 #Colors
 set $back               #2F343F
 set $primary            #D0D0D0
@@ -41,17 +41,18 @@ bindsym $mod+Return exec termite
 #mouse_warping none
 
 for_window [class="^.*"] border pixel 2
-# Float Guake to the top of the screen
-# for_window [class="Main.py"] floating enable, border none, move position 0 25
+for_window [title="^Telegram"] floating enable
+for_window [title="^Slack"] floating enable
+for_window [title="^galculator"] floating enable
 
 # Scratchpad stuff
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+s move scratchpad
-bindsym $mod+a [title="^Developer Tools"] scratchpad show
-bindsym $mod+s scratchpad show
-# Show the first scratchpad window
+bindsym $mod+a [title="^Telegram"] scratchpad show
+bindsym $mod+s [title="^Slack"] scratchpad show
+bindsym $mod+z scratchpad show
 
-# i3-gaps stuff :)
+# i3-gaps stuff
 gaps inner 25
 gaps outer 0
 smart_borders on
@@ -100,13 +101,10 @@ mode "$mode_gaps_outer" {
 #custom app commands (?i) just means case insenitive..
 #for_window [class="(?i)feh"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable
-#for_window [class="(?i)qemu-system-x86_64"] floating enable
-#for_window [class="VirtualBox"] floating enable
 #for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="About Mozilla Firefox"] floating enable
-#for_window [title="About Nightly"] floating enable
 for_window [title="Library"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable
@@ -116,7 +114,7 @@ for_window [window_type="menu"] floating enable
 bindsym $mod+Shift+q kill
 
 # start rofi (program launcher)
-bindsym $mod+d exec --no-startup-id rofi -monitor -1 -show run
+bindsym $mod+d exec --no-startup-id rofi -monitor -1 -show drun
 # start rofi (window switcher)
 bindsym $mod+Shift+d exec --no-startup-id rofi -monitor -1 -show window
 
@@ -142,8 +140,8 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 4
 bindsym $mod+Shift+minus exec xbacklight -dec 4
 bindsym $mod+Shift+plus exec xbacklight -inc 4
 
-bindsym $mod+Ctrl+Escape exec i3lock-wrapper -l
-bindsym XF86Sleep exec i3lock-wrapper -l && echo mem > /sys/power/state
+bindsym $mod+Ctrl+Escape exec i3lock-wrapper
+bindsym XF86Sleep exec i3lock-wrapper && echo mem > /sys/power/state
 bindsym XF86TouchpadToggle exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 bindsym Print exec scrot -e 'mv $f ~/Pictures/screenshots/'
 bindsym $mod+Print exec scrot -u -e 'mv $f ~/Pictures/screenshots/'
@@ -189,6 +187,8 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 #bindsym $mod+p focus parent
+
+workspace 1 output primary
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
@@ -241,14 +241,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-    status_command i3blocks -c ~/.i3/i3blocks.conf 2> ~/.i3/.i3blocks.err
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf 2> ~/.config/i3/i3blocks.err
     strip_workspace_numbers no
-    output eDP1
-    tray_output eDP1
+    output primary
+    tray_output primary
     mode dock
     position top
     height 30
-    font pango: FuraMono Nerd Font Medium 14
+    font pango: Iosevka Nerd Font Regular 16
     colors {
         background $back
         separator $primary

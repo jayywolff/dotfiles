@@ -43,10 +43,11 @@ import sys
 #   http://fortawesome.github.io/Font-Awesome/icons/
 FA_CALCULATOR = '\uf1ec'
 FA_CHROME = '\uf268'
-FA_COMMENTS_O = '\uf0e6'
 FA_CODE = '\uf121'
 FA_FILE_PDF_O = '\uf1c1'
 FA_FILE_TEXT_O = '\uf0f6'
+FA_FILE_EXCEL_O = '\uf1c3'
+FA_RSS_SQUARE = '\uf143'
 FA_FILES_O = '\uf0c5'
 FA_FIREFOX = '\uf269'
 FA_ENVELOPE_O = '\uf0e0'
@@ -54,7 +55,6 @@ FA_EYEDROPPER = '\uf1fb'
 FA_MUSIC = '\uf001'
 FA_PICTURE_O = '\uf03e'
 FA_KEY = '\uf084'
-FA_SPOTIFY = '\uf1bc'
 FA_TERMINAL = '\uf120'
 FA_CUBE = '\uf1b2'
 FA_PLAY_CIRCLE = '\uf144'
@@ -66,28 +66,29 @@ FA_FILM = '\uf008'
 FA_MAP_O = '\uf278'
 FA_DATABASE = '\uf1c0'
 FA_TELEGRAM = '\uf2c6'
+FA_SLACK = '\uf198'
 FA_CLOCK_O = '\uf017'
 WINDOW_ICONS = {
     'termite': FA_TERMINAL,
     'Galculator': FA_CALCULATOR,
-    'Franz': FA_COMMENTS_O,
     'Telegram': FA_TELEGRAM,
     'TelegramDesktop': FA_TELEGRAM,
+    'Slack': FA_SLACK,
     'google-chrome': FA_CHROME,
     'chromium': FA_CHROME,
-    'vivaldi-stable': FA_CHROME,
     'gvim': FA_CODE,
-    'spotify': FA_SPOTIFY,
     'Firefox': FA_FIREFOX,
     'Thunderbird': FA_ENVELOPE_O,
+    'libreoffice-calc': FA_FILE_EXCEL_O,
     'libreoffice': FA_FILE_TEXT_O,
+    'gpodder': FA_RSS_SQUARE,
     'feh': FA_PICTURE_O,
     'gcolor2': FA_EYEDROPPER,
     'atril': FA_FILE_PDF_O,
+    'PdfMod': FA_FILE_PDF_O,
     'Caja': FA_FILES_O,
     'gimp': FA_PAINTBRUSH,
-    'gimp-2.8': FA_PAINTBRUSH,
-    'inkscape': FA_PAINTBRUSH,
+    'gimp-2.10': FA_PAINTBRUSH,
     'VirtualBox': FA_CUBE,
     'mpv': FA_PLAY_CIRCLE,
     'Kodi': FA_PLAY_CIRCLE,
