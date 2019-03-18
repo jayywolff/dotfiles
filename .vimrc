@@ -1,60 +1,77 @@
 set nocompatible   	" Disable vi-compatibility
-set t_Co=256        " Use 256 Colors in terminal
 
 filetype off		              " required for Vundle
 set rtp+=~/.vim/bundle/Vundle.vim " set runtime path to include Vundle
 call vundle#begin()               " init Vundle
 Plugin 'VundleVim/Vundle.vim'     " let Vundle manage Vundle, required
+"must have plugins
 Plugin 'vim-airline/vim-airline'
-Plugin 'morhetz/gruvbox'
+Plugin 'joshdick/onedark.vim'
+"Plugin 'morhetz/gruvbox'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'mhinz/vim-startify'
 "Plugin 'scrooloose/syntastic'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'mattn/emmet-vim'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'valloric/MatchTagAlways'
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'mileszs/ack.vim'
-Plugin 'skwp/greplace.vim'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'tobyS/vmustache'
-Plugin 'duggiefresh/vim-easydir'
-Plugin 'tobyS/pdv'
-Plugin 'NLKNguyen/copy-cut-paste.vim'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-dispatch'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'Valloric/MatchTagAlways'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'mileszs/ack.vim'
+"Plugin 'skwp/greplace.vim'
+Plugin 'tobyS/vmustache'
+Plugin 'NLKNguyen/copy-cut-paste.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-dispatch'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+"vue plugins
 Plugin 'posva/vim-vue'
-Plugin 'noahfrederick/vim-composer'
-Plugin 'noahfrederick/vim-laravel'
+
+"Dependency of vim-rails & vim-laravel
 Plugin 'tpope/vim-projectionist'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+"php plugins
+Plugin 'phpactor/phpactor'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'noahfrederick/vim-composer'
+Plugin 'noahfrederick/vim-laravel'
+Plugin 'tobyS/pdv'
+
+"ruby plugins
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rails'
+
+call vundle#end()          " End of plugins
+filetype plugin indent on  " required
 
 " Put your non-Plugin stuff after this line
 set shell=/bin/zsh	" zsh is cooler than bash
+set updatetime=150 " to update gitgutter quicker
+set encoding=utf8
 
 " Color Settings
-syntax enable
-set background=dark
-colorscheme gruvbox
-set encoding=utf8
+"syntax enable
+"set background=dark
+"colorscheme gruvbox
+
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+let g:onedark_terminal_italics=1
+syntax on
+colorscheme onedark
+let g:airline_theme='onedark'
 
 " gVim - Gui Settings
 if has("gui_running")
@@ -62,7 +79,7 @@ if has("gui_running")
     set guioptions-=T   " Removes top toolbar
     set guioptions-=r   " Removes right hand scroll bar
     set guioptions-=L   " Removes left hand scroll bar
-    set guifont=FuraMono\ Nerd\ Font\ Regular\ 14
+    set guifont=Iosevka\ Nerd\ Font\ Regular\ 15
 endif
 
 set nowrap                      " don't wrap lines
@@ -101,7 +118,10 @@ imap jk <esc>
 map <C-s> <esc>:wall<cr>:SSave return<cr>y<cr>
 imap <C-s> <esc>:wall<cr>
 nmap <leader>w :w<cr>
+nmap <leader>wa :wall<cr>
+nmap <leader>wq :wq<cr>
 nmap <leader>q :q<cr>
+nmap <leader>qa :qall<cr>
 map <C-t> <esc>:tabnew<cr>
 map <leader>t <esc>:tabnew<cr>:Startify<cr>
 
@@ -116,7 +136,6 @@ nnoremap <leader>pd :pwd<cr>
 nnoremap <leader>r :e!<cr>
 "Open a file browser in the current buffer
 nnoremap <leader>f :e .<cr>
-nnoremap <leader>of :exe ':silent !firefox %'<CR>
 
 " Misc helpers
 " Quickly add semi-colon to end of current line
@@ -158,16 +177,10 @@ nmap <C-c> <Plug>CCP_CopyLine
 vmap <C-c> <Plug>CCP_CopyText
 nmap <C-v> <Plug>CCP_PasteText
 
-" Vim Session Handling vim-session
-set sessionoptions-=buffers
-let g:session_autoload = 'no'
-let g:session_autosave = 'no'
-let g:session_persist_colors = 0
-
 " NerdTree Stuff
 nmap <C-b> :NERDTreeToggle<cr>
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
+"let g:NERDTreeDirArrowExpandable = ''
+"let g:NERDTreeDirArrowCollapsible = ''
 let g:NERDTreeMouseMode=2
 let NERDTreeWinPos='right'
 let NERDTreeMinimalUI=1
@@ -184,10 +197,6 @@ set laststatus=2    " Always show the statusline
 set showtabline=2   " Always show the tabline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ''
-"let g:airline#extensions#tabline#left_alt_sep = ''
-"let g:airline_left_sep = ''
-"let g:airline_right_sep = ''
 
 " Edit todo list for project
 nmap <leader>todo vs :e todo.md<cr>
@@ -227,7 +236,7 @@ nnoremap <leader>gr :Greplace<cr>a:wall<cr>
 " Use custom agignore file, skip vcs ignore files, show hidden files
 let g:ctrlp_user_command = 'ag %s --path-to-ignore=/home/jay/.vim/.agignore -l -U --hidden --nocolor -g ""'
 let g:ctrlp_use_caching = 0
-nmap <leader>p :CtrlPBuffer<cr>
+nmap <leader>p :CtrlPMRU<cr>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -243,9 +252,20 @@ nnoremap <Leader>hp :GitGutterPreviewHunk<cr>
 " PHP stuff
 let php_htmlInStrings = 1  "Syntax highlight HTML code inside PHP strings.
 let php_sql_query = 1      "Syntax highlight SQL code inside PHP strings.
-let g:phpcomplete_mappings = {
-  \ 'jump_to_def': '<leader>g',
-  \ }
+"let g:phpcomplete_mappings = {
+  "\ 'jump_to_def': '<leader>g',
+  "\ }
+
+" Include use statement
+nmap <Leader>u :call phpactor#UseAdd()<CR>
+" Invoke the context menu
+nmap <Leader>mm :call phpactor#ContextMenu()<CR>
+" Invoke the navigation menu
+nmap <Leader>nn :call phpactor#Navigate()<CR>
+" Goto definition of class or class member under the cursor
+nmap <Leader>g :call phpactor#GotoDefinition()<CR>
+" Show brief information about the symbol under the cursor
+nmap <Leader>K :call phpactor#Hover()<CR>
 
 " drop a PsySH debug statement
 nmap <leader>dd ieval(\Psy\sh());<esc>==
@@ -258,8 +278,6 @@ let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
 nnoremap <leader>d :call pdv#DocumentWithSnip()<cr>
 
 " Composer Stuff
-nmap <leader>lf <Plug>(composer-find)
-nmap <leader>lu <Plug>(composer-use)
 nmap <leader>ld :!composer dump-autoload<cr>
 
 " Laravel stuff
@@ -269,8 +287,8 @@ nmap <leader>ct :! ~/dotfiles/scripts/laravel_ctags.sh .<cr>
 let g:user_emmet_leader_key = '<C-e>'
 
 " YouCompleteMe Settings
-let g:ycm_register_as_syntastic_checker = 0
-let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_register_as_syntastic_checker = 0
+"let g:ycm_show_diagnostics_ui = 0
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 " Ultisnips Settings
@@ -285,6 +303,7 @@ let g:mta_filetypes = {
     \ 'xml' : 1,
     \ 'jinja' : 1,
     \ 'blade' : 1,
+    \ 'eruby' : 1,
     \ 'vue' : 1,
     \ 'php' : 1,
     \}
@@ -300,6 +319,9 @@ let g:startify_list_order = [
       \ ['   sessions: '],  'sessions',
       \ ['   cwd mru: '],       'dir',
       \ ['   mru: '],       'files']
+
+
+autocmd FileType php setlocal omnifunc=phpactor#Complete
 
 " Put at the very end of your .vimrc file.
 function! PhpSyntaxOverride()
