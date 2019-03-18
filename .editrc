@@ -1,0 +1,2 @@
+bind -v
+bind 'jk' vi-command-mode
