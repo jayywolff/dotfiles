@@ -8,11 +8,11 @@
 tmp_file="/tmp/.i3-gaps"
 
 if [ ! -e "$tmp_file" ]; then
-    #pkill compton
+    pkill compton
     i3-msg gaps inner all set 0
     touch $tmp_file
 else
-    #compton -b
+    compton -b
     i3-msg gaps inner all set 25
     rm $tmp_file
 fi
