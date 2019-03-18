@@ -5,17 +5,16 @@ My dotfiles for a great tiling wm Arch Linux setup. Install your preferred distr
 I don't mind sharing with the community but I mostly make this repo for myself to refer to so there are many things here specific to my setup, tweak as needed.
 Featuring some of the following projects:  
 * vim
+* tmux
 * i3-gaps
 * i3-blocks
-* tmux
 * zsh
 * gtk
 * termite
+* firefox
 * ranger
 * feh
 * lightdm
-* git
-* vimperator
 * compton
 
 
@@ -25,7 +24,7 @@ Featuring some of the following projects:
 ## Installation
   * Install Arch Linux or a headless install of Debian, Ubuntu, Fedora, OpenSuse, or even FreeBSD
 
-  * Install x11, i3-gaps, i3status, i3bar, i3blocks, i3-lock-wrapper, lightdm, lightdm-gtk-greeter, termite, rofi, gvim, compton, ranger, irssi, feh, zsh, zsh-completions, git, net-tools, ssh, light, pulseaudio, etc..
+  * Install x11, i3-gaps, i3status, i3bar, i3blocks, i3ipc, i3-lock-wrapper, lightdm, lightdm-gtk-greeter, xorg-xprop, termite, rofi, gvim, compton, ranger, irssi, feh, zsh, zsh-completions, git, net-tools, network-manager, ssh, light, pulseaudio, editline, firefox, nm-applet, tmux, arc-dark themes, papirus icons, the_silver_searcher, etc..
 
   * Clone or copy dotfiles to ~/
 
