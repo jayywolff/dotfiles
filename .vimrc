@@ -207,7 +207,7 @@ command! Qa qa
 command! Wq wq
 
 set mouse+=a
-if &term =~ '^screen'
+if &term =~ '^tmux'
     " tmux knows the extended mouse mode
     set ttymouse=xterm2
 endif
