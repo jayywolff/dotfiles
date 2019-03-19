@@ -19,7 +19,7 @@ Featuring some of the following projects:
 
 
 ## Current setup screenshot
-![Screenshot](https://i.imgur.com/IlE9JBv.png)
+![Screenshot](https://i.imgur.com/3LgaXtI.png)
 
 ## Installation
   * Install Arch Linux or a headless install of Debian, Ubuntu, Fedora, OpenSuse, or even FreeBSD
