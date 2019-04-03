@@ -36,6 +36,8 @@ compinit
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
 
+export JAVA_HOME=/usr
+
 # Compilation flags
 #export ARCHFLAGS="-arch x86_64"
 
