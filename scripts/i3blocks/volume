@@ -1,16 +1,13 @@
 #!/bin/bash
 
-# pulseaudio-ctrl version
 STATUS=$(pulseaudio-ctl full-status)
-MUTED=$(pulseaudio-ctl full-status | awk '{print $2}' | grep yes)
+MUTED=$(echo $STATUS | awk '{print $2}' | grep yes)
 if [ $MUTED ]
     then echo "婢 MUTE"
 else
-    LEVEL=$(pulseaudio-ctl full-status | awk '{print $1}')
+    LEVEL=$(echo $STATUS | awk '{print $1}')
     echo " $LEVEL%"
 fi
-  # If dB was selected, print that instead
-#------------------------------------------------------------------------
 
 case $BLOCK_BUTTON in
 	1) ( pavucontrol & ) && disown;;
