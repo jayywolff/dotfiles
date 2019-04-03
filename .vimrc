@@ -51,6 +51,9 @@ Plugin 'tobyS/pdv'
 "ruby plugins
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-endwise'
+Plugin 'thoughtbot/vim-rspec'
+
 
 call vundle#end()          " End of plugins
 filetype plugin indent on  " required
@@ -127,7 +130,7 @@ map <leader>t <esc>:tabnew<cr>:Startify<cr>
 
 nmap <leader>vr :edit ~/dotfiles/.vimrc<cr>
 nmap <leader>zr :edit ~/.zshrc<cr>
-nmap <leader>i3 :edit ~/dotfiles/.i3/config<cr>
+nmap <leader>i3 :edit ~/dotfiles/.config/i3/config<cr>
 
 "Change directory to match current file ,cd
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -189,7 +192,7 @@ let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Custom global higlighting enabled for all colorscheme
-"highlight CursorLineNr ctermfg=214 ctermbg=bg guibg=bg
+"highlight VertSplit ctermfg=8 guifg=#3E4452
 
 " Airline Stuff
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
@@ -211,6 +214,9 @@ if &term =~ '^tmux'
     " tmux knows the extended mouse mode
     set ttymouse=xterm2
 endif
+
+" automatically rebalance windows on vim resize
+"autocmd VimResized * :wincmd =
 
 " Vim - Semi Hard Mode
 " no arrow key navigation
@@ -283,6 +289,23 @@ nmap <leader>ld :!composer dump-autoload<cr>
 " Laravel stuff
 nmap <leader>ct :! ~/dotfiles/scripts/laravel_ctags.sh .<cr>
 
+" Rails shortcuts
+nmap <Leader>ec :Econtroller<cr>
+nmap <Leader>em :Emodel<cr>
+nmap <Leader>ev :Eview<cr>
+nmap <Leader>eh :Ehelper 
+nmap <Leader>es :Eschema<cr>
+nmap <Leader>er :Einitializer<cr>
+
+" RSpec shortcuts
+map <Leader>rt :call RunCurrentSpecFile()<CR>
+map <Leader>rs :call RunNearestSpec()<CR>
+map <Leader>rl :call RunLastSpec()<CR>
+map <Leader>ra :call RunAllSpecs()<CR>
+
+" drop a byebug debug statement
+nmap <leader>bb ibyebug<esc>==
+
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-e>'
 
@@ -322,6 +345,21 @@ let g:startify_list_order = [
 
 
 autocmd FileType php setlocal omnifunc=phpactor#Complete
+
+" Saving directories
+function! s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
 
 " Put at the very end of your .vimrc file.
 function! PhpSyntaxOverride()
