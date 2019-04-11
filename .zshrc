@@ -45,6 +45,8 @@ export JAVA_HOME=/usr
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+#
+export GPG_TTY=$(tty)
 
 # For a full list of active aliases, run `alias`.
 # Aliases
