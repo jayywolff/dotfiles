@@ -234,7 +234,7 @@ set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor'
 let g:ackprg = 'ag --vimgrep'
 nmap <leader>s :Ack! '' ./<C-Left><Left><Left>
-nmap <leader>ss :Ack! <cword><cr> ./
+nmap <leader>ss :Ack! <cword> ./<cr>
 nnoremap <leader>gs :Gsearch<cr>
 nnoremap <leader>gr :Greplace<cr>a:wall<cr>
 
