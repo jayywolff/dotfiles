@@ -37,6 +37,7 @@ autoload -Uz compinit
 compinit
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
+export VISUAL=$EDITOR
 
 export JAVA_HOME=/usr
 
@@ -62,6 +63,7 @@ alias pat='php artisan tinker'
 alias pac='php artisan cache:clear;php artisan view:clear; php artisan route:clear;php artisan config:clear; composer dump-autoload'
 alias pu='./vendor/bin/phpunit'
 alias dcu='docker-compose up'
+alias gitlog="git log --author $USER --branches *"
 
 # Disable flow control commands (keeps C-s from freezing everything in vim)
 stty start undef
