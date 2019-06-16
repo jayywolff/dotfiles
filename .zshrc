@@ -62,8 +62,14 @@ alias huhs="homestead up;homestead ssh"
 alias pat='php artisan tinker'
 alias pac='php artisan cache:clear;php artisan view:clear; php artisan route:clear;php artisan config:clear; composer dump-autoload'
 alias pu='./vendor/bin/phpunit'
+alias ras='rails server'
+alias rac='rails console'
 alias dcu='docker-compose up'
 alias gitlog="git log --author $USER --branches *"
+alias gcom="git checkout master"
+alias gcob="git checkout -b"
+alias grem="git checkout master && git pull origin master && git checkout - && git rebase master -i"
+alias gpo="git push -u origin"
 
 # Disable flow control commands (keeps C-s from freezing everything in vim)
 stty start undef

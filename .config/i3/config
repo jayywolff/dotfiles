@@ -53,7 +53,7 @@ bindsym $mod+s [title="^Slack"] scratchpad show
 bindsym $mod+z scratchpad show
 
 # i3-gaps stuff
-gaps inner 25
+gaps inner 35
 gaps outer 0
 smart_borders on
 new_window none

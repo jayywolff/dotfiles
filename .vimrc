@@ -14,6 +14,7 @@ Plugin 'mhinz/vim-startify'
 "Plugin 'scrooloose/syntastic'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-runner'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
@@ -42,18 +43,18 @@ Plugin 'posva/vim-vue'
 Plugin 'tpope/vim-projectionist'
 
 "php plugins
-Plugin 'phpactor/phpactor'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'noahfrederick/vim-composer'
-Plugin 'noahfrederick/vim-laravel'
-Plugin 'tobyS/pdv'
+"Plugin 'phpactor/phpactor'
+"Plugin 'shawncplus/phpcomplete.vim'
+"Plugin 'noahfrederick/vim-composer'
+"Plugin 'noahfrederick/vim-laravel'
+"Plugin 'tobyS/pdv'
 
 "ruby plugins
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
 Plugin 'thoughtbot/vim-rspec'
-
+Plugin 'christoomey/vim-rfactory'
 
 call vundle#end()          " End of plugins
 filetype plugin indent on  " required
@@ -78,11 +79,14 @@ let g:airline_theme='onedark'
 
 " gVim - Gui Settings
 if has("gui_running")
-    set guioptions-=m   " Removes top menu bar
-    set guioptions-=T   " Removes top toolbar
-    set guioptions-=r   " Removes right hand scroll bar
-    set guioptions-=L   " Removes left hand scroll bar
-    set guifont=Iosevka\ Nerd\ Font\ Regular\ 15
+  set guioptions-=m   " Removes top menu bar
+  set guioptions-=T   " Removes top toolbar
+  set guioptions-=r   " Removes right hand scroll bar
+  set guioptions-=L   " Removes left hand scroll bar
+  set guifont=Iosevka\ Nerd\ Font\ Regular\ 15
+else
+  " For Terminal Transparency (with truecolor support)
+  highlight Normal guibg=NONE ctermbg=NONE
 endif
 
 set nowrap                      " don't wrap lines
@@ -104,6 +108,7 @@ set splitbelow                  " create split below when doing horizontal split
 set splitright                  " create split on right when doing a vertical split
 set incsearch
 set timeout timeoutlen=200 ttimeoutlen=100
+set mouse+=a
 
 " Group all swp files and backups into a dir
 set backupdir=~/.vim/backups
@@ -209,10 +214,13 @@ command! Q q " Bind :Q to :q
 command! Qa qa
 command! Wq wq
 
-set mouse+=a
+
+" Tmux settings
 if &term =~ '^tmux'
-    " tmux knows the extended mouse mode
-    set ttymouse=xterm2
+  set ttymouse=xterm2 " tmux knows the extended mouse mode
+  let g:VtrOrientation = "v"
+  nmap <leader>vc :VtrSendCommandToRunner<cr>
+  nmap <leader>vv :VtrSendLinesToRunner<cr>
 endif
 
 " automatically rebalance windows on vim resize
@@ -231,10 +239,10 @@ imap <right> <nop>
 
 " Use Silver Searcher instead of grep (Greplace/Ack.vim settings)
 set grepprg=ag
-let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor'
-let g:ackprg = 'ag --vimgrep'
-nmap <leader>s :Ack! '' ./<C-Left><Left><Left>
-nmap <leader>ss :Ack! <cword> ./<cr>
+let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor --ignore public'
+let g:ackprg = 'ag -S --nogroup --column'
+nmap <leader>s :Ack! "" ./<C-Left><Left><Left>
+nmap <leader>ss :Ack! "<cword>" ./<cr>
 nnoremap <leader>gs :Gsearch<cr>
 nnoremap <leader>gr :Greplace<cr>a:wall<cr>
 
@@ -254,49 +262,104 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 " GitGutter Settings
-nnoremap <Leader>hp :GitGutterPreviewHunk<cr>
+nnoremap <Leader>gd :GitGutterPreviewHunk<cr>
+nnoremap <Leader>gb :Gblame<cr>
 
 " PHP stuff
-let php_htmlInStrings = 1  "Syntax highlight HTML code inside PHP strings.
-let php_sql_query = 1      "Syntax highlight SQL code inside PHP strings.
+"let php_htmlInStrings = 1  "Syntax highlight HTML code inside PHP strings.
+"let php_sql_query = 1      "Syntax highlight SQL code inside PHP strings.
 "let g:phpcomplete_mappings = {
   "\ 'jump_to_def': '<leader>g',
   "\ }
 
 " Include use statement
-nmap <Leader>u :call phpactor#UseAdd()<CR>
+"nmap <Leader>u :call phpactor#UseAdd()<CR>
 " Invoke the context menu
-nmap <Leader>mm :call phpactor#ContextMenu()<CR>
+"nmap <Leader>mm :call phpactor#ContextMenu()<CR>
 " Invoke the navigation menu
-nmap <Leader>nn :call phpactor#Navigate()<CR>
+"nmap <Leader>nn :call phpactor#Navigate()<CR>
 " Goto definition of class or class member under the cursor
-nmap <Leader>g :call phpactor#GotoDefinition()<CR>
+"nmap <Leader>g :call phpactor#GotoDefinition()<CR>
 " Show brief information about the symbol under the cursor
-nmap <Leader>K :call phpactor#Hover()<CR>
+"nmap <Leader>K :call phpactor#Hover()<CR>
 
 " drop a PsySH debug statement
-nmap <leader>dd ieval(\Psy\sh());<esc>==
+"nmap <leader>dd ieval(\Psy\sh());<esc>==
 
 " PHP phpunit test function shortcut
-nmap <leader>dt zz0==o<esc>o/** @test */<esc>ofunction ()<esc>o{<cr><cr><esc>?f<cr>ela
+"nmap <leader>dt zz0==o<esc>o/** @test */<esc>ofunction ()<esc>o{<cr><cr><esc>?f<cr>ela
 
 " PHP docblocks
-let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-nnoremap <leader>d :call pdv#DocumentWithSnip()<cr>
+"let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+"nnoremap <leader>d :call pdv#DocumentWithSnip()<cr>
 
 " Composer Stuff
-nmap <leader>ld :!composer dump-autoload<cr>
+"nmap <leader>ld :!composer dump-autoload<cr>
 
 " Laravel stuff
-nmap <leader>ct :! ~/dotfiles/scripts/laravel_ctags.sh .<cr>
+"nmap <leader>ct :! ~/dotfiles/scripts/laravel_ctags.sh .<cr>
 
 " Rails shortcuts
+nmap <leader>ct :Dispatch ~/dotfiles/scripts/rails_ctags.sh .<cr>
+
+nnoremap <C-]> :tag <C-R>=expand("<cword>")<CR><CR>
+nnoremap <silent><leader>tt <C-w><C-]><C-w>T
+
+function! s:CustomRubySyntax()
+  if empty(get(b:, "current_syntax"))
+    return
+  endif
+
+  unlet b:current_syntax
+  syn include @SQL syntax/sql.vim
+  syn region sqlHeredoc start=/\v\<\<[-~]SQL/ end=/\vSQL/ keepend contains=@SQL
+  let b:current_syntax = "ruby"
+
+  if expand("%") =~# "_spec\.rb$"
+    syn match rubyTestHelper "\<subject\>"
+    syn match rubyTestMacro "\<let\>!\="
+    syn keyword rubyTestMacro after around before
+    syn keyword rubyTestMacro
+          \ context
+          \ describe
+          \ feature
+          \ containedin=rubyKeywordAsMethod
+    syn keyword rubyTestMacro it it_behaves_like
+    syn keyword rubyComment
+          \ xcontext
+          \ xdescribe
+          \ xfeature
+          \ containedin=rubyKeywordAsMethod
+    syn keyword rubyComment xit
+    syn keyword rubyAssertion
+          \ allow
+          \ expect
+          \ is_expected
+          \ skip
+    syn keyword rubyTestHelper
+          \ class_double
+          \ described_class
+          \ double
+          \ instance_double
+          \ instance_spy
+          \ spy
+  endif
+endfunction
+
+augroup ft_options
+  autocmd!
+
+  autocmd FileType ruby call <SID>CustomRubySyntax()
+  autocmd FileType ruby setlocal iskeyword+=?,!,=
+  " autocmd FileType ruby iabbrev <buffer> dinit def initialize
+augroup END
+
 nmap <Leader>ec :Econtroller<cr>
 nmap <Leader>em :Emodel<cr>
 nmap <Leader>ev :Eview<cr>
 nmap <Leader>eh :Ehelper 
-nmap <Leader>es :Eschema<cr>
-nmap <Leader>er :Einitializer<cr>
+nmap <Leader>es :e ./db/schema.rb<cr>
+nmap <Leader>er :e ./config/routes.rb<cr>
 
 " RSpec shortcuts
 map <Leader>rt :call RunCurrentSpecFile()<CR>
@@ -306,6 +369,8 @@ map <Leader>ra :call RunAllSpecs()<CR>
 
 " drop a byebug debug statement
 nmap <leader>bb ibyebug<esc>==
+" drop a pry debug statement
+nmap <leader>bp ibinding.pry<esc>==
 
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-e>'
@@ -345,30 +410,30 @@ let g:startify_list_order = [
       \ ['   mru: '],       'files']
 
 
-autocmd FileType php setlocal omnifunc=phpactor#Complete
+"autocmd FileType php setlocal omnifunc=phpactor#Complete
 
 " Saving directories
 function! s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
+  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+    let dir=fnamemodify(a:file, ':h')
+    if !isdirectory(dir)
+      call mkdir(dir, 'p')
     endif
+  endif
 endfunction
 
 augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+  autocmd!
+  autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
 " Put at the very end of your .vimrc file.
-function! PhpSyntaxOverride()
-  hi! def link phpDocTags  phpDefine
-  hi! def link phpDocParam phpType
-endfunction
+"function! PhpSyntaxOverride()
+"hi! def link phpDocTags  phpDefine
+"hi! def link phpDocParam phpType
+"endfunction
 
-augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
-augroup END
+"augroup phpSyntaxOverride
+"autocmd!
+"autocmd FileType php call PhpSyntaxOverride()
+"augroup END

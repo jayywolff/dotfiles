@@ -5,11 +5,7 @@ dist/
 tmp/
 images/
 fonts/
-public/assets/
-public/css/
-public/fonts/
-public/js/
-public/exports/
+public/
 .git/
 .jekyll/
 .tmp/
