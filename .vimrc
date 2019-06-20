@@ -219,6 +219,7 @@ command! Wq wq
 if &term =~ '^tmux'
   set ttymouse=xterm2 " tmux knows the extended mouse mode
   let g:VtrOrientation = "v"
+  nmap <leader>va :VtrAttachToPane<cr>
   nmap <leader>vc :VtrSendCommandToRunner<cr>
   nmap <leader>vv :VtrSendLinesToRunner<cr>
 endif
