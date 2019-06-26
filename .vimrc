@@ -244,6 +244,8 @@ let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore
 let g:ackprg = 'ag -S --nogroup --column'
 nmap <leader>s :Ack! "" ./<C-Left><Left><Left>
 nmap <leader>ss :Ack! "<cword>" ./<cr>
+nmap <leader>sa :Ack! "<cword>" ./app<cr>
+nmap <leader>sd :Ack! "<cword>" ./
 nnoremap <leader>gs :Gsearch<cr>
 nnoremap <leader>gr :Greplace<cr>a:wall<cr>
 
