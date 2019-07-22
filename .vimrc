@@ -360,7 +360,6 @@ augroup END
 nmap <Leader>ec :Econtroller<cr>
 nmap <Leader>em :Emodel<cr>
 nmap <Leader>ev :Eview<cr>
-nmap <Leader>eh :Ehelper 
 nmap <Leader>es :e ./db/schema.rb<cr>
 nmap <Leader>er :e ./config/routes.rb<cr>
 

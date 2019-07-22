@@ -42,14 +42,14 @@ bindsym $mod+Return exec termite
 
 for_window [class="^.*"] border pixel 2
 for_window [title="^Telegram"] floating enable
-for_window [title="^Slack"] floating enable
+for_window [class="Slack"] floating enable
 for_window [title="^galculator"] floating enable
 
 # Scratchpad stuff
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+s move scratchpad
 bindsym $mod+a [title="^Telegram"] scratchpad show
-bindsym $mod+s [title="^Slack"] scratchpad show
+bindsym $mod+s [class="Slack"] scratchpad show
 bindsym $mod+z scratchpad show
 
 # i3-gaps stuff

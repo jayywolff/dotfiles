@@ -70,6 +70,7 @@ alias gcom="git checkout master"
 alias gcob="git checkout -b"
 alias grem="git checkout master && git pull origin master && git checkout - && git rebase master -i"
 alias gpo="git push -u origin"
+alias gdp="git diff --patience"
 alias hrc="heroku run rails c -a"
 
 # Disable flow control commands (keeps C-s from freezing everything in vim)
