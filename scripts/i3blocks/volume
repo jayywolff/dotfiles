@@ -1,12 +1,10 @@
 #!/bin/bash
 
-STATUS=$(pulseaudio-ctl full-status)
-MUTED=$(echo $STATUS | awk '{print $2}' | grep yes)
+MUTED=$(pulseaudio-ctl full-status | awk '{print $2}' | grep yes)
 if [ $MUTED ]
     then echo "婢 MUTE"
 else
-    LEVEL=$(echo $STATUS | awk '{print $1}')
-    echo " $LEVEL%"
+  echo " $(pulseaudio-ctl current)"
 fi
 
 case $BLOCK_BUTTON in
