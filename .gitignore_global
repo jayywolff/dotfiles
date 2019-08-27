@@ -1,4 +1,6 @@
 *.swp
 *.swo
 todo.txt
+application.yml
 tags
+.byebug_history

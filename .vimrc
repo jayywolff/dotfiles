@@ -54,7 +54,6 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'christoomey/vim-rfactory'
 
 call vundle#end()          " End of plugins
 filetype plugin indent on  " required
@@ -357,6 +356,7 @@ augroup ft_options
   " autocmd FileType ruby iabbrev <buffer> dinit def initialize
 augroup END
 
+nmap <Leader>a :A<cr>
 nmap <Leader>ec :Econtroller<cr>
 nmap <Leader>em :Emodel<cr>
 nmap <Leader>ev :Eview<cr>
@@ -370,9 +370,9 @@ map <Leader>rl :call RunLastSpec()<CR>
 map <Leader>ra :call RunAllSpecs()<CR>
 
 " drop a byebug debug statement
-nmap <leader>bb ibyebug<esc>==
+"nmap <leader>bb ibyebug<esc>==
 " drop a pry debug statement
-nmap <leader>bp ibinding.pry<esc>==
+nmap <leader>bb <esc>obinding.pry<esc>==:w<cr>
 
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-e>'

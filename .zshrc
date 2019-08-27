@@ -29,7 +29,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORMTHEME="gtk2"
 
 source $ZSH/oh-my-zsh.sh
 
