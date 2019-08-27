@@ -129,8 +129,6 @@ nmap <leader>wa :wall<cr>
 nmap <leader>wq :wq<cr>
 nmap <leader>q :q<cr>
 nmap <leader>qa :qall<cr>
-map <C-t> <esc>:tabnew<cr>
-map <leader>t <esc>:tabnew<cr>:Startify<cr>
 
 nmap <leader>vr :edit ~/dotfiles/.vimrc<cr>
 nmap <leader>zr :edit ~/.zshrc<cr>
@@ -157,7 +155,6 @@ nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
 " Open a new buffer
 nmap <leader>n :new<cr>
-nmap <leader>tt :%s/\s\+$//ei<cr>:w<cr>
 
 " Resize vsplit;
 nnoremap ;h :vertical resize +5<cr>
@@ -171,6 +168,9 @@ nnoremap <leader>2 <C-h>:vertical resize 105<cr>
 set nohidden "remove file from buffer when closing tab
 map <leader>l :tabnext<cr>
 map <leader>h :tabprevious<cr>
+map <C-t> <esc>:tabnew<cr>
+" move current buffer to a new tab
+nmap <leader>t <c-w><s-t>
 
 " Easier window navigation
 nnoremap <C-h> <C-w>h
