@@ -364,15 +364,15 @@ nmap <Leader>es :e ./db/schema.rb<cr>
 nmap <Leader>er :e ./config/routes.rb<cr>
 
 " RSpec shortcuts
+map <Leader>r :call RunNearestSpec()<CR>
+map <Leader>rr :call RunLastSpec()<CR>
 map <Leader>rt :call RunCurrentSpecFile()<CR>
-map <Leader>rs :call RunNearestSpec()<CR>
-map <Leader>rl :call RunLastSpec()<CR>
 map <Leader>ra :call RunAllSpecs()<CR>
 
-" drop a byebug debug statement
-"nmap <leader>bb ibyebug<esc>==
 " drop a pry debug statement
-nmap <leader>bb <esc>obinding.pry<esc>==:w<cr>
+nmap <leader>b <esc>obinding.pry<esc>==:w<cr>
+" drop a byebug debug statement
+nmap <leader>bb <esc>obyebug<esc>==:w<cr>
 
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-e>'
