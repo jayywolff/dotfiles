@@ -140,8 +140,8 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 4
 bindsym $mod+Shift+minus exec xbacklight -dec 4
 bindsym $mod+Shift+plus exec xbacklight -inc 4
 
-bindsym $mod+Ctrl+Escape exec i3lock-wrapper
-bindsym XF86Sleep exec i3lock-wrapper && echo mem > /sys/power/state
+bindsym $mod+Ctrl+Escape exec i3lock --blur=2
+bindsym XF86Sleep exec i3lock --blur=4 && echo mem > /sys/power/state
 bindsym XF86TouchpadToggle exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 bindsym Print exec scrot -e 'mv $f ~/Pictures/screenshots/'
 bindsym $mod+Print exec scrot -u -e 'mv $f ~/Pictures/screenshots/'
