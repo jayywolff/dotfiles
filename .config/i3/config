@@ -133,6 +133,8 @@ bindsym $mod+0 exec pulseaudio-ctl mute
 bindsym $mod+p exec cmus-remote --pause
 bindsym $mod+bracketleft exec cmus-remote --prev
 bindsym $mod+bracketright exec cmus-remote --next
+bindsym $mod+Shift+bracketleft exec cmus-remote -C "seek -10"
+bindsym $mod+Shift+bracketright exec cmus-remote -C "seek +10"
 
 #backlight controls (laptop monitor)
 bindsym XF86MonBrightnessDown exec xbacklight -dec 4
