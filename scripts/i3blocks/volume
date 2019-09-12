@@ -1,15 +1,14 @@
 #!/bin/bash
 
-MUTED=$(pulseaudio-ctl full-status | awk '{print $2}' | grep yes)
-if [ $MUTED ]
+if [ $(pulsemixer --get-mute) -eq 1 ]
     then echo "婢 MUTE"
 else
-  echo " $(pulseaudio-ctl current)"
+  echo " $(pulsemixer --get-volume | awk '{print $1}')%"
 fi
 
 case $BLOCK_BUTTON in
 	1) ( pavucontrol & ) && disown;;
-	3) pulseaudio-ctl mute ;;  # right click, mute/unmute
-	4) pulseaudio-ctl up ;; # scroll up, increase
-	5) pulseaudio-ctl down ;; # scroll down, decrease
+	3) pulsemixer --toggle-mute ;;  # right click, mute/unmute
+	4) pulsemixer --change-volume +5 ;; # scroll up, increase
+	5) pulsemixer --change-volume -5 ;; # scroll down, decrease
 esac

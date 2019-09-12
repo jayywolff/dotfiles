@@ -122,12 +122,12 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -monitor -1 -show window
 #custom special key fixes
 
 #audio controls
-bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
-bindsym XF86AudioLowerVolume exec pulseaudio-ctl down
-bindsym XF86AudioMute exec pulseaudio-ctl mute
-bindsym $mod+equal exec pulseaudio-ctl up
-bindsym $mod+minus exec pulseaudio-ctl down
-bindsym $mod+0 exec pulseaudio-ctl mute
+bindsym XF86AudioRaiseVolume exec pulsemixer --change-volume +5
+bindsym XF86AudioLowerVolume exec pulsemixer --change-volume -5
+bindsym XF86AudioMute exec pulsemixer --toggle-mute
+bindsym $mod+equal exec pulsemixer --change-volume +5
+bindsym $mod+minus exec pulsemixer --change-volume -5
+bindsym $mod+0 exec pulsemixer --toggle-mute
 
 #cmus controls
 bindsym $mod+p exec cmus-remote --pause
