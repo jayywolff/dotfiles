@@ -9,7 +9,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'joshdick/onedark.vim'
 "Plugin 'morhetz/gruvbox'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'mhinz/vim-startify'
 "Plugin 'scrooloose/syntastic'
 Plugin 'editorconfig/editorconfig-vim'
@@ -138,7 +138,7 @@ nmap <leader>i3 :edit ~/dotfiles/.config/i3/config<cr>
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>pd :pwd<cr>
 "Reload the current buffer
-nnoremap <leader>r :e!<cr>
+nnoremap <leader>e :e!<cr>
 "Open a file browser in the current buffer
 nnoremap <leader>f :e .<cr>
 
