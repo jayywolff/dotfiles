@@ -1,17 +1,14 @@
-set nocompatible   	" Disable vi-compatibility
-
+set nocompatible   	              " Disable vi-compatibility
 filetype off		              " required for Vundle
 set rtp+=~/.vim/bundle/Vundle.vim " set runtime path to include Vundle
 call vundle#begin()               " init Vundle
 Plugin 'VundleVim/Vundle.vim'     " let Vundle manage Vundle, required
-"must have plugins
+
 Plugin 'vim-airline/vim-airline'
 Plugin 'joshdick/onedark.vim'
-"Plugin 'morhetz/gruvbox'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'mhinz/vim-startify'
-"Plugin 'scrooloose/syntastic'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
@@ -27,32 +24,21 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mileszs/ack.vim'
-"Plugin 'skwp/greplace.vim'
 Plugin 'tobyS/vmustache'
 Plugin 'NLKNguyen/copy-cut-paste.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-dispatch'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-
-"vue plugins
 Plugin 'posva/vim-vue'
 
-"Dependency of vim-rails & vim-laravel
-Plugin 'tpope/vim-projectionist'
-
-"php plugins
-"Plugin 'phpactor/phpactor'
-"Plugin 'shawncplus/phpcomplete.vim'
-"Plugin 'noahfrederick/vim-composer'
-"Plugin 'noahfrederick/vim-laravel'
-"Plugin 'tobyS/pdv'
-
-"ruby plugins
+" Rails dev plugins
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-cucumber'
 Plugin 'thoughtbot/vim-rspec'
 
 call vundle#end()          " End of plugins
@@ -60,14 +46,10 @@ filetype plugin indent on  " required
 
 " Put your non-Plugin stuff after this line
 set shell=/bin/zsh	" zsh is cooler than bash
-set updatetime=150 " to update gitgutter quicker
+set updatetime=150  " update gitgutter quicker
 set encoding=utf8
 
 " Color Settings
-"syntax enable
-"set background=dark
-"colorscheme gruvbox
-
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
@@ -90,11 +72,10 @@ endif
 
 set nowrap                      " don't wrap lines
 set tabstop=4                   " a tab is four spaces
-set smarttab
-set tags=tags
 set softtabstop=4               " when hitting <BS>, pretend like a tab is removed, even if spaces
-set expandtab                   " expand tabs by default (overloadable per file type later)
 set shiftwidth=4                " number of spaces to use for autoindenting
+set smarttab
+set expandtab                   " expand tabs by default (overloadable per file type later)
 set shiftround                  " use multiple of shiftwidth when indenting with '<' and '>'
 set autoindent                  " always set autoindenting on
 set copyindent                  " copy the previous indentation on autoindenting
@@ -105,6 +86,7 @@ set noerrorbells                " don't beep
 set relativenumber              " show line numbers relative to cursor position
 set splitbelow                  " create split below when doing horizontal split
 set splitright                  " create split on right when doing a vertical split
+set tags=tags                   " CTags file
 set incsearch
 set timeout timeoutlen=200 ttimeoutlen=100
 set mouse+=a
@@ -117,9 +99,6 @@ set directory=~/.vim/backups
 let mapleader = ","
 let g:mapleader = ","
 
-"Easy escaping to normal mode
-imap jk <esc>
-
 " Note that remapping C-s requires flow control to be disabled
 " (e.g. in .bashrc or .zshrc)
 map <C-s> <esc>:wall<cr>:SSave return<cr>y<cr>
@@ -131,7 +110,7 @@ nmap <leader>q :q<cr>
 nmap <leader>qa :qall<cr>
 
 nmap <leader>vr :edit ~/dotfiles/.vimrc<cr>
-nmap <leader>zr :edit ~/.zshrc<cr>
+nmap <leader>zr :edit ~/dotfiles/.zshrc<cr>
 nmap <leader>i3 :edit ~/dotfiles/.config/i3/config<cr>
 
 "Change directory to match current file ,cd
@@ -143,6 +122,8 @@ nnoremap <leader>e :e!<cr>
 nnoremap <leader>f :e .<cr>
 
 " Misc helpers
+"Easy escaping to normal mode
+imap jk <esc>
 " Quickly add semi-colon to end of current line
 nmap ;; A;<esc>
 nmap <leader><space> i<space><esc>
@@ -155,6 +136,8 @@ nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
 " Open a new buffer
 nmap <leader>n :new<cr>
+nnoremap <C-]> :tag <C-R>=expand("<cword>")<CR><CR>
+nnoremap <silent><leader>tt <C-w><C-]><C-w>T
 
 " Resize vsplit;
 nnoremap ;h :vertical resize +5<cr>
@@ -166,9 +149,9 @@ nnoremap <leader>2 <C-h>:vertical resize 105<cr>
 
 " Tab handling
 set nohidden "remove file from buffer when closing tab
-map <leader>l :tabnext<cr>
-map <leader>h :tabprevious<cr>
-map <C-t> <esc>:tabnew<cr>
+nmap <leader>l :tabnext<cr>
+nmap <leader>h :tabprevious<cr>
+nmap <C-t> <esc>:tabnew<cr>
 " move current buffer to a new tab
 nmap <leader>t <c-w><s-t>
 
@@ -223,9 +206,6 @@ if &term =~ '^tmux'
   nmap <leader>vv :VtrSendLinesToRunner<cr>
 endif
 
-" automatically rebalance windows on vim resize
-"autocmd VimResized * :wincmd =
-
 " Vim - Semi Hard Mode
 " no arrow key navigation
 map <up> <nop>
@@ -267,45 +247,8 @@ let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 nnoremap <Leader>gd :GitGutterPreviewHunk<cr>
 nnoremap <Leader>gb :Gblame<cr>
 
-" PHP stuff
-"let php_htmlInStrings = 1  "Syntax highlight HTML code inside PHP strings.
-"let php_sql_query = 1      "Syntax highlight SQL code inside PHP strings.
-"let g:phpcomplete_mappings = {
-  "\ 'jump_to_def': '<leader>g',
-  "\ }
-
-" Include use statement
-"nmap <Leader>u :call phpactor#UseAdd()<CR>
-" Invoke the context menu
-"nmap <Leader>mm :call phpactor#ContextMenu()<CR>
-" Invoke the navigation menu
-"nmap <Leader>nn :call phpactor#Navigate()<CR>
-" Goto definition of class or class member under the cursor
-"nmap <Leader>g :call phpactor#GotoDefinition()<CR>
-" Show brief information about the symbol under the cursor
-"nmap <Leader>K :call phpactor#Hover()<CR>
-
-" drop a PsySH debug statement
-"nmap <leader>dd ieval(\Psy\sh());<esc>==
-
-" PHP phpunit test function shortcut
-"nmap <leader>dt zz0==o<esc>o/** @test */<esc>ofunction ()<esc>o{<cr><cr><esc>?f<cr>ela
-
-" PHP docblocks
-"let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-"nnoremap <leader>d :call pdv#DocumentWithSnip()<cr>
-
-" Composer Stuff
-"nmap <leader>ld :!composer dump-autoload<cr>
-
-" Laravel stuff
-"nmap <leader>ct :! ~/dotfiles/scripts/laravel_ctags.sh .<cr>
-
-" Rails shortcuts
+" Ruby Stuff
 nmap <leader>ct :Dispatch ~/dotfiles/scripts/rails_ctags.sh .<cr>
-
-nnoremap <C-]> :tag <C-R>=expand("<cword>")<CR><CR>
-nnoremap <silent><leader>tt <C-w><C-]><C-w>T
 
 function! s:CustomRubySyntax()
   if empty(get(b:, "current_syntax"))
@@ -350,12 +293,12 @@ endfunction
 
 augroup ft_options
   autocmd!
-
   autocmd FileType ruby call <SID>CustomRubySyntax()
   autocmd FileType ruby setlocal iskeyword+=?,!,=
-  " autocmd FileType ruby iabbrev <buffer> dinit def initialize
+  autocmd FileType ruby iabbrev <buffer> dinit def initialize
 augroup END
 
+" Rails shortcuts
 nnoremap va :AV<cr>
 nmap <Leader>a :A<cr>
 nmap <Leader>ec :Econtroller<cr>
@@ -370,17 +313,13 @@ map <Leader>rr :call RunLastSpec()<CR>
 map <Leader>rt :call RunCurrentSpecFile()<CR>
 map <Leader>ra :call RunAllSpecs()<CR>
 
-" drop a pry debug statement
+" insert pry binding
 nmap <leader>b <esc>obinding.pry<esc>==:w<cr>
-" drop a byebug debug statement
-nmap <leader>bb <esc>obyebug<esc>==:w<cr>
 
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-e>'
 
 " YouCompleteMe Settings
-"let g:ycm_register_as_syntastic_checker = 0
-"let g:ycm_show_diagnostics_ui = 0
 let g:ycm_collect_identifiers_from_tags_files = 1
 
 " Ultisnips Settings
@@ -413,8 +352,6 @@ let g:startify_list_order = [
       \ ['   mru: '],       'files']
 
 
-"autocmd FileType php setlocal omnifunc=phpactor#Complete
-
 " Saving directories
 function! s:MkNonExDir(file, buf)
   if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
@@ -429,14 +366,3 @@ augroup BWCCreateDir
   autocmd!
   autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
-
-" Put at the very end of your .vimrc file.
-"function! PhpSyntaxOverride()
-"hi! def link phpDocTags  phpDefine
-"hi! def link phpDocParam phpType
-"endfunction
-
-"augroup phpSyntaxOverride
-"autocmd!
-"autocmd FileType php call PhpSyntaxOverride()
-"augroup END
