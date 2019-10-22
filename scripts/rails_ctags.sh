@@ -13,5 +13,8 @@ ctags --languages=ruby --recurse=yes \
 --exclude="log" \
 --exclude=".git" \
 --exclude="*.min.js" . $(bundle list --paths)
+tac tags > tags_
+rm tags
+mv tags_ tags
 
 echo "Fresh ctags generated @$(pwd) on $(date)"

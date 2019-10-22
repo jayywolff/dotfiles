@@ -4,5 +4,5 @@ root = true
 indent_style = space
 indent_size = 2
 
-[*.{rb,scss,css,sass,js,jsx,haml,erb,sql}]
+[*.{rb,scss,css,sass,js,jsx,haml,erb,sql,feature}]
 trim_trailing_whitespace = true

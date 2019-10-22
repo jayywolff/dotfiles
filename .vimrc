@@ -356,6 +356,7 @@ augroup ft_options
   " autocmd FileType ruby iabbrev <buffer> dinit def initialize
 augroup END
 
+nnoremap va :AV<cr>
 nmap <Leader>a :A<cr>
 nmap <Leader>ec :Econtroller<cr>
 nmap <Leader>em :Emodel<cr>
