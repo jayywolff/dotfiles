@@ -45,17 +45,17 @@ call vundle#end()          " End of plugins
 filetype plugin indent on  " required
 
 " Put your non-Plugin stuff after this line
-set shell=/bin/zsh	" zsh is cooler than bash
-set updatetime=150  " update gitgutter quicker
+set shell=/bin/zsh " zsh is cooler than bash
+set updatetime=150 " update gitgutter faster
 set encoding=utf8
 
 " Color Settings
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-let g:onedark_terminal_italics=1
 syntax on
 colorscheme onedark
+let g:onedark_terminal_italics=1
 let g:airline_theme='onedark'
 
 " gVim - Gui Settings
@@ -151,7 +151,7 @@ nnoremap <leader>2 <C-h>:vertical resize 105<cr>
 set nohidden "remove file from buffer when closing tab
 nmap <leader>l :tabnext<cr>
 nmap <leader>h :tabprevious<cr>
-nmap <C-t> <esc>:tabnew<cr>
+nmap <C-t> :tabnew<cr>
 " move current buffer to a new tab
 nmap <leader>t <c-w><s-t>
 
@@ -220,7 +220,7 @@ imap <right> <nop>
 " Use Silver Searcher instead of grep (Greplace/Ack.vim settings)
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor --ignore public'
-let g:ackprg = 'ag -S --nogroup --column'
+let g:ackprg = 'ag -S --nogroup --column --path-to-ignore=/home/jay/.vim/.agignore'
 nmap <leader>s :Ack! "" ./<C-Left><Left><Left>
 nmap <leader>ss :Ack! "<cword>" ./<cr>
 nmap <leader>sa :Ack! "<cword>" ./app<cr>
@@ -245,6 +245,7 @@ let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 " GitGutter Settings
 nnoremap <Leader>gd :GitGutterPreviewHunk<cr>
+nnoremap <Leader>gss :GitGutterStageHunk<cr>
 nnoremap <Leader>gb :Gblame<cr>
 
 " Ruby Stuff
@@ -299,6 +300,8 @@ augroup ft_options
 augroup END
 
 " Rails shortcuts
+" TODO convert this call to a function to run vim-cucumber
+" when the current buffer is in the features dir
 nnoremap va :AV<cr>
 nmap <Leader>a :A<cr>
 nmap <Leader>ec :Econtroller<cr>
@@ -314,7 +317,7 @@ map <Leader>rt :call RunCurrentSpecFile()<CR>
 map <Leader>ra :call RunAllSpecs()<CR>
 
 " insert pry binding
-nmap <leader>b <esc>obinding.pry<esc>==:w<cr>
+nmap <leader>b obinding.pry<esc>==:w<cr>
 
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-e>'
@@ -346,11 +349,15 @@ let g:startify_files_number = 5
 let g:startify_custom_header =
 \ map(split(system('echo "Vim Tip of the day:"; fortune vimtips'), '\n'), '"   ". v:val') + ['','']
 let g:startify_list_order = [
-      \ ['   bookmarks: '], 'bookmarks',
-      \ ['   sessions: '],  'sessions',
-      \ ['   cwd mru: '],       'dir',
-      \ ['   mru: '],       'files']
+      \ ['  bookmarks:'], 'bookmarks',
+      \ ['  sessions:'],  'sessions',
+      \ ['  cwd mru:'],   'dir',
+      \ ['  mru:'],       'files']
 
+
+if !isdirectory($HOME . '/.vim/backups')
+  call mkdir($HOME . '/.vim/backups', 'p')
+endif
 
 " Saving directories
 function! s:MkNonExDir(file, buf)
