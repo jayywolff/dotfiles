@@ -242,10 +242,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 " GitGutter Settings
-nnoremap gb :Gblame<cr>
-nnoremap gd :GitGutterPreviewHunk<cr>
+nnoremap <Leader>gd :GitGutterPreviewHunk<cr>
 nnoremap <Leader>gss :GitGutterStageHunk<cr>
-nnoremap <Leader>gdd :GitGutterUndoHunk<cr>
+nnoremap <Leader>gb :Gblame<cr>
 
 " Ruby Stuff
 nmap <leader>ct :Dispatch ~/dotfiles/scripts/rails_ctags.sh .<cr>
@@ -353,10 +352,13 @@ let g:startify_list_order = [
       \ ['  cwd mru:'],   'dir',
       \ ['  mru:'],       'files']
 
-
 "if !isdirectory($HOME . '/.vim/backups')
   "call mkdir($HOME . '/.vim/backups', 'p')
 "endif
+
+if !isdirectory($HOME . '/.vim/backups')
+  call mkdir($HOME . '/.vim/backups', 'p')
+endif
 
 " Saving directories
 function! s:MkNonExDir(file, buf)
