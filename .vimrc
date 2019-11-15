@@ -225,13 +225,11 @@ nmap <leader>s :Ack! "" ./<C-Left><Left><Left>
 nmap <leader>ss :Ack! "<cword>" ./<cr>
 nmap <leader>sa :Ack! "<cword>" ./app<cr>
 nmap <leader>sd :Ack! "<cword>" ./
-nnoremap <leader>gs :Gsearch<cr>
-nnoremap <leader>gr :Greplace<cr>a:wall<cr>
 
 " CtrlP Stuff
 " Make CtrlP use ag for listing the files. Way faster and no useless files.
 " Use custom agignore file, skip vcs ignore files, show hidden files
-let g:ctrlp_user_command = 'ag %s --path-to-ignore=/home/jay/.vim/.agignore -l -U --hidden --nocolor -g ""'
+let g:ctrlp_user_command = 'ack -s --smart-case --follow --sort-files -l ""'
 let g:ctrlp_use_caching = 0
 nmap <leader>p :CtrlPMRU<cr>
 let g:ctrlp_map = '<c-p>'
@@ -244,9 +242,10 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 " GitGutter Settings
-nnoremap <Leader>gd :GitGutterPreviewHunk<cr>
+nnoremap gb :Gblame<cr>
+nnoremap gd :GitGutterPreviewHunk<cr>
 nnoremap <Leader>gss :GitGutterStageHunk<cr>
-nnoremap <Leader>gb :Gblame<cr>
+nnoremap <Leader>gdd :GitGutterUndoHunk<cr>
 
 " Ruby Stuff
 nmap <leader>ct :Dispatch ~/dotfiles/scripts/rails_ctags.sh .<cr>
@@ -355,9 +354,9 @@ let g:startify_list_order = [
       \ ['  mru:'],       'files']
 
 
-if !isdirectory($HOME . '/.vim/backups')
-  call mkdir($HOME . '/.vim/backups', 'p')
-endif
+"if !isdirectory($HOME . '/.vim/backups')
+  "call mkdir($HOME . '/.vim/backups', 'p')
+"endif
 
 " Saving directories
 function! s:MkNonExDir(file, buf)
