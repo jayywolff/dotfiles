@@ -1,0 +1,325 @@
+set nocompatible   	              " Disable vi-compatibility
+filetype off		              " required for Vundle
+set rtp+=~/.vim/bundle/Vundle.vim " set runtime path to include Vundle
+call vundle#begin()               " init Vundle
+Plugin 'VundleVim/Vundle.vim'     " let Vundle manage Vundle, required
+
+Plugin 'neoclide/coc.nvim', {'pinned': 1}
+Plugin 'vim-airline/vim-airline'
+Plugin 'joshdick/onedark.vim'
+Plugin 'mhinz/vim-startify'
+Plugin 'junegunn/fzf.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-runner'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'scrooloose/nerdtree'
+Plugin 'mattn/emmet-vim'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'Valloric/MatchTagAlways'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-dispatch'
+Plugin 'janko/vim-test'
+
+call vundle#end()          " End of plugins
+filetype plugin indent on  " required
+
+" Put your non-Plugin stuff after this line
+set shell=/bin/zsh " zsh is cooler than bash
+set updatetime=150 " update gitgutter faster
+set encoding=utf8
+
+" Color Settings
+"let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+syntax on
+colorscheme onedark
+let g:onedark_terminal_italics=1
+let g:airline_theme='onedark'
+
+" For Terminal Transparency (with truecolor support)
+"highlight Normal guibg=NONE ctermbg=NONE
+
+set nowrap                      " don't wrap lines
+set tabstop=4                   " a tab is four spaces
+set softtabstop=4               " when hitting <BS>, pretend like a tab is removed, even if spaces
+set shiftwidth=4                " number of spaces to use for autoindenting
+set smarttab
+set expandtab                   " expand tabs by default (overloadable per file type later)
+set shiftround                  " use multiple of shiftwidth when indenting with '<' and '>'
+set autoindent                  " always set autoindenting on
+set copyindent                  " copy the previous indentation on autoindenting
+set number                      " always show line numbers
+set ignorecase                  " ignore case when searching
+set smartcase                   " ignore case if search pattern is all lowercase,
+set noerrorbells                " don't beep
+set relativenumber              " show line numbers relative to cursor position
+set splitbelow                  " create split below when doing horizontal split
+set splitright                  " create split on right when doing a vertical split
+set tags=tags                   " CTags file
+set incsearch
+set timeout timeoutlen=200 ttimeoutlen=100
+set mouse+=a
+
+" Group all swp files and backups into a dir
+set backupdir=~/.vim/backups
+set directory=~/.vim/backups
+
+" With a map leader it's possible to do extra key combinations
+let mapleader = ","
+let g:mapleader = ","
+
+" Note that remapping C-s requires flow control to be disabled
+" (e.g. in .bashrc or .zshrc)
+map <C-s> <esc>:wall<cr>:SSave return<cr>y<cr>
+imap <C-s> <esc>:wall<cr>
+nmap <leader>w :w<cr>
+nmap <leader>wa :wall<cr>
+nmap <leader>wq :wq<cr>
+nmap <leader>q :q<cr>
+nmap <leader>qa :qall<cr>
+
+nmap <leader>vr :edit ~/.vimrc<cr>
+nmap <leader>zr :edit ~/.zshrc<cr>
+
+"Change directory to match current file ,cd
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+nnoremap <leader>pd :pwd<cr>
+"Reload the current buffer
+nnoremap <leader>e :e!<cr>
+
+" Misc helpers
+"Easy escaping to normal mode
+imap jk <esc>
+" Quickly add semi-colon to end of current line
+nmap ;; A;<esc>
+nmap <leader><space> i<space><esc>
+" Quickly insert blank line
+nnoremap <leader>o o<esc>
+
+" Switch between the last two files
+nnoremap <Leader><Leader> <C-^>
+
+" Open splits
+nnoremap vs :vsplit<cr>
+nnoremap sp :split<cr>
+" Open a new buffer
+nmap <leader>n :new<cr>
+nnoremap <C-]> :tag <C-R>=expand("<cword>")<cr><cr>
+nnoremap <silent><leader>tt <C-w><C-]><C-w>T
+
+" Resize vsplit;
+nnoremap ;h :vertical resize +5<cr>
+nnoremap ;l :vertical resize -5<cr>
+nnoremap ;k :resize +5<cr>
+nnoremap ;j :resize -5<cr>
+nnoremap <leader>1 <c-w>=
+nnoremap <leader>2 <C-h>:vertical resize 105<cr>
+
+" Tab handling
+set nohidden "remove file from buffer when closing tab
+nmap <leader>l :tabnext<cr>
+nmap <leader>h :tabprevious<cr>
+nmap <C-t> :tabnew<cr>
+" move current buffer to a new tab
+nmap <leader>t <c-w><s-t>
+
+" Easier window navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Familiar copy/cut/paste to clipboard shortcuts
+let g:copy_cut_paste_no_mappings = 1
+nmap <C-c> "+yy
+vmap <C-c> "+y
+nmap <C-v> "+p
+
+" NerdTree Stuff
+nmap <C-b> :NERDTreeToggle<cr>
+let g:NERDTreeMouseMode=2
+let NERDTreeWinPos='right'
+let NERDTreeMinimalUI=1
+let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
+" Close vim if NERDTree is the only open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Airline Stuff
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set laststatus=2    " Always show the statusline
+set showtabline=2   " Always show the tabline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" common annoying typos
+command! Q q " Bind :Q to :q
+command! Qa qa
+command! Wq wq
+
+" Tmux settings
+set ttymouse=xterm2 " tmux knows the extended mouse mode
+let g:VtrOrientation = "v"
+nmap <leader>va :VtrAttachToPane<cr>
+nmap <leader>vc :VtrSendCommandToRunner<cr>
+nmap <leader>vv :VtrSendLinesToRunner<cr>
+
+" Vim - Semi Hard Mode
+" no arrow key navigation
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" Use Silver Searcher instead of grep (Greplace/Ack.vim settings)
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor --ignore public'
+let g:ackprg = 'ag -S --nogroup --column --path-to-ignore=/home/jay/.vim/.agignore'
+nmap <leader>s :Ack! "" ./<C-Left><Left><Left>
+nmap <leader>ss :Ack! "<cword>" ./<cr>
+nmap <leader>sa :Ack! "<cword>" ./app<cr>
+nmap <leader>sd :Ack! "<cword>" ./
+
+" FZF Stuff
+set rtp+=/usr/local/opt/fzf " Add homebrew fzf to the vim path:
+nnoremap <c-p> :GFiles<cr>
+nnoremap <leader>p :History<cr>
+
+" Testing
+let test#strategy = "dispatch"
+nmap <silent> <leader>r :TestNearest<cr>
+nmap <silent> <leader>rt :TestFile<cr>
+nmap <silent> <leader>ra :TestSuite<cr>
+nmap <silent> <leader>rr :TestLast<cr>
+
+" EditorConfig Settings
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" GitGutter Settings
+nnoremap gb :Gblame<cr>
+nnoremap gd :GitGutterPreviewHunk<cr>
+nnoremap gc :BCommits<cr>
+nnoremap <Leader>gss :GitGutterStageHunk<cr>
+nnoremap <Leader>gdd :GitGutterUndoHunk<cr>
+
+" Emmet Settings
+let g:user_emmet_leader_key = '<C-e>'
+
+" Html MatchTagsAlways Settings
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'blade' : 1,
+    \ 'eruby' : 1,
+    \ 'vue' : 1,
+    \ 'php' : 1,
+    \}
+
+" Startify Settings
+let g:startify_session_dir = '~/.vim/sessions'
+let g:startify_change_to_vcs_root = 1
+let g:startify_files_number = 5
+let g:startify_custom_header =
+\ map(split(system('fortune -n 80'), '\n'), '"   ". v:val') + ['','']
+let g:startify_list_order = [
+      \ ['  bookmarks:'], 'bookmarks',
+      \ ['  sessions:'],  'sessions',
+      \ ['  cwd mru:'],   'dir',
+      \ ['  mru:'],       'files']
+
+" generate ctags
+nmap <leader>ct :Dispatch ~/dotfiles/scripts/php_ctags.sh .<cr>
+nmap <leader>bb oeval(\Psy\sh());<esc>:w<cr>
+
+" Coc settings
+" " don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<cr>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gf <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<cr>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
