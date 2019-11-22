@@ -2,7 +2,7 @@
 
 # generate custom ctags for rails projects
 cd $1
-rm tags
+if [ -f 'tags' ]; then rm tags ; fi
 echo "Generating ruby ctags for $(pwd)"
 ctags --languages=ruby --recurse=yes \
 --regex-ruby="/(^|[:;])[ \t]*([A-Z][[:alnum:]_]+) *=/\2/c,class,constant/" \

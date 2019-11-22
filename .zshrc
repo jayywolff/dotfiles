@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/jay/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -74,7 +74,6 @@ alias gpo="git push -u origin"
 alias gdp="git diff --patience"
 alias gcos="git checkout db/schema.rb"
 alias hrc="heroku run rails c -a"
-alias bumper="cd ~/Dev/bumper && rails server --binding=127.0.0.1 --port=3001"
 
 # Disable flow control commands (keeps C-s from freezing everything in vim)
 stty start undef
