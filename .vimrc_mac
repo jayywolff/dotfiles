@@ -29,6 +29,12 @@ Plugin 'tpope/vim-projectionist'
 Plugin 'tpope/vim-dispatch'
 Plugin 'janko/vim-test'
 
+" Rails dev plugins
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-cucumber'
+
 call vundle#end()          " End of plugins
 filetype plugin indent on  " required
 
@@ -38,16 +44,11 @@ set updatetime=150 " update gitgutter faster
 set encoding=utf8
 
 " Color Settings
-"let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-"let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 syntax on
 colorscheme onedark
 let g:onedark_terminal_italics=1
 let g:airline_theme='onedark'
-
-" For Terminal Transparency (with truecolor support)
-"highlight Normal guibg=NONE ctermbg=NONE
 
 set nowrap                      " don't wrap lines
 set tabstop=4                   " a tab is four spaces
@@ -114,7 +115,6 @@ nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
 " Open a new buffer
 nmap <leader>n :new<cr>
-nnoremap <C-]> :tag <C-R>=expand("<cword>")<cr><cr>
 nnoremap <silent><leader>tt <C-w><C-]><C-w>T
 
 " Resize vsplit;
@@ -223,7 +223,6 @@ let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
     \ 'xml' : 1,
-    \ 'jinja' : 1,
     \ 'blade' : 1,
     \ 'eruby' : 1,
     \ 'vue' : 1,
@@ -243,8 +242,28 @@ let g:startify_list_order = [
       \ ['  mru:'],       'files']
 
 " generate ctags
-nmap <leader>ct :Dispatch ~/dotfiles/scripts/php_ctags.sh .<cr>
-nmap <leader>bb oeval(\Psy\sh());<esc>:w<cr>
+nnoremap <C-]> :tag <C-R>=expand("<cword>")<cr><cr>
+nmap <leader>ct :Dispatch ~/dotfiles/scripts/rails_ctags.sh .<cr>
+
+" Rails stuff
+augroup ft_options
+  autocmd!
+  autocmd FileType ruby setlocal iskeyword+=?,!,=
+augroup END
+
+" Rails shortcuts
+" TODO convert this call to a function to run vim-cucumber
+" when the current buffer is in the features dir
+nnoremap va :AV<cr>
+nmap <Leader>a :A<cr>
+nmap <Leader>ec :Econtroller<cr>
+nmap <Leader>em :Emodel<cr>
+nmap <Leader>ev :Eview<cr>
+nmap <Leader>es :e ./db/schema.rb<cr>
+nmap <Leader>er :e ./config/routes.rb<cr>
+
+" insert pry binding
+nmap <leader>b obinding.pry<esc>==:w<cr>
 
 " Coc settings
 " " don't give |ins-completion-menu| messages.
