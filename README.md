@@ -15,7 +15,7 @@ Featuring some of the following projects:
 * ranger
 * feh
 * lightdm
-* compton
+* picom
 
 
 ## Current setup screenshot
@@ -24,7 +24,7 @@ Featuring some of the following projects:
 ## Installation
   * Install Arch Linux or a headless install of Debian, Ubuntu, Fedora, OpenSuse, or even FreeBSD
 
-  * Install x11, i3-gaps, i3status, i3bar, i3blocks, i3ipc, i3lock-color, lightdm, lightdm-gtk-greeter, xorg-xprop, termite, rofi, gvim, compton, ranger, feh, zsh, zsh-completions, git, net-tools, network-manager, ssh, light, pulseaudio, pulsemixer, editline, firefox, nm-applet, tmux, arc-dark themes, papirus icons, the_silver_searcher, etc..
+  * Install x11, i3-gaps, i3status, i3bar, i3blocks, i3ipc, i3lock-color, lightdm, lightdm-gtk-greeter, xorg-xprop, termite, rofi, gvim, picom, ranger, feh, zsh, zsh-completions, git, net-tools, network-manager, ssh, light, pulseaudio, pulsemixer, editline, firefox, nm-applet, tmux, arc-dark themes, papirus icons, the_silver_searcher, etc..
 
   * Clone or copy dotfiles to ~/
 
