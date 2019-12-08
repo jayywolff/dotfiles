@@ -1,3 +1,4 @@
 {
-  "suggest.floatEnable": false
+  "suggest.floatEnable": false,
+  "solargraph.useBundler": false
 }

@@ -101,7 +101,8 @@ nmap <leader>w :w<cr>
 nmap <leader>wa :wall<cr>
 nmap <leader>wq :wq<cr>
 nmap <leader>q :q<cr>
-nmap <leader>qa :qall<cr>
+nmap ZA :qall<cr>
+nnoremap <silent> <leader>z :pclose<cr>:cclose<cr>
 
 nmap <leader>vr :edit ~/.vimrc<cr>
 nmap <leader>zr :edit ~/.zshrc<cr>
@@ -179,11 +180,11 @@ let g:NERDTreeMouseMode=2
 let NERDTreeWinPos='right'
 let NERDTreeMinimalUI=1
 let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
+
 " Close vim if NERDTree is the only open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Custom global higlighting enabled for all colorscheme
-"highlight VertSplit ctermfg=8 guifg=#3E4452
+" Close vim if a quickfix window is the only open buffer
+autocmd bufenter * if (winnr("$") == 1 && &buftype == "quickfix") | q | endif
 
 " Airline Stuff
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
@@ -216,8 +217,12 @@ nmap <leader>sa :Ack! "<cword>" ./app<cr>
 nmap <leader>sd :Ack! "<cword>" ./
 
 " FZF Stuff
-nnoremap <c-p> :GFiles<cr>
+nnoremap <expr> <c-p> <SID>is_git_repo() ? ':GFiles<cr>' : ':Files<cr>'
 nnoremap <leader>p :History<cr>
+
+function! s:is_git_repo()
+  return split(system('git rev-parse --is-inside-work-tree'), '\n')[0] == 'true'
+endfunction
 
 " Testing
 let test#strategy = "dispatch"
@@ -233,8 +238,8 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 nnoremap gb :Gblame<cr>
 nnoremap gd :GitGutterPreviewHunk<cr>
 nnoremap gc :BCommits<cr>
-nnoremap <Leader>gss :GitGutterStageHunk<cr>
-nnoremap <Leader>gdd :GitGutterUndoHunk<cr>
+nnoremap gss :GitGutterStageHunk<cr>
+nnoremap gdd :GitGutterUndoHunk<cr>
 
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-e>'
@@ -290,15 +295,10 @@ nmap <leader>b obinding.pry<esc>==:w<cr>
 " " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
-" always show signcolumns
-set signcolumn=yes
-
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+  \ pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -311,7 +311,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<cr>"
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<cr>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -320,6 +320,9 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Remap keys for gotos
 nmap <Leader>gf <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> <leader>ce :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<cr>
@@ -335,10 +338,6 @@ endfunction
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -347,19 +346,3 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
