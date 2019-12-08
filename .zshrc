@@ -73,6 +73,7 @@ alias grc="git rebase --continue"
 alias gpo="git push -u origin"
 alias gdp="git diff --patience"
 alias gcos="git checkout db/schema.rb"
+alias gamend='git commit --amend --all --no-edit'
 alias hrc="heroku run rails c -a"
 
 # Disable flow control commands (keeps C-s from freezing everything in vim)
