@@ -101,7 +101,8 @@ nmap <leader>w :w<cr>
 nmap <leader>wa :wall<cr>
 nmap <leader>wq :wq<cr>
 nmap <leader>q :q<cr>
-nmap ZA :qall<cr>
+nnoremap ZA :qall<cr>
+nnoremap ZS :wall<cr>:qall<cr>
 nnoremap <silent> <leader>z :pclose<cr>:cclose<cr>
 
 nmap <leader>vr :edit ~/.vimrc<cr>
@@ -124,7 +125,7 @@ nmap <leader><space> i<space><esc>
 nnoremap <leader>o o<esc>
 
 " Switch between the last two files
-nnoremap <Leader><Leader> <C-^>
+nnoremap <leader><leader> <C-^>
 
 " Open splits
 nnoremap vs :vsplit<cr>
@@ -165,6 +166,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Quick toggle comments
+map <leader>c <plug>NERDCommenterToggle
 
 " Familiar copy/cut/paste to clipboard shortcuts
 let g:copy_cut_paste_no_mappings = 1
@@ -284,6 +288,7 @@ nnoremap va :AV<cr>
 nmap <Leader>a :A<cr>
 nmap <Leader>ec :Econtroller<cr>
 nmap <Leader>em :Emodel<cr>
+nmap <Leader>ef :EFixtures<cr>
 nmap <Leader>ev :Eview<cr>
 nmap <Leader>es :e ./db/schema.rb<cr>
 nmap <Leader>er :e ./config/routes.rb<cr>
@@ -322,7 +327,7 @@ nmap <Leader>gf <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> <leader>ce :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>co  :<C-u>CocList commands<cr>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<cr>
