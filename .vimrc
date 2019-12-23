@@ -243,7 +243,7 @@ nnoremap gb :Gblame<cr>
 nnoremap gd :GitGutterPreviewHunk<cr>
 nnoremap gc :BCommits<cr>
 nnoremap gss :GitGutterStageHunk<cr>
-nnoremap gdd :GitGutterUndoHunk<cr>
+nnoremap gdd :GitGutterUndoHunk<cr>:w<cr>
 
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-e>'
