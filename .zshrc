@@ -57,6 +57,9 @@ alias tmux-resurrect="~/dotfiles/scripts/tmux-resurrect.sh"
 alias net-reset="sudo systemctl restart NetworkManager.service"
 alias net-test="ping archlinux.org"
 alias system-update="~/dotfiles/scripts/system_update.sh"
+alias tres="~/dotfiles/scripts/tmux-resurrect.sh"
+alias sup="~/dotfiles/scripts/system_update.sh"
+alias poff="poweroff"
 
 alias homestead='function __homestead() { (cd ~/Dev/vboxes/homestead && vagrant $*); unset -f __homestead; }; __homestead'
 alias huhs="homestead up;homestead ssh"
