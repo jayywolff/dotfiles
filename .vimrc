@@ -118,6 +118,7 @@ nnoremap <leader>e :e!<cr>
 " Misc helpers
 "Easy escaping to normal mode
 imap jk <esc>
+tnoremap jk <c-w>N
 " Quickly add semi-colon to end of current line
 nmap ;; A;<esc>
 nmap <leader><space> i<space><esc>
@@ -141,6 +142,12 @@ nnoremap ;k :resize +5<cr>
 nnoremap ;j :resize -5<cr>
 nnoremap <leader>1 <c-w>=
 nnoremap <leader>2 <C-h>:vertical resize 105<cr>
+tnoremap ;h :vertical resize +5<cr>
+tnoremap ;l :vertical resize -5<cr>
+tnoremap ;k :resize +5<cr>
+tnoremap ;j :resize -5<cr>
+tnoremap <leader>1 <c-w>=
+tnoremap <leader>2 <C-h>:vertical resize 105<cr>
 
 " Vim - Semi Hard Mode
 " no arrow key navigation
@@ -166,6 +173,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+tnoremap <C-h> <C-w>h
+tnoremap <C-j> <C-w>j
+tnoremap <C-k> <C-w>k
+tnoremap <C-l> <C-w>l
 
 " Quick toggle comments
 map <leader>c <plug>NERDCommenterToggle
@@ -211,6 +222,10 @@ if &term =~ '^tmux'
   nmap <leader>vv :VtrSendLinesToRunner<cr>
 endif
 
+" Vim Terminal Settings
+set termwinscroll=15000
+set termwinsize=10x0
+
 " Use Silver Searcher instead of grep (Greplace/Ack.vim settings)
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor --ignore public'
@@ -229,7 +244,7 @@ function! s:is_git_repo()
 endfunction
 
 " Testing
-let test#strategy = "dispatch"
+let test#strategy = "vimterminal"
 nmap <silent> <leader>r :TestNearest<cr>
 nmap <silent> <leader>rt :TestFile<cr>
 nmap <silent> <leader>ra :TestSuite<cr>
@@ -253,10 +268,13 @@ let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
     \ 'xml' : 1,
+    \ 'js' : 1,
+    \ 'jsx' : 1,
     \ 'blade' : 1,
     \ 'eruby' : 1,
+    \ 'haml' : 1,
     \ 'vue' : 1,
-    \ 'php' : 1,
+    \ 'php' : 1
     \}
 
 " Startify Settings
