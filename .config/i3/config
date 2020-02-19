@@ -6,7 +6,7 @@
 set $mod Mod4
 
 #default keyboard repeat is too slow for me
-exec xset r rate 150 30
+exec xset r rate 140 40
 
 #AUTOSTART STUFF
 exec --no-startup-id bash ~/dotfiles/scripts/display_setup.sh
