@@ -182,7 +182,6 @@ tnoremap <C-l> <C-w>l
 map <leader>c <plug>NERDCommenterToggle
 
 " Familiar copy/cut/paste to clipboard shortcuts
-let g:copy_cut_paste_no_mappings = 1
 nmap <C-c> "+yy
 vmap <C-c> "+y
 nmap <C-v> "+p
@@ -229,18 +228,43 @@ set termwinsize=10x0
 " Use Silver Searcher instead of grep (Greplace/Ack.vim settings)
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor --ignore public'
-let g:ackprg = 'ag -S --nogroup --column --path-to-ignore=/home/jay/.vim/.agignore'
+let g:ackprg = 'ag --nogroup --column --path-to-ignore=/home/jay/.vim/.agignore'
 nmap <leader>s :Ack! "" ./<C-Left><Left><Left>
 nmap <leader>ss :Ack! "<cword>" ./<cr>
 nmap <leader>sa :Ack! "<cword>" ./app<cr>
 nmap <leader>sd :Ack! "<cword>" ./
 
 " FZF Stuff
-nnoremap <expr> <c-p> <SID>is_git_repo() ? ':GFiles<cr>' : ':Files<cr>'
+let $FZF_DEFAULT_COMMAND = 'ag --path-to-ignore=/home/jay/.vim/.agignore --hidden -l -g ""'
+nnoremap <silent><c-p> :call FZFWithDevIcons()<cr>
 nnoremap <leader>p :History<cr>
 
-function! s:is_git_repo()
-  return split(system('git rev-parse --is-inside-work-tree'), '\n')[0] == 'true'
+" Requires Rust dependency: `cargo install devicon-lookup`
+function! FZFWithDevIcons()
+  function! s:files()
+    let l:files = split(system($FZF_DEFAULT_COMMAND.'| devicon-lookup'), '\n')
+    return l:files
+  endfunction
+
+  function! s:edit_file(items)
+    let items = a:items
+    let i = 1
+    let ln = len(items)
+    while i < ln
+      let item = items[i]
+      let parts = split(item, ' ')
+      let file_path = get(parts, 1, '')
+      let items[i] = file_path
+      let i += 1
+    endwhile
+    call s:Sink(items)
+  endfunction
+
+  let opts = fzf#wrap({})
+  let opts.source = <sid>files()
+  let s:Sink = opts['sink*']
+  let opts['sink*'] = function('s:edit_file')
+  call fzf#run(opts)
 endfunction
 
 " Testing
@@ -259,6 +283,12 @@ nnoremap gd :GitGutterPreviewHunk<cr>
 nnoremap gc :BCommits<cr>
 nnoremap gss :GitGutterStageHunk<cr>
 nnoremap gdd :GitGutterUndoHunk<cr>:w<cr>
+
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
+let g:gitgutter_sign_removed_first_line = ''
+let g:gitgutter_sign_modified_removed = ''
 
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-e>'
