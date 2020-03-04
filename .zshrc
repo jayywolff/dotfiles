@@ -23,11 +23,17 @@ plugins=(git vi-mode)
 # User configuration
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-export PATH="$PATH:$HOME/.rvm/bin"
 
+# setup rvm
+export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# setup npm
+export PATH="$PATH:$HOME/.node_modules/bin"
+export npm_config_prefix=~/.node_modules
+
+# setup cargo
+export PATH="$PATH:$HOME/.cargo/bin"
 
 export QT_QPA_PLATFORMTHEME="gtk2"
 
@@ -35,7 +41,7 @@ source $ZSH/oh-my-zsh.sh
 
 autoload -Uz compinit
 compinit
-# Preferred editor for local and remote sessions
+
 export EDITOR='vim'
 export VISUAL=$EDITOR
 
@@ -43,7 +49,6 @@ export JAVA_HOME=/usr
 
 # Compilation flags
 #export ARCHFLAGS="-arch x86_64"
-
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 #
@@ -78,8 +83,9 @@ alias gpo="git push -u origin"
 alias gdp="git diff --patience"
 alias gcos="git checkout db/schema.rb"
 alias gamend='git commit --amend --all --no-edit'
+alias git-https='git remote set-url origin https://github.com/$(git remote get-url origin | sed "s/https:\/\/github.com\///" | sed "s/git@github.com://")'
+alias git-ssh='  git remote set-url origin git@github.com:$(    git remote get-url origin | sed "s/https:\/\/github.com\///" | sed "s/git@github.com://")'
 alias hrc="heroku run rails c -a"
-
 # Disable flow control commands (keeps C-s from freezing everything in vim)
 stty start undef
 stty stop undef
