@@ -173,10 +173,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-tnoremap <C-h> <C-w>h
-tnoremap <C-j> <C-w>j
-tnoremap <C-k> <C-w>k
-tnoremap <C-l> <C-w>l
 
 " Quick toggle comments
 map <leader>c <plug>NERDCommenterToggle
@@ -223,7 +219,7 @@ endif
 
 " Vim Terminal Settings
 set termwinscroll=15000
-set termwinsize=10x0
+set termwinsize=15x0
 
 " Use Silver Searcher instead of grep (Greplace/Ack.vim settings)
 set grepprg=ag
@@ -280,9 +276,10 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " GitGutter Settings
 nnoremap gb :Gblame<cr>
 nnoremap gd :GitGutterPreviewHunk<cr>
+nnoremap gds :Gdiffsplit<cr>
 nnoremap gc :BCommits<cr>
-nnoremap gss :GitGutterStageHunk<cr>
-nnoremap gdd :GitGutterUndoHunk<cr>:w<cr>
+nnoremap hs :GitGutterStageHunk<cr>
+nnoremap hd :GitGutterUndoHunk<cr>:w<cr>
 
 let g:gitgutter_sign_added = ''
 let g:gitgutter_sign_modified = ''

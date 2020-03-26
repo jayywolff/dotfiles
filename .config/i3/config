@@ -11,13 +11,14 @@ exec xset r rate 140 40
 #AUTOSTART STUFF
 exec --no-startup-id bash ~/dotfiles/scripts/display_setup.sh
 exec --no-startup-id redshift
+exec --no-startup-id rm ~/.pomodoro-timer
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
 exec_always --no-startup-id  python3 ~/.config/i3/i3-autoname-workspaces.py
 
 #Font for window titles.
 font pango:Iosevka Nerd Font Medium 14
 #Colors
-set $back               #2F343F
+set $back               #282C34
 set $primary            #D0D0D0
 set $secondary          #0FE0C9
 set $black              #282A2E
@@ -25,12 +26,12 @@ set $grey               #303030
 set $white              #C5C8C6
 
 # class                 border   backgr.  text    indicator child_border
-client.focused          $primary $primary $black  #2e9ef4   $primary
-client.focused_inactive $black   $primary $black  #484e50   $black
-client.unfocused        $black   $back    $white  #292d2e   $black
-client.urgent           #2f343a  #900000  $white  #900000   #900000
-client.placeholder      #000000  #0c0c0c  $white  #000000   #0c0c0c
-client.background       $white
+client.focused          #3E4452  #3E4452  $white  #2e9ef4   #3E4452
+client.focused_inactive $back    $back    $black  #484e50   $back
+client.unfocused        $back    $back    $white  #292d2e   $back
+client.urgent           $back    #900000  $white  #900000   #900000
+client.placeholder      $back    #0c0c0c  $white  #000000   #0c0c0c
+client.background       $back
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
