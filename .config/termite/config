@@ -1,75 +1,38 @@
 [options]
-font = Iosevka Nerd Font Regular 15
+font = Hack Nerd Font Regular 13
 clickable_url = true
 scrollback_lines = 15000
 
 # onedark colors
 [colors]
+#background= rgba(40, 44, 52, 0.85)
+background= #282C34
 foreground= #ABB2BF
-#background= #282C34
-background= rgba(40, 44, 52, 0.85)
 cursorColor= #ABB2BF
 
 # black
 color0= #282C34
 color8= #3E4452
-
 # red
 color1= #E06C75
 color9= #BE5046
-
 # green
 color2= #98C379
 color10= #98C379
-
 # yellow
 color3= #E5C07B
 color11= #D19A66
-
 # blue
 color4= #61AFEF
 color12= #61AFEF
-
 # magenta
 color5= #C678DD
 color13= #C678DD
-
 # cyan
 color6= #56B6C2
 color14= #56B6C2
-
 # white
 color7= #ABB2BF
-color15= #5C6370
-
-# gruvbox colors
-#[colors]
-#foreground = #E9DAB2
-#background = #282828
-
-## dark0 + gray
-#color0 = #282828
-#color8 = #928374
-## neutral_red + bright_red
-#color1 = #cc241d
-#color9 = #fb4934
-## neutral_green + bright_green
-#color2 = #98971a
-#color10 = #b8bb26
-## neutral_yellow + bright_yellow
-#color3 = #d79921
-#color11 = #fabd2f
-## neutral_blue + bright_blue
-#color4 = #458588
-#color12 = #83a598
-## neutral_purple + bright_purple
-#color5 = #b16286
-#color13 = #d3869b
-## neutral_aqua + faded_aqua
-#color6 = #689d6a
-#color14 = #8ec07c
-## light4 + light1
-#color7 = #a89984
-#color15 = #ebdbb2
+color15= #3E4452
 
 # vim: ft=dosini cms=#%s

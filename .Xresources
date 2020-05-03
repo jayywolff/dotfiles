@@ -1,8 +1,10 @@
-Xft.antialias: 1
-Xft.hinting: 1
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.autohint: 0
+Xft.hinting: true
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
-Xft.lcdfilter: lcddefault
+Xft.dpi: 96
 
 ! Rofi Settings
 rofi.color-window: argb:EE2F343F, #2F343F

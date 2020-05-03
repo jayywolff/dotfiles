@@ -14,7 +14,7 @@ exec_always --no-startup-id  python3 ~/.config/polybar/i3-autoname-workspaces.py
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 #Font for window titles.
-font pango:Iosevka Nerd Font Medium 14
+font pango:Hack Nerd Font Regular 13
 #Colors
 set $back               #282C34
 set $primary            #D0D0D0

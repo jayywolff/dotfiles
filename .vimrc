@@ -58,7 +58,7 @@ if has("gui_running")
   set guioptions-=T   " Removes top toolbar
   set guioptions-=r   " Removes right hand scroll bar
   set guioptions-=L   " Removes left hand scroll bar
-  set guifont=Iosevka\ Nerd\ Font\ Regular\ 15
+  set guifont=Hack\ Nerd\ Font\ Regular\ 13
 else
   " For Terminal Transparency (with truecolor support)
   highlight Normal guibg=NONE ctermbg=NONE
