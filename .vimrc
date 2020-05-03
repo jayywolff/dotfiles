@@ -131,8 +131,8 @@ nnoremap <leader><leader> <C-^>
 " Open splits
 nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
-" Open a new buffer
-nmap <leader>n :new<cr>
+" Edit dev notes 
+nmap <leader>n :e ~/Dev/notes.md<cr>
 nnoremap <silent><leader>tt <C-w><C-]><C-w>T
 
 " Resize vsplit;
