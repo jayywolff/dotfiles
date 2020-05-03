@@ -11,7 +11,7 @@ then
     echo ' Completed'
   fi
 else
-  echo ''
+  echo ' '
 fi
 
 case $BLOCK_BUTTON in
