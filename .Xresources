@@ -10,19 +10,20 @@ rofi.color-normal: argb:002F343F, #737783, argb:002F343F, argb:002F343F, #f9f9f9
 rofi.color-urgent: argb:002F343F, #cc6666, argb:e54b5160, argb:002F343F, #f9f9f9
 rofi.color-active: argb:002F343F, #65acff, argb:e44b5160, argb:002F343F, #f9f9f9
 rofi.width: 20
-rofi.lines: 16
-rofi.font: Iosevka Nerd Font Light 16
+rofi.lines: 20
+rofi.font: Hack Nerd Font Regular 13
 rofi.bw: 0
 rofi.padding: 10
 rofi.eh: 1
-rofi.sidebar-mode: true
-rofi.yoffset: 31
+rofi.sidebar-mode: false
+rofi.yoffset: 26
 rofi.separator-style: none
 rofi.hide-scrollbar: true
 rofi.show-icons: true
 rofi.drun-icon-theme: Papirus-Dark
 rofi.location: 1
-rofi.modi: window,run,drun
+rofi.modi: window,drun
+rofi.display-drun:  
 
 ! OneDark Colorscheme
 ! special
