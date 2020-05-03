@@ -8,7 +8,6 @@ exec xset r rate 140 40
 #AUTOSTART STUFF
 exec --no-startup-id bash ~/dotfiles/scripts/display_setup.sh
 exec --no-startup-id redshift
-exec --no-startup-id rm ~/.pomodoro-timer
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
 exec_always --no-startup-id  python3 ~/.config/polybar/i3-autoname-workspaces.py
 exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -17,7 +16,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 font pango:Hack Nerd Font Regular 13
 #Colors
 set $back               #282C34
-set $primary            #D0D0D0
+set $primary            #ABB2BF
 set $secondary          #0FE0C9
 set $black              #282A2E
 set $grey               #303030
@@ -48,7 +47,8 @@ for_window [title="^galculator"] floating enable
 bindsym $mod+Shift+s move scratchpad
 bindsym $mod+a [title="^Telegram"] scratchpad show
 bindsym $mod+s [class="Slack"] scratchpad show
-bindsym $mod+z scratchpad show
+bindsym $mod+z [class="Termite"] scratchpad show
+bindsym $mod+Shift+z scratchpad show
 
 # i3-gaps stuff
 gaps inner 35
@@ -126,6 +126,7 @@ bindsym XF86AudioMute exec pulsemixer --toggle-mute
 bindsym $mod+equal exec pulsemixer --change-volume +5
 bindsym $mod+minus exec pulsemixer --change-volume -5
 bindsym $mod+0 exec pulsemixer --toggle-mute
+bindsym $mod+Shift+0 exec pulsemixer --id source-1 --toggle-mute
 
 #cmus controls
 bindsym $mod+p exec cmus-remote --pause
