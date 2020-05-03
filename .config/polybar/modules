@@ -1,0 +1,314 @@
+;;==========================================================
+;;
+;;	    __  ___          __      __         
+;;	   /  |/  /___  ____/ /_  __/ /__  _____
+;;	  / /|_/ / __ \/ __  / / / / / _ \/ ___/
+;;	 / /  / / /_/ / /_/ / /_/ / /  __(__  ) 
+;;	/_/  /_/\____/\__,_/\__,_/_/\___/____/  
+;;
+;;==========================================================
+
+[module/launcher]
+type = custom/text
+content = 
+
+content-background = ${color.black}
+content-foreground = ${color.blue}
+content-padding = 1
+content-font = 4
+
+click-left = rofi -monitor -1 -show drun
+
+;;==========================================================
+
+[module/title]
+type = internal/xwindow
+
+format = <label>
+format-background = ${color.green}
+format-foreground = ${color.black}
+format-padding = 1
+format-font = 2
+
+label = %title%
+label-maxlen = 40
+
+;;label-empty = Arch Linux
+
+;;==========================================================
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+enable-scroll = true
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode = " %mode%"
+label-mode-padding = 1
+label-mode-foreground = ${color.black}
+label-mode-background = ${color.lightred}
+label-mode-font = 2
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${color.background}
+label-focused-foreground = ${color.green}
+label-focused-underline= ${color.background}
+label-focused-padding = 1
+label-focused-font = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 1
+label-unfocused-font = 2
+label-unfocused-background = ${color.background}
+label-unfocused-foreground = ${color.white}
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = ${color.background}
+label-visible-foreground = ${color.grey}
+label-visible-underline = ${color.background}
+label-visible-padding = 1
+label-visible-font = 2
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${color.red}
+label-urgent-foreground = ${color.white}
+label-urgent-padding = 1
+label-urgent-font = 2
+
+; Separator in between workspaces
+;label-separator = 
+;label-separator-foreground = ${color.white}
+;label-separator-padding = 0
+;ws-icon-0 = 0;
+;ws-icon-1 = 1;
+;ws-icon-2 = 2;
+;ws-icon-3 = 3;
+;ws-icon-4 = 4;
+;ws-icon-5 = 5;
+;ws-icon-default = 
+
+;;==========================================================
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = "%{A3:pavucontrol&:}<label-volume> <bar-volume> %{A}"
+label-volume = "  %percentage%%"
+label-volume-foreground = ${color.white}
+label-volume-background = ${color.black}
+label-volume-font = 2
+
+label-muted = "  muted "
+label-muted-foreground = ${color.white}
+label-muted-background = ${color.black}
+label-muted-font = 2
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${color.blue}
+bar-volume-foreground-1 = ${color.blue}
+bar-volume-foreground-2 = ${color.blue}
+bar-volume-foreground-3 = ${color.blue}
+bar-volume-foreground-4 = ${color.blue}
+bar-volume-foreground-5 = ${color.orange}
+bar-volume-foreground-6 = ${color.red}
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-font = 1
+bar-volume-fill = ─
+bar-volume-fill-font = 1
+bar-volume-empty = ─
+bar-volume-empty-font = 1
+bar-volume-empty-foreground = ${color.white}
+
+;;==========================================================
+
+[module/battery]
+type = internal/battery
+
+full-at = 99
+
+battery = BAT0
+adapter = ADP1
+
+poll-interval = 2
+time-format = %H:%M
+
+format-font = 2
+format-charging-font = 2
+format-charging = <animation-charging> <label-charging>
+format-charging-background = ${color.red}
+format-charging-foreground = ${color.foreground}
+format-charging-padding = 1
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-background = ${color.red}
+format-discharging-foreground = ${color.foreground}
+format-discharging-padding = 1
+
+label-charging-font = 2
+label-charging = %percentage%%
+label-discharging-font = 2
+label-discharging = %percentage%%
+
+label-full-font = 2
+label-full = " %percentage%%"
+label-full-background = ${color.red}
+label-full-foreground = ${color.foreground}
+label-full-padding = 1
+
+ramp-capacity-0 = " "
+ramp-capacity-1 = " "
+ramp-capacity-2 = " "
+ramp-capacity-3 = " "
+ramp-capacity-4 = " "
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+
+animation-discharging-0 = " "
+animation-discharging-1 = " "
+animation-discharging-2 = " "
+animation-discharging-3 = " "
+animation-discharging-4 = " "
+
+animation-charging-framerate = 750
+
+;;==========================================================
+
+[module/date]
+type = internal/date
+interval = 1.0
+
+time =  %H:%M
+time-alt = " %Y-%m-%d %H:%M"
+
+format = <label>
+format-background = ${color.white}
+format-foreground = ${color.black}
+format-font = 2
+format-padding = 1
+label = %time%
+
+;;==========================================================
+
+[module/eth]
+type = internal/network
+interface = enp0s20u5u3
+interval = 3.0
+
+format-connected-prefix = ""
+format-connected-prefix-foreground = ${color.foreground}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${color.foreground}
+
+;;==========================================================
+
+[module/network]
+type = internal/network
+interface = wlp3s0
+
+interval = 3.0
+unknown-as-up = true
+
+format-connected-font = 2
+format-connected = <ramp-signal> <label-connected>
+format-connected-background = ${color.grey}
+format-connected-foreground = ${color.white}
+format-connected-padding = 1
+
+format-disconnected-font = 2
+format-disconnected = <label-disconnected>
+format-disconnected-background = ${color.grey}
+format-disconnected-foreground = ${color.white}
+format-disconnected-padding = 1
+
+label-font = 2
+label-connected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/i3blocks/toggle_wifi.sh:} %signal%% @%essid%%{A}%{A}%{A}"
+label-disconnected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/i3blocks/toggle_wifi.sh:} 睊 Not Connected%{A}%{A}%{A}"
+ramp-signal-0 = 睊
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+;;==========================================================
+
+[module/filesystem]
+type = internal/fs
+interval = 30
+
+mount-0 = /
+
+label-mounted = "  %percentage_used%% "
+label-mounted-background = ${color.yellow}
+label-mounted-foreground = ${color.black}
+label-mounted-font = 2
+label-unmounted = %mountpoint% not mounted
+label-unmounted-background = ${color.yellow}
+label-unmounted-foreground = ${color.black}
+label-unmounted-font = 2
+
+;;==========================================================
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-font = 2
+format-prefix-foreground = ${color.black}
+format-prefix-background = ${color.yellow}
+label = %percentage_used%%
+label-background = ${color.yellow}
+label-foreground = ${color.black}
+label-font = 2
+
+;;==========================================================
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp><label>
+format-warn = <ramp><label-warn>
+format-font = 2
+
+label = "%temperature-c% "
+label-background = ${color.yellow}
+label-foreground = ${color.black}
+label-warn = %temperature-c%
+label-warn-background = ${color.yellow}
+label-warn-foreground = ${color.red}
+
+ramp-0 = "  "
+ramp-1 = "  "
+ramp-2 = "  "
+ramp-foreground = ${color.black}
+ramp-background = ${color.yellow}
+
+;;==========================================================
+;;	    __________  ______
+;;	   / ____/ __ \/ ____/
+;;	  / __/ / / / / /_    
+;;	 / /___/ /_/ / __/    
+;;	/_____/\____/_/       
+;;
+;;==========================================================
+
+; vim:ft=dosini
+

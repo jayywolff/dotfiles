@@ -1,6 +1,3 @@
-#To do list
-#fix up bar
-#
 # See http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
@@ -13,7 +10,8 @@ exec --no-startup-id bash ~/dotfiles/scripts/display_setup.sh
 exec --no-startup-id redshift
 exec --no-startup-id rm ~/.pomodoro-timer
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
-exec_always --no-startup-id  python3 ~/.config/i3/i3-autoname-workspaces.py
+exec_always --no-startup-id  python3 ~/.config/polybar/i3-autoname-workspaces.py
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 #Font for window titles.
 font pango:Iosevka Nerd Font Medium 14
@@ -241,25 +239,5 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-bar {
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf 2> ~/.config/i3/i3blocks.err
-    strip_workspace_numbers no
-    output primary
-    tray_output primary
-    mode dock
-    position top
-    height 30
-    font pango: Iosevka Nerd Font Regular 16
-    colors {
-        background $back
-        separator $primary
-        statusline $primary
-        focused_workspace $primary $primary $back
-        active_workspace #1D2021 #1D2021 $primary
-        inactive_workspace $back $back $primary
-        urgent_workspace #CC241D #CC241D #EBDBB2
-    }
-}
 
 # vim:filetype=i3

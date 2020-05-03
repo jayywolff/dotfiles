@@ -1,0 +1,25 @@
+;; Colors
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[color]
+
+background = ${xrdb:background}
+foreground = #DFDFDF
+
+black = ${xrdb:background}
+white = ${xrdb:foreground}
+grey = ${xrdb:color8}
+red = ${xrdb:color9}
+lightred = ${xrdb:color1}
+purple = ${xrdb:color13}
+light-purple = ${xrdb:color5}
+blue = ${xrdb:color12}
+light-blue = ${xrdb:color4}
+cyan = ${xrdb:color14}
+teal = ${xrdb:color6}
+green = ${xrdb:color10}
+light-green = ${xrdb:color2}
+yellow = ${xrdb:color3}
+orange = ${xrdb:color11}
+
+; vim:ft=dosini

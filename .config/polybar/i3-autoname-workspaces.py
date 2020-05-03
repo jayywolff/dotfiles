@@ -23,12 +23,9 @@
 #
 # Forked from Justin Buchanan
 # https://gist.github.com/justbuchanan/70fdae0d5182f6039aa8383c06a3f4ad
+# https://github.com/justbuchanan/i3scripts/blob/master/autoname_workspaces.py
 #
 # Todo list:
-# Additional Features:
-#  Integrated Terminal app icons
-#  Integrated multi monitor setup
-
 
 import i3ipc
 import subprocess as proc
@@ -40,7 +37,8 @@ import sys
 # Add icons here for common programs you use.  The keys are the X window class
 # (WM_CLASS) names and the icons can be any text you want to display. However
 # most of these are character codes for font awesome:
-#   http://fortawesome.github.io/Font-Awesome/icons/
+#  http://fortawesome.github.io/Font-Awesome/icons/
+#  https://www.nerdfonts.com/cheat-sheet 
 FA_CALCULATOR = '\uf1ec'
 FA_CHROME = '\uf268'
 FA_CODE = '\uf121'
