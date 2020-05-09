@@ -54,9 +54,8 @@ font-1 = Hack Nerd Font:style=Regular:size=13;3
 font-2 = Hack Nerd Font:style=Bold:size=13;3
 font-3 = Hack Nerd Font:style=Regular:size=15;5
 
+;modules-center = workspaces
 modules-left = launcher i3
-;modules-left = launcher left1 i3 left2
-modules-center = workspaces
 modules-right = right7 title right6 pulseaudio right5 filesystem right4 battery right3 network right2 date right1
 
 wm-restack = i3
