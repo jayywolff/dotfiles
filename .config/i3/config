@@ -41,6 +41,7 @@ for_window [class="^.*"] border pixel 2
 for_window [title="^Telegram"] floating enable
 for_window [class="Slack"] floating enable
 for_window [title="^galculator"] floating enable
+for_window [class="^Microsoft Teams - Preview"] floating enable
 
 # Scratchpad stuff
 # Make the currently focused window a scratchpad
