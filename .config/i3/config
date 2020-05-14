@@ -142,6 +142,10 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 4
 bindsym $mod+Shift+minus exec xbacklight -dec 4
 bindsym $mod+Shift+plus exec xbacklight -inc 4
 
+#keyboard backlight controls (laptop keyboard)
+bindsym XF86KbdBrightnessDown exec light -Urs "sysfs/leds/smc::kbd_backlight" 2
+bindsym XF86KbdBrightnessUp exec light -Ars "sysfs/leds/smc::kbd_backlight" 2
+
 bindsym $mod+Ctrl+Escape exec i3lock --blur=2
 bindsym XF86Sleep exec i3lock --blur=4 && echo mem > /sys/power/state
 bindsym XF86TouchpadToggle exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
