@@ -68,6 +68,7 @@ FA_SLACK = '\uf198'
 FA_CLOCK_O = '\uf017'
 FA_ROCKET = '\uf135'
 NF_MDI_WINDOWS = '\ufab2'
+NF_DEV_GIT_COMPARE = '\uf47f'
 WINDOW_ICONS = {
     'termite': FA_TERMINAL,
     'Galculator': FA_CALCULATOR,
@@ -99,7 +100,8 @@ WINDOW_ICONS = {
     'DBeaver': FA_DATABASE,
     'KeeWeb': FA_KEY,
     'Postman': FA_ROCKET,
-    'Microsoft Teams - Preview': NF_MDI_WINDOWS
+    'Microsoft Teams - Preview': NF_MDI_WINDOWS,
+    'Meld': NF_DEV_GIT_COMPARE,
 }
 
 
