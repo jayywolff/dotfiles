@@ -137,10 +137,10 @@ bindsym $mod+Shift+bracketleft exec cmus-remote -C "seek -10"
 bindsym $mod+Shift+bracketright exec cmus-remote -C "seek +10"
 
 #backlight controls (laptop monitor)
-bindsym XF86MonBrightnessDown exec xbacklight -dec 4
-bindsym XF86MonBrightnessUp exec xbacklight -inc 4
-bindsym $mod+Shift+minus exec xbacklight -dec 4
-bindsym $mod+Shift+plus exec xbacklight -inc 4
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym $mod+Shift+minus exec light -U 4
+bindsym $mod+Shift+plus exec light -A 4
 
 #keyboard backlight controls (laptop keyboard)
 bindsym XF86KbdBrightnessDown exec light -Urs "sysfs/leds/smc::kbd_backlight" 2
