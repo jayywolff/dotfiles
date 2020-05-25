@@ -11,19 +11,22 @@ rofi.color-window: argb:EE2F343F, #2F343F
 rofi.color-normal: argb:002F343F, #737783, argb:002F343F, argb:002F343F, #f9f9f9
 rofi.color-urgent: argb:002F343F, #cc6666, argb:e54b5160, argb:002F343F, #f9f9f9
 rofi.color-active: argb:002F343F, #65acff, argb:e44b5160, argb:002F343F, #f9f9f9
-rofi.width: 20
+rofi.width: 30
 rofi.lines: 20
-rofi.font: Hack Nerd Font Regular 13
+rofi.font: Hack Nerd Font Regular 15
 rofi.bw: 0
 rofi.padding: 10
 rofi.eh: 1
 rofi.sidebar-mode: false
-rofi.yoffset: 26
+rofi.yoffset: 32
+rofi.xoffset: 5
+rofi.location: 1
+!rofi.location: 2
+rofi.columns: 2
 rofi.separator-style: none
 rofi.hide-scrollbar: true
 rofi.show-icons: true
 rofi.drun-icon-theme: Papirus-Dark
-rofi.location: 1
 rofi.modi: window,drun
 rofi.display-drun:  
 
