@@ -19,13 +19,13 @@ set $back               #282C34
 set $primary            #ABB2BF
 set $secondary          #0FE0C9
 set $black              #282A2E
-set $grey               #303030
+set $grey               #3E4452
 set $white              #C5C8C6
 
 # class                 border   backgr.  text    indicator child_border
 client.focused          #3E4452  #3E4452  $white  #2e9ef4   #3E4452
-client.focused_inactive $back    $back    $black  #484e50   $back
-client.unfocused        $back    $back    $white  #292d2e   $back
+client.focused_inactive $back    $back    $white  #484e50   $back
+client.unfocused        $back    $back    $grey   #292d2e   $back
 client.urgent           $back    #900000  $white  #900000   #900000
 client.placeholder      $back    #0c0c0c  $white  #000000   #0c0c0c
 client.background       $back
