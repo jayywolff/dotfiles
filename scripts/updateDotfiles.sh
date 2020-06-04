@@ -13,6 +13,8 @@ ln -sf $dotdir/.config/picom.conf $HOME/.config/picom.conf
 ln -sf $dotdir/.zshrc $HOME/.zshrc
 ln -sf $dotdir/.Xresources $HOME/.Xresources
 ln -sf $dotdir/.editrc $HOME/.editrc
+ln -sf $dotdir/.inputrc $HOME/.inputrc
+ln -sf $dotdir/.pryrc $HOME/.pryrc
 ln -sf $dotdir/.editorconfig $HOME/.editorconfig
 
 ## setup vim
