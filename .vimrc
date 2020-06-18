@@ -113,7 +113,7 @@ nmap <leader>i3 :edit ~/.config/i3/config<cr>
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>pd :pwd<cr>
 "Reload the current buffer
-nnoremap <leader>e :e!<cr>
+nnoremap <leader>br :e!<cr>
 
 " Misc helpers
 "Easy escaping to normal mode
@@ -328,6 +328,7 @@ nmap <leader>ct :Dispatch ~/dotfiles/scripts/rails_ctags.sh .<cr>
 augroup ft_options
   autocmd!
   autocmd FileType ruby setlocal iskeyword+=?,!,=
+  autocmd BufRead,BufNewFile ~/Dev/*/spec/support/*.rb set syntax=rspec
 augroup END
 
 " Rails shortcuts
