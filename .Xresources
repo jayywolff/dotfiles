@@ -37,8 +37,8 @@ rofi.display-drun:  
 *.cursorColor:  #ABB2BF
 
 ! black
-*.color0:       #282C34
-*.color8:       #3E4452
+*.color0:       #5C6370
+*.color8:       #4B5263
 
 ! red
 *.color1:       #E06C75
@@ -66,4 +66,4 @@ rofi.display-drun:  
 
 ! white
 *.color7:       #ABB2BF
-*.color15:      #5C6370
+*.color15:      #3E4452
