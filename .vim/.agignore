@@ -11,6 +11,7 @@ public/
 .tmp/
 .sass-cache/
 .ruby-gemset
+package-lock.json
 *.lock
 *.doc
 *.docx
