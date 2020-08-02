@@ -93,6 +93,7 @@ WINDOW_ICONS = {
     'VirtualBox': FA_CUBE,
     'mpv': FA_PLAY_CIRCLE,
     'Kodi': FA_PLAY_CIRCLE,
+    'obs': FA_PLAY_CIRCLE,
     'transmission-gtk': FA_DOWNLOAD,
     'pavucontrol': FA_VOLUME_UP,
     'Steam': FA_STEAM,
