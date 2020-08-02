@@ -1,0 +1,6 @@
+{
+  "app/*.php": {"alternate": "tests/Unit/Models/{}Test.php"},
+  "tests/Unit/Models/*Test.php": {"alternate": "app/{}.php"},
+  "app/Services/*.php": {"alternate": "tests/Unit/Services/{}Test.php"},
+  "tests/Unit/Services/*Test.php": {"alternate": "app/Services/{}.php"}
+}
