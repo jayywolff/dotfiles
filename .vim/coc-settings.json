@@ -1,4 +1,6 @@
 {
   "suggest.floatEnable": false,
-  "solargraph.useBundler": false
+  "solargraph.useBundler": false,
+  "phpactor.enable": true,
+  "phpactor.path": "phpactor"
 }
