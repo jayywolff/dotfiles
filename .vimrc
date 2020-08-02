@@ -31,10 +31,14 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'janko/vim-test'
 
 " Rails dev plugins
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-cucumber'
+"Plugin 'tpope/vim-bundler'
+"Plugin 'tpope/vim-rails'
+"Plugin 'tpope/vim-endwise'
+"Plugin 'tpope/vim-cucumber'
+
+" PHP dev plugins
+Plugin 'noahfrederick/vim-composer'
+Plugin 'noahfrederick/vim-laravel'
 
 call vundle#end()          " End of plugins
 filetype plugin indent on  " required
@@ -274,6 +278,7 @@ nmap <silent> <leader>r :TestNearest<cr>
 nmap <silent> <leader>rt :TestFile<cr>
 nmap <silent> <leader>ra :TestSuite<cr>
 nmap <silent> <leader>rr :TestLast<cr>
+let test#php#phpunit#executable = './vendor/bin/phpunit --configuration phpunit_local.xml'
 
 " EditorConfig Settings
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
@@ -326,7 +331,10 @@ let g:startify_list_order = [
 
 " generate ctags
 nnoremap <C-]> :tag <C-R>=expand("<cword>")<cr><cr>
-nmap <leader>ct :Dispatch ~/dotfiles/scripts/rails_ctags.sh .<cr>
+nmap <leader>ct :Dispatch ~/dotfiles/scripts/php_ctags.sh .<cr>
+
+" php stuff
+nmap <leader>dd ieval(\Psy\sh());<esc>==:w<cr>
 
 " Rails stuff
 augroup ft_options
@@ -335,20 +343,21 @@ augroup ft_options
   autocmd BufRead,BufNewFile ~/Dev/*/spec/support/*.rb set syntax=rspec
 augroup END
 
-" Rails shortcuts
-" TODO convert this call to a function to run vim-cucumber
-" when the current buffer is in the features dir
+" vim-rails && vim-laravel shortcuts
 nnoremap va :AV<cr>
-nmap <Leader>a :A<cr>
-nmap <Leader>ec :Econtroller<cr>
-nmap <Leader>em :Emodel<cr>
-nmap <Leader>ef :EFixtures<cr>
-nmap <Leader>ev :Eview<cr>
-nmap <Leader>es :e ./db/schema.rb<cr>
-nmap <Leader>er :e ./config/routes.rb<cr>
+nmap <leader>a :A<cr>
+nmap <leader>ec :Econtroller<cr>
+nmap <leader>em :Emodel<cr>
+nmap <leader>ef :EFixtures<cr>
+nmap <leader>ev :Eview<cr>
+nmap <leader>es :e ./db/schema.rb<cr>
+nmap <leader>er :e ./config/routes.rb<cr>
 
 " insert pry binding
-nmap <leader>b obinding.pry<esc>==:w<cr>
+nmap <leader>b ibinding.pry<esc>==:w<cr>
+
+" freeze strings
+nmap <leader>fr :1<cr>O# frozen_string_literal: true<cr><esc>0D:w<cr>
 
 " Coc settings
 " " don't give |ins-completion-menu| messages.
@@ -377,7 +386,7 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <Leader>gf <Plug>(coc-definition)
+nmap <leader>gf <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> <leader>ce :<C-u>CocList diagnostics<cr>
