@@ -12,11 +12,9 @@ if [ ! -e "$tmp_file" ]; then
     i3-msg gaps inner all set 0
     i3-msg gaps outer all set 0
     pkill picom
-
 else
     rm $tmp_file
-    pkill picom
+    i3-msg restart
+    sleep 1
     picom --daemon --config ~/dotfiles/.config/picom.conf
-    i3-msg gaps inner all set 20
-    i3-msg gaps outer all set 20
 fi

@@ -52,8 +52,8 @@ bindsym $mod+z [class="Termite"] scratchpad show
 bindsym $mod+Shift+z scratchpad show
 
 # i3-gaps stuff
-gaps inner 20
-gaps outer 20
+gaps inner 12
+gaps outer 12
 smart_borders on
 new_window none
 
