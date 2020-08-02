@@ -10,6 +10,7 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'junegunn/fzf.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
@@ -276,6 +277,9 @@ nmap <silent> <leader>rr :TestLast<cr>
 
 " EditorConfig Settings
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" vim-easy-align Settings
+vnoremap <silent> <Enter> :EasyAlign<Enter>
 
 " GitGutter Settings
 nnoremap gb :Gblame<cr>
