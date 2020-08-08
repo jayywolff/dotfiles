@@ -11,6 +11,7 @@ ln -sf $dotdir/.config/feh $HOME/.config/feh
 ln -sf $dotdir/.config/mupen64plus $HOME/.config/mupen64plus
 ln -sf $dotdir/.config/picom.conf $HOME/.config/picom.conf
 ln -sf $dotdir/.zshrc $HOME/.zshrc
+ln -sf $dotdir/.profile $HOME/.profile
 ln -sf $dotdir/.Xresources $HOME/.Xresources
 ln -sf $dotdir/.editrc $HOME/.editrc
 ln -sf $dotdir/.inputrc $HOME/.inputrc
