@@ -40,7 +40,7 @@ click-left = rofi -monitor -1 -show drun -location 1 -columns 2 -yoffset 27 -lin
 [module/title]
 type = custom/script
 exec = ~/dotfiles/scripts/xwindowname.sh
-tail = true
+interval = 0.4
 format-maxlen = 40
 format-background = ${color.green}
 format-foreground = ${color.black}
