@@ -1,3 +1,7 @@
+:root {
+  --tab-size: 34px;
+}
+
 tab-item tab-closebox::before, tab-item tab-closebox:hover::before {
   background-color: inherit;  
   box-shadow: none;
@@ -18,7 +22,7 @@ tab-closebox::after {
   box-shadow: none;
 }
 
-#tabbar  {
+#tabbar-container  {
     background-color: #282C34;
 }
 
@@ -34,5 +38,5 @@ tab-closebox::after {
 }
 
 .tab:not(:hover) .closebox {
-  display: none;
+  display:none;
 }
