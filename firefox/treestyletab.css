@@ -1,0 +1,38 @@
+tab-item tab-closebox::before, tab-item tab-closebox:hover::before {
+  background-color: inherit;  
+  box-shadow: none;
+}
+tab-item.active tab-closebox:hover::before { 
+  background-color: inherit;
+  box-shadow: none;
+}
+tab-item.active tab-closebox:hover::after {
+  background-color: white;
+}
+tab-item.active {
+  opacity: 1;
+}
+
+tab-closebox::after {
+  background-color: inherit;
+  box-shadow: none;
+}
+
+#tabbar  {
+    background-color: #282C34;
+}
+
+.tab.active {
+    background-color: #5294E2;
+}
+.tab.active:hover {
+  opacity: 1;
+}
+
+.tab:not(.pinned) { 
+  height: var(--tab-height) !important;
+}
+
+.tab:not(:hover) .closebox {
+  display: none;
+}
