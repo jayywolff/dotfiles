@@ -24,6 +24,7 @@ ln -sf $dotdir/.vimrc $HOME/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 # there may be some un-automated setup required for coc-vim
+vim -c 'CocInstall -sync coc-json coc-html coc-css coc-phpactor coc-tsserver|q'
 
 ln -sf $dotdir/.vim/ $HOME/.vim
 # setup tmux
