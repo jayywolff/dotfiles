@@ -9,7 +9,7 @@ exec xset r rate 140 40
 exec --no-startup-id bash ~/dotfiles/scripts/display_setup.sh
 exec --no-startup-id redshift
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
-exec_always --no-startup-id  python3 ~/.config/polybar/i3-autoname-workspaces.py
+exec_always --no-startup-id python3 ~/.config/polybar/i3-autoname-workspaces.py
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 #Font for window titles.
@@ -39,6 +39,7 @@ bindsym $mod+Return exec termite
 
 for_window [class="^.*"] border pixel 2
 for_window [title="^Telegram"] floating enable
+for_window [class="KeeWeb"] floating enable
 for_window [class="Slack"] floating enable
 for_window [title="^galculator"] floating enable
 for_window [class="^Microsoft Teams - Preview"] floating enable
@@ -136,14 +137,10 @@ bindsym $mod+Shift+bracketleft exec cmus-remote -C "seek -10"
 bindsym $mod+Shift+bracketright exec cmus-remote -C "seek +10"
 
 #backlight controls (laptop monitor)
-bindsym XF86MonBrightnessDown exec light -U 5
-bindsym XF86MonBrightnessUp exec light -A 5
-bindsym $mod+Shift+minus exec light -U 4
-bindsym $mod+Shift+plus exec light -A 4
-
-#keyboard backlight controls (laptop keyboard)
-bindsym XF86KbdBrightnessDown exec light -Urs "sysfs/leds/smc::kbd_backlight" 2
-bindsym XF86KbdBrightnessUp exec light -Ars "sysfs/leds/smc::kbd_backlight" 2
+bindsym XF86MonBrightnessDown exec xbacklight -dec 4
+bindsym XF86MonBrightnessUp exec xbacklight -inc 4
+bindsym $mod+Shift+minus exec xbacklight -dec 4
+bindsym $mod+Shift+plus exec xbacklight -inc 4
 
 bindsym $mod+Ctrl+Escape exec i3lock --blur=2
 bindsym XF86Sleep exec i3lock --blur=4 && echo mem > /sys/power/state
