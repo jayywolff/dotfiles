@@ -66,7 +66,7 @@ alias tres="~/dotfiles/scripts/tmux-resurrect.sh"
 alias sup="~/dotfiles/scripts/system_update.sh"
 alias poff="poweroff"
 
-alias homestead='function __homestead() { (cd ~/Dev/vboxes/homestead && vagrant $*); unset -f __homestead; }; __homestead'
+alias homestead='function __homestead() { (cd ~/Dev/homestead && vagrant $*); unset -f __homestead; }; __homestead'
 alias huhs="homestead up;homestead ssh"
 alias pat='php artisan tinker'
 alias pac='php artisan cache:clear;php artisan view:clear; php artisan route:clear;php artisan config:clear; composer dump-autoload'
