@@ -69,6 +69,7 @@ FA_CLOCK_O = '\uf017'
 FA_ROCKET = '\uf135'
 NF_MDI_WINDOWS = '\ufab2'
 NF_DEV_GIT_COMPARE = '\uf47f'
+NF_FA_VIDEO_CAMERA = '\uf03d'
 WINDOW_ICONS = {
     'termite': FA_TERMINAL,
     'Galculator': FA_CALCULATOR,
@@ -103,6 +104,7 @@ WINDOW_ICONS = {
     'Postman': FA_ROCKET,
     'Microsoft Teams - Preview': NF_MDI_WINDOWS,
     'Meld': NF_DEV_GIT_COMPARE,
+    'zoom': NF_FA_VIDEO_CAMERA,
 }
 
 
