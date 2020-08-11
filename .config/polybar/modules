@@ -232,7 +232,7 @@ format-disconnected =
 
 [module/network]
 type = internal/network
-interface = wlp3s0
+interface = wlp59s0
 
 interval = 3.0
 unknown-as-up = true
