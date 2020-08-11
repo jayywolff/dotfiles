@@ -15,6 +15,6 @@ if [ ! -e "$tmp_file" ]; then
 else
     rm $tmp_file
     i3-msg restart
-    sleep 1
+    sleep 0.5
     picom --daemon --config ~/dotfiles/.config/picom.conf
 fi
