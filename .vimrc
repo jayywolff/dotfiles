@@ -291,8 +291,8 @@ nnoremap gb :Gblame<cr>
 nnoremap gd :GitGutterPreviewHunk<cr>
 nnoremap gds :Gdiffsplit<cr>
 nnoremap gc :BCommits<cr>
-nnoremap hs :GitGutterStageHunk<cr>
-nnoremap hd :GitGutterUndoHunk<cr>:w<cr>
+nnoremap <leader>hs :GitGutterStageHunk<cr>
+nnoremap <leader>hd :GitGutterUndoHunk<cr>:w<cr>
 
 let g:gitgutter_sign_added = ''
 let g:gitgutter_sign_modified = ''
