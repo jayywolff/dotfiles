@@ -68,7 +68,10 @@ alias poff="poweroff"
 
 alias homestead='function __homestead() { (cd ~/Dev/homestead && vagrant $*); unset -f __homestead; }; __homestead'
 alias huhs="homestead up;homestead ssh"
+alias hrhs="homestead reload;homestead ssh"
 alias pat='php artisan tinker'
+alias pam='php artisan migrate'
+alias pamr='php artisan migrate:rollback --step=1'
 alias pac='php artisan cache:clear;php artisan view:clear; php artisan route:clear;php artisan config:clear; composer dump-autoload'
 alias pu='./vendor/bin/phpunit --configuration ./phpunit_local.xml'
 alias ras='rails server'
@@ -78,6 +81,7 @@ alias gitlog="git log --author $USER --branches *"
 alias gcom="git checkout master"
 alias gcob="git checkout -b"
 alias grem="git checkout master && git pull origin master && git checkout - && git rebase master --interactive"
+alias gred="git checkout development && git pull origin development && git checkout - && git rebase development --interactive"
 alias grc="git rebase --continue"
 alias gpo="git push -u origin"
 alias gdp="git diff --patience"
