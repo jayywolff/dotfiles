@@ -56,6 +56,7 @@ export GPG_TTY=$(tty)
 
 # For a full list of active aliases, run `alias`.
 # Aliases
+alias mpa="mpv --no-video"
 alias n64=mupen64plus
 alias ta="tmux attach-session"
 alias tmux-resurrect="~/dotfiles/scripts/tmux-resurrect.sh"
@@ -72,8 +73,13 @@ alias hrhs="homestead reload;homestead ssh"
 alias pat='php artisan tinker'
 alias pam='php artisan migrate'
 alias pamr='php artisan migrate:rollback --step=1'
+alias pamf='php artisan migrate:fresh --seed'
 alias pac='php artisan cache:clear;php artisan view:clear; php artisan route:clear;php artisan config:clear; composer dump-autoload'
 alias pu='./vendor/bin/phpunit --configuration ./phpunit_local.xml'
+alias nrd='npm run development'
+alias nrp='npm run production'
+alias nrw='npm run watch'
+alias laralog='tail -f ./storage/logs/laravel.log'
 alias ras='rails server'
 alias rac='rails console'
 alias dcu='docker-compose up'

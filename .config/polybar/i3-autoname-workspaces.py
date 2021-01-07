@@ -89,6 +89,7 @@ WINDOW_ICONS = {
     'PdfMod': FA_FILE_PDF_O,
     'Caja': FA_FILES_O,
     'Thunar': FA_FILES_O,
+    'Spacefm': FA_FILES_O,
     'gimp': FA_PAINTBRUSH,
     'gimp-2.10': FA_PAINTBRUSH,
     'VirtualBox': FA_CUBE,

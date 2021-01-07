@@ -2,7 +2,13 @@ root = true
 
 [*]
 indent_style = space
-indent_size = 2
+indent_size = 4
+trim_trailing_whitespace = false
 
-[*.{rb,scss,css,sass,js,jsx,haml,erb,sql,feature}]
+[*.{php,rb,scss,css,sass,js,jsx,haml,erb,sql,feature,vue,json,xml,html}]
 trim_trailing_whitespace = true
+end_of_line = lf
+insert_final_newline = true
+
+[*.{yml,yaml,vue,js}]
+indent_size = 2

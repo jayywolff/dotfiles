@@ -1,5 +1,6 @@
 [options]
-font = Hack Nerd Font Regular 13
+#font = Hack Nerd Font Regular 15
+font = MesloLGM Nerd Font Regular 14
 clickable_url = true
 scrollback_lines = 15000
 

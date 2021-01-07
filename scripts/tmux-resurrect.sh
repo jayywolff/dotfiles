@@ -2,4 +2,4 @@
 
 tmux start-server \; new-session -d
 tmux run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh
-tmux attach-session -t Dev
+tmux attach-session -t d3v

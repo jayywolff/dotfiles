@@ -47,7 +47,30 @@ format-foreground = ${color.black}
 format-padding = 1
 format-font = 2
 ;;==========================================================
+;
+[module/microphone-recording]
+type = custom/script
+exec = ~/dotfiles/scripts/mute-mic-script2.sh
+interval = 0.4
+format-maxlen = 40
+format-background = ${color.black}
+format-foreground = ${color.green}
+format-padding = 1
+format-font = 2
+click-left = bash ~/dotfiles/scripts/mute-mic.sh
 
+[module/microphone-mute]
+type = custom/script
+exec = ~/dotfiles/scripts/mute-mic-script.sh
+interval = 0.4
+format-maxlen = 40
+format-background = ${color.black}
+format-foreground = ${color.red}
+format-padding = 1
+format-font = 2
+click-left = bash ~/dotfiles/scripts/mute-mic.sh
+;;==========================================================
+;
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>

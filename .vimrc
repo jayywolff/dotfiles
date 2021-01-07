@@ -39,6 +39,8 @@ Plugin 'janko/vim-test'
 " PHP dev plugins
 Plugin 'noahfrederick/vim-composer'
 Plugin 'noahfrederick/vim-laravel'
+Plugin 'tobyS/vmustache'
+Plugin 'tobyS/pdv'
 
 call vundle#end()          " End of plugins
 filetype plugin indent on  " required
@@ -52,7 +54,8 @@ set encoding=utf8
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
-syntax on
+
+"syntax on
 colorscheme onedark
 let g:onedark_terminal_italics=1
 let g:airline_theme='onedark'
@@ -63,7 +66,7 @@ if has("gui_running")
   set guioptions-=T   " Removes top toolbar
   set guioptions-=r   " Removes right hand scroll bar
   set guioptions-=L   " Removes left hand scroll bar
-  set guifont=Hack\ Nerd\ Font\ Regular\ 13
+  set guifont=Hack\ Nerd\ Font\ Regular\ 14
 else
   " For Terminal Transparency (with truecolor support)
   highlight Normal guibg=NONE ctermbg=NONE
@@ -118,7 +121,7 @@ nmap <leader>i3 :edit ~/.config/i3/config<cr>
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>pd :pwd<cr>
 "Reload the current buffer
-nnoremap <leader>br :e!<cr>
+nnoremap <leader><leader> :e!<cr>
 
 " Misc helpers
 "Easy escaping to normal mode
@@ -130,14 +133,11 @@ nmap <leader><space> i<space><esc>
 " Quickly insert blank line
 nnoremap <leader>o o<esc>
 
-" Switch between the last two files
-nnoremap <leader><leader> <C-^>
-
 " Open splits
 nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
 " Edit dev notes 
-nmap <leader>n :e ~/Dev/notes.md<cr>
+nmap <leader>n :e ~/Dev/notes.md<cr>:set wrap<cr>
 nnoremap <silent><leader>tt <C-w><C-]><C-w>T
 
 " Resize vsplit;
@@ -200,6 +200,10 @@ let NERDTreeWinPos='right'
 let NERDTreeMinimalUI=1
 let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
 
+" Open NERDTree automatically when vim starts if no files were specified
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 " Close vim if NERDTree is the only open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Close vim if a quickfix window is the only open buffer
@@ -233,7 +237,7 @@ set termwinsize=15x0
 " Use Silver Searcher instead of grep (Greplace/Ack.vim settings)
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor --ignore public'
-let g:ackprg = 'ag --nogroup --column --path-to-ignore=/home/jay/.vim/.agignore'
+let g:ackprg = 'ag --literal --nogroup --column --path-to-ignore=/home/jay/.vim/.agignore'
 nmap <leader>s :Ack! "" ./<C-Left><Left><Left>
 nmap <leader>ss :Ack! "<cword>" ./<cr>
 nmap <leader>sa :Ack! "<cword>" ./app<cr>
@@ -241,36 +245,8 @@ nmap <leader>sd :Ack! "<cword>" ./
 
 " FZF Stuff
 let $FZF_DEFAULT_COMMAND = 'ag --path-to-ignore=/home/jay/.vim/.agignore --hidden -l -g ""'
-nnoremap <silent><c-p> :call FZFWithDevIcons()<cr>
-nnoremap <leader>p :History<cr>
-
-" Requires Rust dependency: `cargo install devicon-lookup`
-function! FZFWithDevIcons()
-  function! s:files()
-    let l:files = split(system($FZF_DEFAULT_COMMAND.'| devicon-lookup'), '\n')
-    return l:files
-  endfunction
-
-  function! s:edit_file(items)
-    let items = a:items
-    let i = 1
-    let ln = len(items)
-    while i < ln
-      let item = items[i]
-      let parts = split(item, ' ')
-      let file_path = get(parts, 1, '')
-      let items[i] = file_path
-      let i += 1
-    endwhile
-    call s:Sink(items)
-  endfunction
-
-  let opts = fzf#wrap({})
-  let opts.source = <sid>files()
-  let s:Sink = opts['sink*']
-  let opts['sink*'] = function('s:edit_file')
-  call fzf#run(opts)
-endfunction
+nnoremap <silent><c-p> :Files<cr>
+nnoremap <silent><leader>p :History<cr>
 
 " Testing
 let test#strategy = "vimterminal"
@@ -278,7 +254,6 @@ nmap <silent> <leader>r :TestNearest<cr>
 nmap <silent> <leader>rt :TestFile<cr>
 nmap <silent> <leader>ra :TestSuite<cr>
 nmap <silent> <leader>rr :TestLast<cr>
-let test#php#phpunit#executable = './vendor/bin/phpunit --configuration phpunit_local.xml'
 
 " EditorConfig Settings
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
@@ -287,6 +262,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 vnoremap <silent> <Enter> :EasyAlign<Enter>
 
 " GitGutter Settings
+nnoremap <leader>g :G<cr>
 nnoremap gb :Gblame<cr>
 nnoremap gd :GitGutterPreviewHunk<cr>
 nnoremap gds :Gdiffsplit<cr>
@@ -328,20 +304,28 @@ let g:startify_list_order = [
       \ ['  sessions:'],  'sessions',
       \ ['  cwd mru:'],   'dir',
       \ ['  mru:'],       'files']
-
+let g:startify_session_before_save = [
+    \ 'echo "Cleaning up before saving.."',
+    \ 'silent! NERDTreeClose'
+    \ ]
 " generate ctags
 nnoremap <C-]> :tag <C-R>=expand("<cword>")<cr><cr>
-nmap <leader>ct :Dispatch ~/dotfiles/scripts/php_ctags.sh .<cr>
+nmap <leader>ct :!~/dotfiles/scripts/php_ctags.sh .<cr>
 
 " php stuff
+nmap <leader>d ilogger();<esc>==f(a
 nmap <leader>dd ieval(\Psy\sh());<esc>==:w<cr>
 
+" doc blocks
+let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates"
+nmap<leader>db :call pdv#DocumentCurrentLine()<CR>
+
 " Rails stuff
-augroup ft_options
-  autocmd!
-  autocmd FileType ruby setlocal iskeyword+=?,!,=
-  autocmd BufRead,BufNewFile ~/Dev/*/spec/support/*.rb set syntax=rspec
-augroup END
+"augroup ft_options
+  "autocmd!
+  "autocmd FileType ruby setlocal iskeyword+=?,!,=
+  "autocmd BufRead,BufNewFile ~/Dev/*/spec/support/*.rb set syntax=rspec
+"augroup END
 
 " vim-rails && vim-laravel shortcuts
 nnoremap va :AV<cr>
@@ -350,14 +334,15 @@ nmap <leader>ec :Econtroller<cr>
 nmap <leader>em :Emodel<cr>
 nmap <leader>ef :EFixtures<cr>
 nmap <leader>ev :Eview<cr>
-nmap <leader>es :e ./db/schema.rb<cr>
-nmap <leader>er :e ./config/routes.rb<cr>
+nmap <leader>ee :e .env<cr>
+"nmap <leader>es :e ./db/schema.rb<cr>
+"nmap <leader>er :e ./config/routes.rb<cr>
 
 " insert pry binding
-nmap <leader>b ibinding.pry<esc>==:w<cr>
+"nmap <leader>b ibinding.pry<esc>==:w<cr>
 
 " freeze strings
-nmap <leader>fr :1<cr>O# frozen_string_literal: true<cr><esc>0D:w<cr>
+"nmap <leader>fr :1<cr>O# frozen_string_literal: true<cr><esc>0D:w<cr>
 
 " Coc settings
 " " don't give |ins-completion-menu| messages.
@@ -404,7 +389,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+"autocmd CursorHold * silent call CocActionAsync('highlight')
 
 augroup mygroup
   autocmd!

@@ -56,7 +56,7 @@ font-3 = Hack Nerd Font:style=Regular:size=15;5
 
 ;modules-center = workspaces
 modules-left = launcher i3
-modules-right = right7 title right6 pulseaudio right5 filesystem right4 battery right3 network right2 date right1
+modules-right = right7 title right6 pulseaudio microphone-recording microphone-mute right5 filesystem right4 battery right3 network right2 date right1
 
 wm-restack = i3
 cursor-click = pointer
