@@ -225,8 +225,8 @@ animation-charging-framerate = 750
 type = internal/date
 interval = 1.0
 
-time =  %H:%M
-time-alt = " %Y-%m-%d %H:%M"
+time = " %Y-%m-%d %H:%M"
+time-alt =  %H:%M
 
 format = <label>
 format-background = ${color.white}
