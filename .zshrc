@@ -24,10 +24,6 @@ plugins=(git vi-mode)
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 
-# setup rvm
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 # setup npm
 export PATH="$PATH:$HOME/.node_modules/bin"
 export npm_config_prefix=~/.node_modules
@@ -53,6 +49,9 @@ export JAVA_HOME=/usr
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 #
 export GPG_TTY=$(tty)
+
+# rbenv
+eval "$(rbenv init -)"
 
 # For a full list of active aliases, run `alias`.
 # Aliases
@@ -99,3 +98,4 @@ alias hrc="heroku run rails c -a"
 # Disable flow control commands (keeps C-s from freezing everything in vim)
 stty start undef
 stty stop undef
+
