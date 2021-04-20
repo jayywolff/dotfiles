@@ -31,16 +31,16 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'janko/vim-test'
 
 " Rails dev plugins
-"Plugin 'tpope/vim-bundler'
-"Plugin 'tpope/vim-rails'
-"Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-endwise'
 "Plugin 'tpope/vim-cucumber'
 
 " PHP dev plugins
-Plugin 'noahfrederick/vim-composer'
-Plugin 'noahfrederick/vim-laravel'
-Plugin 'tobyS/vmustache'
-Plugin 'tobyS/pdv'
+"Plugin 'noahfrederick/vim-composer'
+"Plugin 'noahfrederick/vim-laravel'
+"Plugin 'tobyS/vmustache'
+"Plugin 'tobyS/pdv'
 
 call vundle#end()          " End of plugins
 filetype plugin indent on  " required
@@ -310,11 +310,11 @@ let g:startify_session_before_save = [
     \ ]
 " generate ctags
 nnoremap <C-]> :tag <C-R>=expand("<cword>")<cr><cr>
-nmap <leader>ct :!~/dotfiles/scripts/php_ctags.sh .<cr>
+nmap <leader>ct :!~/dotfiles/scripts/rails_ctags.sh .<cr>
 
 " php stuff
-nmap <leader>d ilogger();<esc>==f(a
-nmap <leader>dd ieval(\Psy\sh());<esc>==:w<cr>
+"nmap <leader>d ilogger();<esc>==f(a
+"nmap <leader>dd ieval(\Psy\sh());<esc>==:w<cr>
 
 " doc blocks
 let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates"
