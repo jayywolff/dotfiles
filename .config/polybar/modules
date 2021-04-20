@@ -239,7 +239,7 @@ label = %time%
 
 [module/eth]
 type = internal/network
-interface = enp0s20u5u3
+interface = enp0s31f6
 interval = 3.0
 
 format-connected-prefix = ""
@@ -255,26 +255,26 @@ format-disconnected =
 
 [module/network]
 type = internal/network
-interface = wlp59s0
+interface = wlan0
 
 interval = 3.0
 unknown-as-up = true
 
 format-connected-font = 2
 format-connected = <ramp-signal> <label-connected>
-format-connected-background = ${color.grey}
-format-connected-foreground = ${color.white}
+format-connected-background = ${color.yellow}
+format-connected-foreground = ${color.black}
 format-connected-padding = 1
 
 format-disconnected-font = 2
 format-disconnected = <label-disconnected>
-format-disconnected-background = ${color.grey}
-format-disconnected-foreground = ${color.white}
+format-disconnected-background = ${color.yellow}
+format-disconnected-foreground = ${color.black}
 format-disconnected-padding = 1
 
 label-font = 2
-label-connected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/i3blocks/toggle_wifi.sh:} %signal%% @%essid%%{A}%{A}%{A}"
-label-disconnected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/i3blocks/toggle_wifi.sh:} 睊 Not Connected%{A}%{A}%{A}"
+label-connected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/i3blocks/toggle_wifi.sh:} %signal%% wlan0%{A}%{A}%{A}"
+label-disconnected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/i3blocks/toggle_wifi.sh:}睊 null%{A}%{A}%{A}"
 ramp-signal-0 = 睊
 ramp-signal-1 = 
 ramp-signal-2 = 
@@ -290,12 +290,12 @@ interval = 30
 mount-0 = /
 
 label-mounted = "  %percentage_used%% "
-label-mounted-background = ${color.yellow}
-label-mounted-foreground = ${color.black}
+label-mounted-background = ${color.black}
+label-mounted-foreground = ${color.white}
 label-mounted-font = 2
 label-unmounted = %mountpoint% not mounted
-label-unmounted-background = ${color.yellow}
-label-unmounted-foreground = ${color.black}
+label-unmounted-background = ${color.black}
+label-unmounted-foreground = ${color.white}
 label-unmounted-font = 2
 
 ;;==========================================================
@@ -324,17 +324,17 @@ format-warn = <ramp><label-warn>
 format-font = 2
 
 label = "%temperature-c% "
-label-background = ${color.yellow}
-label-foreground = ${color.black}
+label-background = ${color.grey}
+label-foreground = ${color.white}
 label-warn = %temperature-c%
-label-warn-background = ${color.yellow}
+label-warn-background = ${color.grey}
 label-warn-foreground = ${color.red}
 
 ramp-0 = "  "
 ramp-1 = "  "
 ramp-2 = "  "
-ramp-foreground = ${color.black}
-ramp-background = ${color.yellow}
+ramp-background = ${color.grey}
+ramp-foreground = ${color.white}
 
 ;;==========================================================
 ;;	    __________  ______
