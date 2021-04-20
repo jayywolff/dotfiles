@@ -21,12 +21,12 @@ ln -sf $dotdir/.editorconfig $HOME/.editorconfig
 ## setup vim
 ln -sf $dotdir/.vim/ $HOME/.vim
 ln -sf $dotdir/.vimrc $HOME/.vimrc
+mkdir $dotdir/.vim/backups
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 # there may be some un-automated setup required for coc-vim
 vim -c 'CocInstall -sync coc-json coc-html coc-css coc-phpactor coc-tsserver|q'
 
-ln -sf $dotdir/.vim/ $HOME/.vim
 # setup tmux
 ln -sf $dotdir/.tmux.conf $HOME/.tmux.conf 
 mkdir -p $HOME/.tmux/plugins
