@@ -1,29 +1,21 @@
 #!/bin/bash
-HDMI1="$(xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep HDMI-1)"
-HDMI2="$(xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep HDMI-2)"
-HDMI3="$(xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep HDMI-3)"
+EDP1="$(xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep eDP1)"
+DP21="$(xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep DP2-1)"
+DP22="$(xrandr --current | sed 's/^\(.*\) connected.*$/\1/p;d' | grep DP2-2)"
 
-pkill picom
-if [[ ! -n $HDMI1 ]] && [[ ! -n $HDMI2 ]] && [[ ! -n $HDMI3 ]] # Single monitor setup
+if [[ ! -n $DP21 ]] && [[ ! -n $DP22 ]] # Single monitor setup
 then
-    xrandr --output HDMI-1 --off --output HDMI-2 --off --output HDMI-3 --off --output eDP-1 --primary --mode 1920x1200
-elif [[ -n $HDMI1 ]] && [[ -n $HDMI2 ]] && [[ ! -n $HDMI3 ]] # Dual monitor setup with HDMI1 and HDMI2
+    xrandr --output eDP1 --primary --mode 1920x1080 --output DP2-1 --off --output DP2-2 --off
+elif [[ -n $DP21 ]] && [[ -n $DP22 ]] # Dual monitor dock setup with HDMI and Display port
 then
-    xrandr --output HDMI-1 --mode 1920x1080 --primary --output HDMI-2 --mode 1920x1080 --right-of HDMI-1 --output eDP-1 --off
-elif [[ -n $HDMI1 ]] # Dual monitor setup with HDMI1 and EDP1
-then
-    xrandr --output eDP-1 --primary --mode 1920x1200 --output HDMI-1 --mode 1920x1080 --right-of eDP-1 --output HDMI-2 --off --output HDMI-3 --off
-elif [[ -n $HDMI2 ]] # Dual monitor setup with HDMI2 and EDP1
-then
-    xrandr --output eDP-1 --primary --mode 1920x1200 --output HDMI-2 --mode 1920x1080 --right-of eDP-1 --output HDMI-1 --off --output HDMI-3 --off
-elif [[ -n $HDMI3 ]] # Dual monitor setup with HDMI3 and EDP1
-then
-    xrandr --output eDP-1 --primary --mode 1920x1200 --output HDMI-3 --mode 1920x1080 --right-of eDP-1 --output HDMI-1 --off --output HDMI-2 --off
+    xrandr --output DP2-1 --mode 1920x1080 --primary
+    xrandr --output DP2-1 --mode 1920x1080 --primary --output DP2-2 --mode 1920x1080 --right-of DP2-1 --output eDP1 --off
 else # Fail-safe
-    xrandr --output HDMI-1 --off --output HDMI-2 --off --output HDMI-3 --off --output eDP-1 --primary --mode 1920x1200
+    xrandr --output eDP1 --primary --mode 1920x1080 --output DP2-1 --off --output DP2-2 --off
 fi
 
-sleep 1
-picom --daemon --config ~/dotfiles/.config/picom.conf
-sleep 0.5
+sleep 0.2
 i3-msg restart
+sleep 0.2
+pkill picom
+picom --daemon --config ~/dotfiles/.config/picom.conf
