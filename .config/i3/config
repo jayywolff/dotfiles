@@ -6,7 +6,7 @@ set $mod Mod4
 exec xset r rate 140 40
 
 #AUTOSTART STUFF
-exec --no-startup-id bash ~/dotfiles/scripts/display_setup_galago.sh
+exec --no-startup-id bash ~/dotfiles/scripts/display_setup.sh
 exec --no-startup-id redshift
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpaper.*
 exec_always --no-startup-id python3 ~/.config/polybar/i3-autoname-workspaces.py
@@ -218,7 +218,7 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 
 # adjust displays
-bindsym $mod+Shift+m exec bash ~/dotfiles/scripts/display_setup_galago.sh
+bindsym $mod+Shift+m exec bash ~/dotfiles/scripts/display_setup.sh
 bindsym $mod+c exec bash ~/dotfiles/scripts/mute-mic.sh "--toggle-mute"
 bindsym $mod+m exec bash ~/dotfiles/scripts/mute-mic.sh "--mute"
 # reload the configuration file
