@@ -335,14 +335,14 @@ nmap <leader>em :Emodel<cr>
 nmap <leader>ef :EFixtures<cr>
 nmap <leader>ev :Eview<cr>
 nmap <leader>ee :e .env<cr>
-"nmap <leader>es :e ./db/schema.rb<cr>
-"nmap <leader>er :e ./config/routes.rb<cr>
+nmap <leader>es :e ./db/schema.rb<cr>
+nmap <leader>er :e ./config/routes.rb<cr>
 
 " insert pry binding
 "nmap <leader>b ibinding.pry<esc>==:w<cr>
 
 " freeze strings
-"nmap <leader>fr :1<cr>O# frozen_string_literal: true<cr><esc>0D:w<cr>
+nmap <leader>fr :1<cr>O# frozen_string_literal: true<cr><esc>0D:w<cr>
 
 " Coc settings
 " " don't give |ins-completion-menu| messages.
