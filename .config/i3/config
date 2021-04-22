@@ -125,6 +125,9 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -monitor -1 -show window
 bindsym XF86AudioRaiseVolume exec pulsemixer --change-volume +5
 bindsym XF86AudioLowerVolume exec pulsemixer --change-volume -5
 bindsym XF86AudioMute exec pulsemixer --toggle-mute
+bindsym XF86AudioMicToggle exec bash ~/dotfiles/scripts/mute-mic.sh "--toggle-mute"
+bindsym $mod+c exec bash ~/dotfiles/scripts/mute-mic.sh "--toggle-mute"
+bindsym $mod+m exec bash ~/dotfiles/scripts/mute-mic.sh "--mute"
 bindsym $mod+equal exec pulsemixer --change-volume +5
 bindsym $mod+minus exec pulsemixer --change-volume -5
 bindsym $mod+0 exec pulsemixer --toggle-mute
@@ -219,8 +222,7 @@ bindsym $mod+Shift+9 move container to workspace number 9
 
 # adjust displays
 bindsym $mod+Shift+m exec bash ~/dotfiles/scripts/display_setup.sh
-bindsym $mod+c exec bash ~/dotfiles/scripts/mute-mic.sh "--toggle-mute"
-bindsym $mod+m exec bash ~/dotfiles/scripts/mute-mic.sh "--mute"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
