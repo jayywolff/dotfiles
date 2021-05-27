@@ -308,6 +308,7 @@ let g:startify_session_before_save = [
     \ 'echo "Cleaning up before saving.."',
     \ 'silent! NERDTreeClose'
     \ ]
+
 " generate ctags
 nnoremap <C-]> :tag <C-R>=expand("<cword>")<cr><cr>
 nmap <leader>ct :!~/dotfiles/scripts/rails_ctags.sh .<cr>
@@ -317,15 +318,15 @@ nmap <leader>ct :!~/dotfiles/scripts/rails_ctags.sh .<cr>
 "nmap <leader>dd ieval(\Psy\sh());<esc>==:w<cr>
 
 " doc blocks
-let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates"
-nmap<leader>db :call pdv#DocumentCurrentLine()<CR>
+"let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates"
+"nmap<leader>db :call pdv#DocumentCurrentLine()<CR>
 
 " Rails stuff
-"augroup ft_options
-  "autocmd!
+augroup ft_options
+  autocmd!
   "autocmd FileType ruby setlocal iskeyword+=?,!,=
-  "autocmd BufRead,BufNewFile ~/Dev/*/spec/support/*.rb set syntax=rspec
-"augroup END
+  autocmd BufRead,BufNewFile ~/Dev/*/spec/support/*.rb set syntax=rspec
+augroup END
 
 " vim-rails && vim-laravel shortcuts
 nnoremap va :AV<cr>
@@ -337,9 +338,10 @@ nmap <leader>ev :Eview<cr>
 nmap <leader>ee :e .env<cr>
 nmap <leader>es :e ./db/schema.rb<cr>
 nmap <leader>er :e ./config/routes.rb<cr>
+nmap <leader>eg :e Gemfile<cr>
 
 " insert pry binding
-"nmap <leader>b ibinding.pry<esc>==:w<cr>
+nmap <leader>b ibinding.pry<esc>==:w<cr>
 
 " freeze strings
 nmap <leader>fr :1<cr>O# frozen_string_literal: true<cr><esc>0D:w<cr>
