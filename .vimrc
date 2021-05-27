@@ -243,6 +243,11 @@ nmap <leader>ss :Ack! "<cword>" ./<cr>
 nmap <leader>sa :Ack! "<cword>" ./app<cr>
 nmap <leader>sd :Ack! "<cword>" ./
 
+" Use Ack to pull up a list of files/lines where a match is found
+" Then use cdo to do a 'string replacement' for entries in the quickfix window
+" check if current buffer is the quickfix window
+nmap <leader>sr :cdo s// \| update<C-Left><C-Left><Left><Left>
+
 " FZF Stuff
 let $FZF_DEFAULT_COMMAND = 'ag --path-to-ignore=/home/jay/.vim/.agignore --hidden -l -g ""'
 nnoremap <silent><c-p> :Files<cr>
