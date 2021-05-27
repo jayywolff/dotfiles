@@ -55,6 +55,7 @@ eval "$(rbenv init -)"
 
 # For a full list of active aliases, run `alias`.
 # Aliases
+alias logs="journalctl -xfb"
 alias mpa="mpv --no-video"
 alias n64=mupen64plus
 alias ta="tmux attach-session"
@@ -81,14 +82,22 @@ alias nrw='npm run watch'
 alias laralog='tail -f ./storage/logs/laravel.log'
 alias ras='rails server'
 alias rac='rails console'
+alias rag='rails generate'
+alias ral='tail -f log/development.log'
+alias ragm='rails generate migration'
+alias ram='rails db:migrate'
+alias ramr='rails db:rollback'
+alias ramrm='rails db:rollback && rails db:migrate'
 alias dcu='docker-compose up'
 alias gitlog="git log --author $USER --branches *"
 alias gcom="git checkout master"
 alias gcob="git checkout -b"
 alias grem="git checkout master && git pull origin master && git checkout - && git rebase master --interactive"
 alias gred="git checkout development && git pull origin development && git checkout - && git rebase development --interactive"
+alias deploy="git checkout master && git pull origin master && git checkout - && git rebase master && git push --force-with-lease && git checkout master && git merge - && git push"
 alias grc="git rebase --continue"
 alias gpo="git push -u origin"
+alias gpf="git push --force-with-lease --force-if-includes"
 alias gdp="git diff --patience"
 alias gcos="git checkout db/schema.rb"
 alias gamend='git commit --amend --all --no-edit'
