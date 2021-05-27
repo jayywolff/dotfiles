@@ -1,7 +1,7 @@
 #!/bin/bash
-batinf='acpi -b'
+
 perc=$(acpi -b | awk '{print $4;}' | sed 's/%//g' | sed 's/,//g' | head -n1)
-charging=$(acpi -b | head -n1 | grep -c Discharging)
+charging=$(acpi -b | head -n1 | grep -c 'charging at zero rate')
 if [ ! $charging -eq 1 ]
 then echo " $perc%"
 elif [ $perc -gt 75 ]
