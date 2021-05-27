@@ -5,7 +5,7 @@ indent_style = space
 indent_size = 2
 trim_trailing_whitespace = false
 
-[*.{php,rb,scss,css,sass,js,jsx,haml,erb,sql,feature,vue,json,xml,html}]
+[*.{php,rb,rake,scss,css,sass,js,jsx,haml,erb,sql,feature,vue,json,xml,html}]
 trim_trailing_whitespace = true
 end_of_line = lf
 insert_final_newline = true
