@@ -9,7 +9,7 @@ Featuring custom configurations for some of the following projects:
 * polybar
 * ohmyzsh
 * gtk
-* termite
+* alacritty
 * rofi
 * picom
 * firefox
@@ -24,7 +24,7 @@ Featuring custom configurations for some of the following projects:
 ## Installation
   * Install Arch Linux or a headless install of Debian, Ubuntu, Fedora, OpenSuse, or even FreeBSD
 
-  * Install x11, i3-gaps, i3status, polybar, i3ipc, i3lock-color, lightdm, lightdm-gtk-greeter, xorg-xprop, termite, tmux, rofi, gvim, picom, ranger, feh, zsh, zsh-completions, git, net-tools, network-manager, ssh, light, pulseaudio, pulsemixer, editline, firefox, nm-applet, arc-dark themes, papirus icons, the_silver_searcher, etc..
+  * Install x11, i3-gaps, i3status, polybar, i3ipc, i3lock-color, lightdm, lightdm-gtk-greeter, xorg-xprop, alacritty, tmux, rofi, gvim, picom, ranger, feh, zsh, zsh-completions, git, net-tools, network-manager, ssh, light, pulseaudio, pulsemixer, editline, firefox, nm-applet, arc-dark themes, papirus icons, the_silver_searcher, etc..
 
   * Clone or copy dotfiles to ~/
 

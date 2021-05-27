@@ -34,8 +34,8 @@ client.background       $back
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 popup_during_fullscreen smart
-bindsym $mod+t exec termite
-bindsym $mod+Return exec termite
+bindsym $mod+t exec alacritty
+bindsym $mod+Return exec alacritty
 #mouse_warping none
 
 for_window [class="^.*"] border pixel 2
@@ -50,7 +50,7 @@ for_window [class="^Microsoft Teams - Preview"] floating enable
 bindsym $mod+Shift+s move scratchpad
 bindsym $mod+a [title="^Telegram"] scratchpad show
 bindsym $mod+s [class="Slack"] scratchpad show
-bindsym $mod+z [class="Termite"] scratchpad show
+bindsym $mod+z [class="Alacritty"] scratchpad show
 bindsym $mod+Shift+z scratchpad show
 
 # i3-gaps stuff

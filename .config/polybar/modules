@@ -17,7 +17,7 @@ content-foreground = ${color.blue}
 content-padding = 1
 content-font = 4
 
-click-left = rofi -monitor -1 -show drun -location 1 -columns 2 -yoffset 27 -lines 20 -width 30 -font "Hack Nerd Font Regular 14"
+;click-left = rofi -monitor -1 -show drun -location 1 -columns 2 -yoffset 27 -lines 20 -width 30 -font "Hack Nerd Font Regular 14"
 
 ;;==========================================================
 

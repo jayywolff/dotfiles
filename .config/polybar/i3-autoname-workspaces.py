@@ -53,7 +53,7 @@ FA_EYEDROPPER = '\uf1fb'
 FA_MUSIC = '\uf001'
 FA_PICTURE_O = '\uf03e'
 FA_KEY = '\uf084'
-FA_TERMINAL = '\uf120'
+FA_TERMINAL = '\uf489'
 FA_CUBE = '\uf1b2'
 FA_PLAY_CIRCLE = '\uf144'
 FA_DOWNLOAD = '\uf019'
@@ -72,9 +72,11 @@ NF_DEV_GIT_COMPARE = '\uf47f'
 NF_FA_VIDEO_CAMERA = '\uf03d'
 WINDOW_ICONS = {
     'termite': FA_TERMINAL,
+    'Alacritty': FA_TERMINAL,
     'Galculator': FA_CALCULATOR,
     'telegram-desktop': FA_TELEGRAM,
     'Slack': FA_SLACK,
+    'Google-chrome': FA_CHROME,
     'google-chrome': FA_CHROME,
     'chromium': FA_CHROME,
     'gvim': FA_CODE,
