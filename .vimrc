@@ -92,6 +92,7 @@ set tags=tags                   " CTags file
 set incsearch
 set timeout timeoutlen=200 ttimeoutlen=100
 set mouse+=a
+set ttymouse=xterm2
 
 " Group all swp files and backups into a dir
 set backupdir=~/.vim/backups
@@ -223,7 +224,6 @@ command! Wq wq
 
 " Tmux settings
 if &term =~ '^tmux'
-  set ttymouse=xterm2 " tmux knows the extended mouse mode
   let g:VtrOrientation = "v"
   nmap <leader>va :VtrAttachToPane<cr>
   nmap <leader>vc :VtrSendCommandToRunner<cr>
