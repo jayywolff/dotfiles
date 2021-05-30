@@ -6,6 +6,7 @@ sh $ZSH/tools/upgrade.sh
 echo 'Running tmux plugin updates'
 sh ~/.tmux/plugins/tpm/bin/update_plugins all
 echo 'Running vim plugin updates'
+rm ~/.vim/bundle/changelog.md
 vim -i NONE -c VundleUpdate -c VundleChangelog -c 'w ~/.vim/bundle/changelog.md' -c quitall
 cat ~/.vim/bundle/changelog.md
 echo 'Running coc-vim updates'
