@@ -15,7 +15,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'scrooloose/nerdtree'
+Plugin 'preservim/nerdtree'
 Plugin 'mattn/emmet-vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'Valloric/MatchTagAlways'
@@ -202,9 +202,7 @@ let NERDTreeMinimalUI=1
 let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
 
 " Open NERDTree automatically when vim starts if no files were specified
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
+autocmd VimEnter * if !argc() | Startify | NERDTree | wincmd w | endif
 " Close vim if NERDTree is the only open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Close vim if a quickfix window is the only open buffer
@@ -245,7 +243,6 @@ nmap <leader>sd :Ack! "<cword>" ./
 
 " Use Ack to pull up a list of files/lines where a match is found
 " Then use cdo to do a 'string replacement' for entries in the quickfix window
-" check if current buffer is the quickfix window
 nmap <leader>sr :cdo s// \| update<C-Left><C-Left><Left><Left>
 
 " FZF Stuff
@@ -329,7 +326,7 @@ nmap <leader>ct :!~/dotfiles/scripts/rails_ctags.sh .<cr>
 " Rails stuff
 augroup ft_options
   autocmd!
-  "autocmd FileType ruby setlocal iskeyword+=?,!,=
+  autocmd FileType ruby setlocal iskeyword+=?,!,=
   autocmd BufRead,BufNewFile ~/Dev/*/spec/support/*.rb set syntax=rspec
 augroup END
 
