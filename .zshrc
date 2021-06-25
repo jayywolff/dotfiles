@@ -88,6 +88,7 @@ alias ragm='rails generate migration'
 alias ram='rails db:migrate'
 alias ramr='rails db:rollback'
 alias ramrm='rails db:rollback && rails db:migrate'
+alias rams='rails db:migrate:status'
 alias dcu='docker-compose up'
 alias gitlog="git log --author $USER --branches *"
 alias gcom="git checkout master"
