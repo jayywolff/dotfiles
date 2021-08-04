@@ -202,7 +202,7 @@ let NERDTreeMinimalUI=1
 let NERDTreeBookmarksFile="~/.vim/NERDTreeBookmarks"
 
 " Open NERDTree automatically when vim starts if no files were specified
-autocmd VimEnter * if !argc() | Startify | NERDTree | wincmd w | endif
+"autocmd VimEnter * if !argc() | Startify | NERDTree | wincmd w | endif
 " Close vim if NERDTree is the only open buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " Close vim if a quickfix window is the only open buffer
