@@ -265,7 +265,7 @@ vnoremap <silent> <Enter> :EasyAlign<Enter>
 
 " GitGutter Settings
 nnoremap <leader>g :G<cr>
-nnoremap gb :Gblame<cr>
+nnoremap gb :Git blame<cr>
 nnoremap gd :GitGutterPreviewHunk<cr>
 nnoremap gds :Gdiffsplit<cr>
 nnoremap gc :BCommits<cr>
