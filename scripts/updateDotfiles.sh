@@ -52,3 +52,7 @@ mkdir -p $HOME/Pictures/screenshots
 
 # other notes
 # check out https://wiki.archlinux.org/index.php/Font_configuration
+# set application defaults
+# https://wiki.archlinux.org/title/Xdg-utils#Usage
+# xdg-mime query default inode/directory
+# xdg-mime default pcmanfm.desktop inode/directory
