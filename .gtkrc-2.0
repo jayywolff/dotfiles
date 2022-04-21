@@ -3,13 +3,13 @@
 
 include "/home/jay/.gtkrc-2.0.mine"
 gtk-theme-name="Arc-Dark"
-gtk-icon-theme-name="Paper"
-gtk-font-name="Meslo LG S for Powerline 11"
-gtk-cursor-theme-name="Paper"
+gtk-icon-theme-name="Papirus-Dark"
+gtk-font-name="Hack Nerd Font 13"
+gtk-cursor-theme-name="capitaine-cursors-light"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_SMALL_TOOLBAR
-gtk-button-images=0
+gtk-button-images=1
 gtk-menu-images=1
 gtk-enable-event-sounds=0
 gtk-enable-input-feedback-sounds=0

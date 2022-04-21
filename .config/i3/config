@@ -15,7 +15,7 @@ exec_always --no-startup-id ~/.config/polybar/launch_multi_display.sh
 exec_always --no-startup-id nm-applet
 
 #Font for window titles.
-font pango:MesloLGM Nerd Font Regular 14
+font pango:Hack Nerd Font Regular 14
 #Colors
 set $back               #282C34
 set $primary            #ABB2BF
