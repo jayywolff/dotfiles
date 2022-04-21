@@ -296,16 +296,42 @@ let g:mta_filetypes = {
     \}
 
 " Startify Settings
+"
+" returns all modified files of the current git repo
+" `2>/dev/null` makes the command fail quietly, so that when we are not
+" in a git repo, the list will be empty
+function! GitModified()
+    let files = systemlist('git ls-files -m 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+"" same as above, but show untracked files, honouring .gitignore
+function! GitUntracked()
+    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+function! GitBranch()
+    if (system('git status; echo $') == 0)
+      return trim(system("git status | awk 'NR==1 {print $NF}'"))
+    else
+      return ''
+    endif
+endfunction
+
 let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_change_to_vcs_root = 1
 let g:startify_files_number = 5
 let g:startify_custom_header =
 \ map(split(system('echo "Vim Tip of the day:"; fortune vimtips'), '\n'), '"   ". v:val') + ['','']
-let g:startify_list_order = [
-      \ ['  bookmarks:'], 'bookmarks',
-      \ ['  sessions:'],  'sessions',
-      \ ['  cwd mru:'],   'dir',
-      \ ['  mru:'],       'files']
+
+let g:startify_lists = [
+        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+        \ { 'type': 'sessions',  'header': ['   Sessions']       },
+        \ { 'type': function('GitModified'),  'header': ['     git modified   ' . GitBranch()  . ' ']},
+        \ { 'type': function('GitUntracked'),  'header': ['     git untracked   ' . GitBranch()  . ' ']},
+        \ { 'type': 'dir',       'header': ['     mru  '. getcwd() . ' '] },
+        \ { 'type': 'files',     'header': ['     mru ']            },
+        \ ]
+
 let g:startify_session_before_save = [
     \ 'echo "Cleaning up before saving.."',
     \ 'silent! NERDTreeClose'
