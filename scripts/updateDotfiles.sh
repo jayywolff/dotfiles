@@ -3,7 +3,6 @@ dotdir="$HOME/dotfiles"
 
 mkdir -p $HOME/.config/ranger && ln -sf $dotdir/.config/ranger/rc.conf $HOME/.config/ranger/rc.conf
 mkdir -p $HOME/.config/htop && ln -sf $dotdir/.config/htop/htoprc $HOME/.config/htop/htoprc
-#mkdir -p $HOME/.config/termite && ln -sf $dotdir/.config/termite/config $HOME/.config/termite/config
 rm -rf $HOME/.config/i3 && ln -sf $dotdir/.config/i3 $HOME/.config/i3
 ln -sf $dotdir/.config/alacritty $HOME/.config/alacritty
 ln -sf $dotdir/.config/polybar $HOME/.config/polybar

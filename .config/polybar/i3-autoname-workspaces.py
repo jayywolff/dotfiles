@@ -71,7 +71,6 @@ NF_MDI_WINDOWS = '\ufab2'
 NF_DEV_GIT_COMPARE = '\uf47f'
 NF_FA_VIDEO_CAMERA = '\uf03d'
 WINDOW_ICONS = {
-    'termite': FA_TERMINAL,
     'Alacritty': FA_TERMINAL,
     'Galculator': FA_CALCULATOR,
     'telegram-desktop': FA_TELEGRAM,

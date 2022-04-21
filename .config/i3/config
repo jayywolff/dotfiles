@@ -152,7 +152,7 @@ bindsym XF86Sleep exec i3lock --blur=4 && echo mem > /sys/power/state
 bindsym XF86TouchpadToggle exec synclient TouchpadOff=$(synclient -l | grep -c 'TouchpadOff.*=.*0')
 bindsym Print exec scrot -e 'mv $f ~/Pictures/screenshots/'
 bindsym $mod+Print exec scrot -u -e 'mv $f ~/Pictures/screenshots/'
-bindsym $mod+Shift+Print exec termite -e "scrot -s -e 'mv \$f ~/Pictures/screenshots/'"
+bindsym $mod+Shift+Print exec alacritty -e "scrot -s -e 'mv \$f ~/Pictures/screenshots/'"
 
 # vi keybindings
 set $vi_left h
