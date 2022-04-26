@@ -235,7 +235,7 @@ set termwinsize=15x0
 " Use Silver Searcher instead of grep (Greplace/Ack.vim settings)
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading --ignore node_modules --ignore vendor --ignore public'
-let g:ackprg = 'ag --literal --nogroup --column --path-to-ignore=/home/jay/.vim/.agignore'
+let g:ackprg = 'ag --literal --nogroup --column --hidden --path-to-ignore=/home/jay/.vim/.agignore'
 nmap <leader>s :Ack! "" ./<C-Left><Left><Left>
 nmap <leader>ss :Ack! "<cword>" ./<cr>
 nmap <leader>sa :Ack! "<cword>" ./app<cr>
