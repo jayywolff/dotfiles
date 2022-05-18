@@ -22,6 +22,7 @@ ln -sf $dotdir/.editorconfig $HOME/.editorconfig
 ln -sf $dotdir/.vim/ $HOME/.vim
 ln -sf $dotdir/.vimrc $HOME/.vimrc
 mkdir $dotdir/.vim/backups
+mkdir $dotdir/.vim/tmp
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 # there may be some un-automated setup required for coc-vim
