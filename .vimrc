@@ -1,4 +1,3 @@
-let $TMPDIR = $HOME."/.vim/tmp"   " Override tmp directory due to permission issues with /tmp
 set nocompatible   	              " Disable vi-compatibility
 filetype off		              " required for Vundle
 set rtp+=~/.vim/bundle/Vundle.vim " set runtime path to include Vundle
