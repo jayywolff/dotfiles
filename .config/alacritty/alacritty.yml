@@ -189,9 +189,9 @@ colors:
     background: '0x282c34'
 
   # Cursor colors
-  cursor:
-    text: '0x2c323c'
-    cursor: '0x5c6370'
+  #cursor:
+    #text: '0x2c323c'
+    #cursor: '0x5c6370'
 
   # Selection colors
   selection:
