@@ -53,6 +53,7 @@ font-0 = Hack Nerd Font:style=Regular:size=15;4
 font-1 = Hack Nerd Font:style=Regular:size=14;4
 font-2 = Hack Nerd Font:style=Bold:size=14;4
 font-3 = Hack Nerd Font:style=Regular:size=15;5
+font-4 = Hack Nerd Font:style=Regular:size=13;4
 
 ;modules-center = workspaces
 modules-left = launcher i3

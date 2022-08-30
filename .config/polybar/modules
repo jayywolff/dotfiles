@@ -189,9 +189,9 @@ format-discharging-padding = 1
 format-discharging-font = 2
 
 label-charging-font = 2
-label-charging = %percentage%%
+label-charging = "%percentage%%"
 label-discharging-font = 2
-label-discharging = %percentage%%
+label-discharging = "%percentage%%"
 
 label-full-font = 2
 label-full = " %percentage%%"
@@ -199,11 +199,11 @@ label-full-background = ${color.red}
 label-full-foreground = ${color.foreground}
 label-full-padding = 1
 
-ramp-capacity-0 = " "
-ramp-capacity-1 = " "
-ramp-capacity-2 = " "
-ramp-capacity-3 = " "
-ramp-capacity-4 = " "
+ramp-capacity-0 = ""
+ramp-capacity-1 = ""
+ramp-capacity-2 = ""
+ramp-capacity-3 = ""
+ramp-capacity-4 = ""
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -211,11 +211,11 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 
-animation-discharging-0 = " "
-animation-discharging-1 = " "
-animation-discharging-2 = " "
-animation-discharging-3 = " "
-animation-discharging-4 = " "
+animation-discharging-0 = ""
+animation-discharging-1 = ""
+animation-discharging-2 = ""
+animation-discharging-3 = ""
+animation-discharging-4 = ""
 
 animation-charging-framerate = 750
 
@@ -273,8 +273,8 @@ format-disconnected-foreground = ${color.black}
 format-disconnected-padding = 1
 
 label-font = 2
-label-connected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/i3blocks/toggle_wifi.sh:} %signal%% wlan0%{A}%{A}%{A}"
-label-disconnected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/i3blocks/toggle_wifi.sh:}睊 null%{A}%{A}%{A}"
+label-connected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/toggle_wifi.sh:}%signal%% wlan0%{A}%{A}%{A}"
+label-disconnected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/toggle_wifi.sh:}睊 null%{A}%{A}%{A}"
 ramp-signal-0 = 睊
 ramp-signal-1 = 
 ramp-signal-2 = 
@@ -337,7 +337,7 @@ ramp-1 = "  "
 ramp-2 = "  "
 ramp-background = ${color.grey}
 ramp-foreground = ${color.white}
-ramp-font = 2
+ramp-font = 5
 
 ;;==========================================================
 ;;	    __________  ______
