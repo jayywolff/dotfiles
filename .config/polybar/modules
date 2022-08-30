@@ -329,12 +329,15 @@ label-foreground = ${color.white}
 label-warn = %temperature-c%
 label-warn-background = ${color.grey}
 label-warn-foreground = ${color.red}
+label-font = 2
+label-warn-font = 2
 
 ramp-0 = "  "
 ramp-1 = "  "
 ramp-2 = "  "
 ramp-background = ${color.grey}
 ramp-foreground = ${color.white}
+ramp-font = 2
 
 ;;==========================================================
 ;;	    __________  ______

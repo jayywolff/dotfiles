@@ -7,6 +7,11 @@
 
 tmp_file="/tmp/.i3-gaps"
 
+if ! [ -z "$1" ]
+then
+ touch $tmp_file
+fi
+
 if [ ! -e "$tmp_file" ]; then
     touch $tmp_file
     i3-msg gaps inner all set 0

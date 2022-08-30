@@ -1,6 +1,6 @@
 #!/bin/zsh
 echo 'Running Arch updates'
-sudo pacman -Syyu --noconfirm
+pacaur -Syyu
 echo 'Running oh-my-zsh updates'
 sh $ZSH/tools/upgrade.sh
 echo 'Running tmux plugin updates'
