@@ -80,7 +80,7 @@ WINDOW_ICONS = {
     'chromium': FA_CHROME,
     'gvim': FA_CODE,
     'firefox': FA_FIREFOX,
-    'Thunderbird': FA_ENVELOPE_O,
+    'thunderbird': FA_ENVELOPE_O,
     'libreoffice-calc': FA_FILE_EXCEL_O,
     'libreoffice': FA_FILE_TEXT_O,
     'gpodder': FA_RSS_SQUARE,
