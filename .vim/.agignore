@@ -5,7 +5,8 @@ dist/
 tmp/
 images/
 fonts/
-public/
+/public/
+/engines/client_portal/frontend/public/
 .git/
 .jekyll/
 .tmp/
@@ -25,3 +26,4 @@ package-lock.json
 *.gif
 *.ico
 *.keep
+*.log
