@@ -139,7 +139,6 @@ nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
 " Edit dev notes 
 nmap <leader>n :e ~/Dev/notes.md<cr>:set wrap<cr>
-nnoremap <silent><leader>tt <C-w><C-]><C-w>T
 
 " Resize vsplit;
 nnoremap ;h :vertical resize +5<cr>
@@ -338,7 +337,6 @@ let g:startify_session_before_save = [
     \ ]
 
 " generate ctags
-nnoremap <C-]> :tag <C-R>=expand("<cword>")<cr><cr>
 nmap <leader>ct :!~/dotfiles/scripts/rails_ctags.sh .<cr>
 
 " php stuff
