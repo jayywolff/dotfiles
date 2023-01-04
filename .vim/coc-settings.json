@@ -1,5 +1,7 @@
 {
-  "suggest.floatEnable": false,
+  "suggest.maxCompleteItemCount": 50,
+  "suggest.minTriggerInputLength": 3,
+  "suggest.noselect": true,
   "solargraph.useBundler": false,
   "phpactor.enable": true,
   "phpactor.path": "phpactor"
