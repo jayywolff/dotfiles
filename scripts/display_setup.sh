@@ -19,7 +19,11 @@ else # Fail-safe
     xrandr --output eDP1 --mode 1920x1080 --primary --output DP2-1 --off --output DP2-2 --off --output DP2-3 --off
 fi
 
-~/dotfiles/scripts/toggle_gaps.sh 1
+pkill picom
+killall -q polybar
+i3-msg restart
+sleep 0.5
+picom --daemon --config ~/dotfiles/.config/picom.conf
 
 # triple display setup
 # xrandr --output DP2-1 --mode 1920x1080 --primary --output DP2-3 --mode 1920x1080 --right-of DP2-1 --output eDP1 --off --output DP2-2 --mode 1920x1080 --right-of DP2-3
