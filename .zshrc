@@ -24,8 +24,8 @@ plugins=(git vi-mode)
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 
-# setup npm
-export PATH="$PATH:$HOME/.node_modules/bin"
+# Add npm & pip to path
+export PATH="$PATH:$HOME/.node_modules/bin:$HOME/.local/bin"
 export npm_config_prefix=~/.node_modules
 
 # setup cargo
@@ -34,6 +34,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 export QT_QPA_PLATFORMTHEME="gtk2"
 
 source $ZSH/oh-my-zsh.sh
+source /usr/bin/aws_zsh_completer.sh
 
 autoload -Uz compinit
 compinit
@@ -64,6 +65,7 @@ alias net-reset="sudo systemctl restart NetworkManager.service"
 alias net-test="ping archlinux.org"
 alias system-update="~/dotfiles/scripts/system_update.sh"
 alias tres="~/dotfiles/scripts/tmux-resurrect.sh"
+alias tmux2="tmux new-session -t d3v -s d3v2"
 alias sup="~/dotfiles/scripts/system_update.sh"
 alias poff="poweroff"
 
@@ -94,6 +96,7 @@ alias gitlog="git log --author $USER --branches *"
 alias gcom="git checkout master || git checkout main"
 alias gcob="git checkout -b"
 alias grem="git checkout master && git pull origin master && git checkout - && git rebase --interactive --committer-date-is-author-date master && git status"
+alias grem2="git checkout main && git pull origin main && git checkout - && git rebase --interactive --committer-date-is-author-date main && git status"
 alias gred="git checkout development && git pull origin development && git checkout - && git rebase --interactive --committer-date-is-author-date development"
 alias grc="git rebase --continue"
 alias gpo="git push -u origin"
