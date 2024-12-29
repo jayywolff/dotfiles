@@ -1,4 +1,10 @@
-set editing-mode vi
 set show-mode-in-prompt on
-set vi-ins-mode-string " "
-set vi-cmd-mode-string " "
+
+set keymap vi-insert
+"jk": vi-movement-mode
+
+# icons must append a blank utf code "\uec03"
+set vi-ins-mode-string ""
+set vi-cmd-mode-string ""
+
+set editing-mode vi
