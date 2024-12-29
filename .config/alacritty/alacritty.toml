@@ -1,0 +1,48 @@
+[colors.bright]
+black = "0x3e4452"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xe06c75"
+white = "0xabb2bf"
+yellow = "0xe5c07b"
+
+[colors.normal]
+black = "0x2c323c"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xe06c75"
+white = "0x5c6370"
+yellow = "0xe5c07b"
+
+[colors.primary]
+background = "0x282c34"
+foreground = "0xabb2bf"
+
+[colors.selection]
+background = "0x3e4452"
+text = "CellForeground"
+
+[cursor.style]
+blinking = "Always"
+shape = "Block"
+
+[font]
+size = 14.0
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
+
+[scrolling]
+history = 15000
+
+[window]
+opacity = 1.0
