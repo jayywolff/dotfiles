@@ -38,7 +38,7 @@ import sys
 # (WM_CLASS) names and the icons can be any text you want to display. However
 # most of these are character codes for font awesome:
 #  http://fortawesome.github.io/Font-Awesome/icons/
-#  https://www.nerdfonts.com/cheat-sheet 
+#  https://www.nerdfonts.com/cheat-sheet
 FA_CALCULATOR = '\uf1ec'
 FA_CHROME = '\uf268'
 FA_CODE = '\uf121'
@@ -98,6 +98,7 @@ WINDOW_ICONS = {
     'rhythmbox': FA_MUSIC,
     'transmission-gtk': FA_DOWNLOAD,
     'pavucontrol': FA_VOLUME_UP,
+    'pulseeffects': FA_VOLUME_UP,
     'Steam': FA_STEAM,
     'SWT': FA_DATABASE,
     'DBeaver': FA_DATABASE,

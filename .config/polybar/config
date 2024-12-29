@@ -42,18 +42,19 @@ radius-bottom = 0.0
 overline-size = 0
 overline-color = ${color.background}
 
-border-bottom-size = 2
+border-bottom-size = 0
 border-color = ${color.black}
 
 padding = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = Hack Nerd Font:style=Regular:size=15;4
-font-1 = Hack Nerd Font:style=Regular:size=14;4
-font-2 = Hack Nerd Font:style=Bold:size=14;4
-font-3 = Hack Nerd Font:style=Regular:size=15;5
-font-4 = Hack Nerd Font:style=Regular:size=13;4
+font-0 = Hack Nerd Font:style=Regular:antialias=off:size=15;4
+font-1 = Hack Nerd Font:style=Regular:antialias=off:size=14;4
+font-2 = Hack Nerd Font:style=Bold:antialias=off:size=14;4
+font-3 = Hack Nerd Font:style=Regular:antialias=off:size=14;4
+font-4 = Hack Nerd Font:style=Regular:antialias=off:size=13;4
+font-5 = Hack Nerd Font:style=Regular:antialias=off:size=16;3
 
 ;modules-center = workspaces
 modules-left = launcher i3
@@ -78,7 +79,7 @@ tray-transparent = false
 tray-background = ${color.background}
 tray-offset-x = 0
 tray-offset-y = 0
-tray-padding = 6
+tray-padding = 3
 tray-scale = 1.0
 
 enable-ipc = true

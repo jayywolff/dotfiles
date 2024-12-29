@@ -135,12 +135,12 @@ label-urgent-font = 2
 type = internal/pulseaudio
 
 format-volume = "%{A3:pavucontrol&:}<label-volume> <bar-volume> %{A}"
-label-volume = "  %percentage%%"
+label-volume = "   %percentage%%"
 label-volume-foreground = ${color.white}
 label-volume-background = ${color.black}
 label-volume-font = 2
 
-label-muted = "  muted "
+label-muted = "   muted "
 label-muted-foreground = ${color.white}
 label-muted-background = ${color.black}
 label-muted-font = 2
@@ -153,12 +153,12 @@ bar-volume-foreground-3 = ${color.blue}
 bar-volume-foreground-4 = ${color.blue}
 bar-volume-foreground-5 = ${color.orange}
 bar-volume-foreground-6 = ${color.red}
-bar-volume-gradient = false
+bar-volume-gradient = true
 bar-volume-indicator = 
 bar-volume-indicator-font = 1
-bar-volume-fill = ─
+bar-volume-fill = 
 bar-volume-fill-font = 1
-bar-volume-empty = ─
+bar-volume-empty = 
 bar-volume-empty-font = 1
 bar-volume-empty-foreground = ${color.white}
 
@@ -225,8 +225,8 @@ animation-charging-framerate = 750
 type = internal/date
 interval = 1.0
 
-time = " %Y-%m-%d %H:%M"
-time-alt =  %H:%M
+time = "󰃰 %Y-%m-%d %H:%M"
+time-alt =  %H:%M
 
 format = <label>
 format-background = ${color.white}
@@ -242,7 +242,7 @@ type = internal/network
 interface = enp0s31f6
 interval = 3.0
 
-format-connected-prefix = ""
+format-connected-prefix = "󰈀"
 format-connected-prefix-foreground = ${color.foreground}
 label-connected = %local_ip%
 
@@ -274,12 +274,12 @@ format-disconnected-padding = 1
 
 label-font = 2
 label-connected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/toggle_wifi.sh:} %signal%% wlan0%{A}%{A}%{A}"
-label-disconnected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/toggle_wifi.sh:}睊 null%{A}%{A}%{A}"
-ramp-signal-0 = 睊
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+label-disconnected = "%{A1:nm-connection-editor&:}%{A2:nm-applet&:}%{A3:bash ~/dotfiles/scripts/toggle_wifi.sh:}󰤮 null%{A}%{A}%{A}"
+ramp-signal-0 = 󰤫
+ramp-signal-1 = 󰤠
+ramp-signal-2 = 󰤢
+ramp-signal-3 = 󰤥
+ramp-signal-4 = 󰤨
 
 ;;==========================================================
 
@@ -289,7 +289,7 @@ interval = 30
 
 mount-0 = /
 
-label-mounted = "  %percentage_used%% "
+label-mounted = "  %percentage_used%% "
 label-mounted-background = ${color.black}
 label-mounted-foreground = ${color.white}
 label-mounted-font = 2
@@ -332,9 +332,9 @@ label-warn-foreground = ${color.red}
 label-font = 2
 label-warn-font = 2
 
-ramp-0 = "  "
-ramp-1 = "  "
-ramp-2 = "  "
+ramp-0 = " 󰏈 "
+ramp-1 = " 󰏈 "
+ramp-2 = " 󰏈 "
 ramp-background = ${color.grey}
 ramp-foreground = ${color.white}
 ramp-font = 5
