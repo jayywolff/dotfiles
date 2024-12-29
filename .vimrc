@@ -48,7 +48,7 @@ filetype plugin indent on  " required
 " Put your non-Plugin stuff after this line
 set shell=/bin/zsh " zsh is cooler than bash
 set updatetime=150 " update gitgutter faster
-set encoding=utf8
+set encoding=UTF-8
 
 " Color Settings
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
@@ -73,9 +73,9 @@ else
 endif
 
 set nowrap                      " don't wrap lines
-set tabstop=4                   " a tab is four spaces
-set softtabstop=4               " when hitting <BS>, pretend like a tab is removed, even if spaces
-set shiftwidth=4                " number of spaces to use for autoindenting
+set tabstop=2                   " a tab is two spaces
+set softtabstop=2               " when hitting <BS>, pretend like a tab is removed, even if spaces
+set shiftwidth=2                " number of spaces to use for autoindenting
 set smarttab
 set expandtab                   " expand tabs by default (overloadable per file type later)
 set shiftround                  " use multiple of shiftwidth when indenting with '<' and '>'
@@ -137,7 +137,7 @@ nnoremap <leader>o o<esc>
 " Open splits
 nnoremap vs :vsplit<cr>
 nnoremap sp :split<cr>
-" Edit dev notes 
+" Edit dev notes
 nmap <leader>n :e ~/Dev/notes.md<cr>:set wrap<cr>
 
 " Resize vsplit;
@@ -251,8 +251,10 @@ nnoremap <silent><leader>p :History<cr>
 
 " Testing
 let test#strategy = "vimterminal"
-nmap <silent> <leader>r :TestNearest<cr>
-nmap <silent> <leader>rt :TestFile<cr>
+nmap <silent> <leader>r :TestNearest RAILS_ENABLE_TEST_LOG=1<cr>
+nmap <silent> <leader>rb :TestNearest SHOW_BROWSER=1<cr>
+nmap <silent> <leader>rt :TestFile <cr>
+nmap <silent> <leader>rtb :TestFile SHOW_BROWSER=1<cr>
 nmap <silent> <leader>ra :TestSuite<cr>
 nmap <silent> <leader>rr :TestLast<cr>
 
@@ -272,7 +274,7 @@ nnoremap <leader>hs :GitGutterStageHunk<cr>
 nnoremap <leader>hd :GitGutterUndoHunk<cr>:w<cr>
 
 let g:gitgutter_sign_added = ''
-let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_modified = '󰜥'
 let g:gitgutter_sign_removed = ''
 let g:gitgutter_sign_removed_first_line = ''
 let g:gitgutter_sign_modified_removed = ''
@@ -320,7 +322,7 @@ let g:startify_session_dir = '~/.vim/sessions'
 let g:startify_change_to_vcs_root = 1
 let g:startify_files_number = 5
 let g:startify_custom_header =
-\ map(split(system('echo "Vim Tip of the day:"; fortune vimtips'), '\n'), '"   ". v:val') + ['','']
+\ map(split(system('echo "Vim Tip of the day:"; fortune vimtips'), '\n'), '"   ". v:val')
 
 let g:startify_lists = [
         \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
