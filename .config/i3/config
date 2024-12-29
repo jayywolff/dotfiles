@@ -50,7 +50,7 @@ for_window [class="^Microsoft Teams - Preview"] floating enable
 # Scratchpad stuff
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+s move scratchpad
-bindsym $mod+a [title="^Telegram"] scratchpad show
+bindsym $mod+a [class="TelegramDesktop"] scratchpad show
 bindsym $mod+s [class="Slack"] scratchpad show
 bindsym $mod+z [class="Alacritty"] scratchpad show
 bindsym $mod+Shift+z scratchpad show
