@@ -1,0 +1,35 @@
+configuration {
+  modes: [ combi ];
+  combi-modes: [ window, drun, run ];
+  font: "Hack Nerd Font Regular 13";
+
+  drun {
+    display-name: " ";
+  }
+
+  run {
+    display-name: " ";
+  }
+
+  window {
+    display-name: " ";
+  }
+}
+
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+
+element {
+  children: [element-icon, element-text];
+}
+
+element-text {
+  padding: 6px 12px;
+}
+
+element-icon {
+    size: 1.4em;
+}
+
+listview {
+  lines: 12;
+}

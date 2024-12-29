@@ -9,6 +9,7 @@ ln -sf $dotdir/.config/fontconfig $HOME/.config/fontconfig
 ln -sf $dotdir/.config/feh $HOME/.config/feh
 ln -sf $dotdir/.config/mupen64plus $HOME/.config/mupen64plus
 ln -sf $dotdir/.config/picom.conf $HOME/.config/picom.conf
+ln -sf $dotdir/.config/rofi $HOME/.config/rofi
 ln -sf $dotdir/.zshrc $HOME/.zshrc
 ln -sf $dotdir/.profile $HOME/.profile
 ln -sf $dotdir/.Xresources $HOME/.Xresources
