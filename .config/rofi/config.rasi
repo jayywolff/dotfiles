@@ -18,6 +18,18 @@ configuration {
 
 @theme "/usr/share/rofi/themes/Arc-Dark.rasi"
 
+mainbox {
+  children: [inputbar, listview];
+}
+
+inputbar {
+  children: [prompt, entry];
+}
+
+prompt {
+  padding: 0 12px;
+}
+
 element {
   children: [element-icon, element-text];
 }
